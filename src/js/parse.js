@@ -3,7 +3,7 @@ import constants from './constants';
 
 export default function parse(code) {
   const tokens = tokenize(code);
-  
+
   let position = 0;
 
   const result = parseExpression();
@@ -20,14 +20,14 @@ export default function parse(code) {
 
     while (token === '+' || token === '-') {
       consume();
-      
+
       const rightExpression = parseMultiplicationExpression();
-      
+
       expression = {
         type: token,
         left: expression,
-        right: rightExpression
-      }
+        right: rightExpression,
+      };
 
       token = peek();
     }
@@ -41,14 +41,14 @@ export default function parse(code) {
 
     while (token === '*' || token === '/') {
       consume();
-      
+
       const rightExpression = parsePrimaryExpression();
-      
+
       expression = {
         type: token,
         left: expression,
-        right: rightExpression
-      }
+        right: rightExpression,
+      };
 
       token = peek();
     }
@@ -58,28 +58,30 @@ export default function parse(code) {
 
   function parsePrimaryExpression() {
     const token = peek();
-    
+
     if (isNumber(token)) {
       consume();
-      
+
       return {
         type: 'number',
-        value: token
-      }
+        value: token,
+      };
     } else if (isConstant(token)) {
       consume();
 
       return {
         type: 'constant',
-        value: token
-      }
+        value: token,
+      };
     } else if (token === '(') {
       consume();
 
       const expression = parseExpression();
 
       if (peek() !== ')') {
-        throw new SyntaxError(`Unexpected token "${token}", expected a closing parenthesis.`);
+        throw new SyntaxError(
+          `Unexpected token "${token}", expected a closing parenthesis.`
+        );
       }
 
       consume();
@@ -87,7 +89,9 @@ export default function parse(code) {
       return expression;
     }
 
-    throw new SyntaxError(`Unexpected token "${token}", expected a number or constant.`);
+    throw new SyntaxError(
+      `Unexpected token "${token}", expected a number or constant.`
+    );
   }
 
   function consume() {
@@ -104,5 +108,5 @@ function isNumber(token) {
 }
 
 function isConstant(token) {
-  return constants.hasOwnProperty(token.toLowerCase());
+  return Boolean(constants[token.toLowerCase()]);
 }

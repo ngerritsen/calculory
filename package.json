@@ -6,7 +6,8 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
-    "test": "jest"
+    "test": "jest; eslint; prettier --check .",
+    "fix": "eslint --fix; prettier --write ."
   },
   "author": "",
   "license": "ISC",
@@ -15,8 +16,11 @@
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
     "babel-jest": "^26.3.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
     "jest": "^26.4.1",
     "parcel-bundler": "^1.12.4",
+    "prettier": "^2.1.0",
     "sass": "^1.26.10",
     "typescript": "^3.9.7"
   }

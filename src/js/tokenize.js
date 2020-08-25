@@ -3,10 +3,14 @@ export default function tokenize(code) {
   const tokens = [];
 
   let match;
-  
-  while (match = regExp.exec(code)) {
-    tokens.push(match[1]);
-  }
+
+  do {
+    match = regExp.exec(code);
+
+    if (match !== null) {
+      tokens.push(match[1]);
+    }
+  } while (match !== null);
 
   return tokens;
 }

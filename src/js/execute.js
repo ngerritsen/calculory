@@ -22,5 +22,4 @@ function evaluate(expression) {
     case '-':
       return evaluate(expression.left) - evaluate(expression.right);
   }
-
 }
