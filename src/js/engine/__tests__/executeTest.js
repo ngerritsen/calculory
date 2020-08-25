@@ -1,4 +1,4 @@
-import execute from '../execute';
+import execute from '..';
 
 test('Executes the calculation correctly', () => {
   expect(execute('1 + 2')).toBe(3);
@@ -7,4 +7,5 @@ test('Executes the calculation correctly', () => {
   expect(execute('1 + 2 * 3')).toBe(7);
   expect(execute('(1 + 2) * 3')).toBe(9);
   expect(execute('1 * 1.2 / 2')).toBe(0.6);
+  expect(execute('-2-2')).toBe(-4);
 });

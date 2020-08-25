@@ -66,6 +66,21 @@ export default function parse(code) {
         type: 'number',
         value: token,
       };
+    } else if (token === '-') {
+      consume();
+
+      const nextToken = peek();
+
+      if (!isNumber(nextToken)) {
+        throw new SyntaxError(`Unexpected token "${nextToken}", expected a number.`)
+      }
+
+      consume();
+
+      return {
+        type: 'number',
+        value: token + nextToken,
+      };
     } else if (isConstant(token)) {
       consume();
 

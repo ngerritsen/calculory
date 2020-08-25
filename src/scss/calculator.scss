@@ -1,0 +1,32 @@
+@import './colors.scss';
+@import './fonts.scss';
+@import './space.scss';
+
+.calculator {
+  overflow: hidden;
+}
+
+.calculator__input {
+  border: 0;
+  width: 100%;
+  padding: $space-sm;
+  background-color: transparentize($color-white, 0.85);
+  color: inherit;
+  font-size: 1.8rem;
+  text-align: left;
+  font-family: $font-code;
+  border-radius: 4px;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+}
+
+.calculator__output {
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: right;
+  margin: 0 0 $space-sm;
+  padding: 0;
+}

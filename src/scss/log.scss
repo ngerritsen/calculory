@@ -1,0 +1,22 @@
+@import './colors.scss';
+@import './fonts.scss';
+
+.log__item {
+  margin-bottom: $space-md;
+}
+
+.log__result {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: right;
+  padding: 0;
+  margin: 0 0 $space-xs;
+}
+
+.log__code {
+  font-weight: bold;
+  text-align: right;
+  color: $color-text-subtle;
+  font-family: $font-code;
+  display: block;
+}

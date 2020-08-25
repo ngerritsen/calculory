@@ -1,8 +1,5 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "prettier"
-  ],
+  "extends": ["eslint:recommended", "prettier"],
   "env": {
     "browser": true
   },
@@ -12,10 +9,10 @@
   },
   "overrides": [
     {
-        "files": ["*Test.js"],
-        "env": {
-          "jest": true
-        }
+      "files": ["*Test.js"],
+      "env": {
+        "jest": true
+      }
     }
   ]
 }

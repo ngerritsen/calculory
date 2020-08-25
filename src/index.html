@@ -7,9 +7,19 @@
 </head>
 
 <body>
-  <h1>Calculory</h1>
   <div class="container">
-    <input type="text" data-calculator />
+    <div class="container__column container__column--highlighted">
+      <header class="header">
+        <h1 class="header__title">Calculory</h1>
+      </header>
+      <form class="calculator" data-calculator-form>
+        <p class="calculator__output" data-calculator-ouput>0</p>
+        <input class="calculator__input" type="text" data-calculator-input />
+      </form>
+    </div>
+    <div class="container__column">
+      <div class="log" data-log></div>
+    </div>
   </div>
   <script src="./js/index.js"></script>
   <link rel="stylesheet" href="./scss/style.scss" />
