@@ -37,6 +37,7 @@ export default function calculator(element) {
         input.classList.remove(ERROR_CLASSNAME);
       }
     } catch (e) {
+      console.log(e);
       input.classList.add(ERROR_CLASSNAME);
     }
 

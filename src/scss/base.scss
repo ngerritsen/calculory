@@ -1,6 +1,12 @@
 @import './variables/colors.scss';
 @import './variables/fonts.scss';
 
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
 html {
   font-size: 62.5%;
 }

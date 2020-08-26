@@ -21,7 +21,7 @@
 @include respond-from($breakpoint-tablet) {
   .container {
     height: 100vh;
-    grid-template-columns: 40rem auto;
+    grid-template-columns: 42rem auto;
   }
 
   .container__column {
@@ -32,6 +32,6 @@
 
 @include respond-from($breakpoint-desktop) {
   .container {
-    grid-template-columns: 50rem auto;
+    grid-template-columns: 56rem auto;
   }
 }
