@@ -1,5 +1,6 @@
 import tokenize from './tokenize';
 import constants from './constants';
+import functions from './functions';
 
 export default function parse(code) {
   const tokens = tokenize(code);
@@ -111,6 +112,28 @@ export default function parse(code) {
         type: 'constant',
         value: token,
       };
+    } else if (isFunction(token)) {
+      consume();
+
+      if (peek() !== '(') {
+        throw new SyntaxError(`Unexpected token ${peek()}, expected "(".`);
+      }
+
+      consume();
+
+      const expression = {
+        type: 'function',
+        value: token,
+        arg: parseExpression(),
+      };
+
+      if (peek() !== ')') {
+        throw new SyntaxError(`Unexpected token ${peek()}, expected ")".`);
+      }
+
+      consume();
+
+      return expression;
     } else if (token === '(') {
       consume();
 
@@ -128,7 +151,7 @@ export default function parse(code) {
     }
 
     throw new SyntaxError(
-      `Unexpected token "${token}", expected a number or constant.`
+      `Unexpected token "${token}", expected a number, parenthesis, function or constant.`
     );
   }
 
@@ -147,4 +170,8 @@ function isNumber(token) {
 
 function isConstant(token) {
   return Boolean(constants[token.toLowerCase()]);
+}
+
+function isFunction(token) {
+  return Boolean(functions[token.toLowerCase()]);
 }
