@@ -7,23 +7,35 @@ const DEFAULT_RESULT = '0';
 const ERROR_CLASSNAME = 'calculator__input--error';
 
 export default function calculator(element) {
-  getInput().value = calculationRepository.get();
-  calculate();
+  setInput(calculationRepository.get());
 
-  getInput().addEventListener('input', calculate);
+  getInput().addEventListener('input', onInput);
   element.addEventListener('submit', submit);
 
-  query(['[data-calculator-button-delete]'], element).addEventListener(
+  query(['[data-calculator-delete]'], element).addEventListener(
     'click',
     deleteValue
   );
-  query(['[data-calculator-button-clear]'], element).addEventListener(
+
+  query(['[data-calculator-clear]'], element).addEventListener(
     'click',
     clearInput
   );
-  queryAll('[data-calculator-button-symbol]', element).forEach(
-    handleSymbolButton
-  );
+
+  queryAll('[data-calculator-symbol]', element).forEach(onPressSymbolButton);
+
+  function onInput(event) {
+    event.preventDefault();
+    setInput(event.target.value);
+  }
+
+  function onPressSymbolButton(button) {
+    button.addEventListener('click', () => {
+      setInput(
+        getInput().value + button.getAttribute('data-calculator-symbol')
+      );
+    });
+  }
 
   function calculate() {
     const input = getInput();
@@ -62,21 +74,17 @@ export default function calculator(element) {
   function deleteValue() {
     const input = getInput();
 
-    input.value = input.value.slice(0, input.value.length - 1);
-  }
-
-  function handleSymbolButton(button) {
-    button.addEventListener('click', () => {
-      const input = getInput();
-
-      input.value =
-        input.value + button.getAttribute('data-calculator-button-symbol');
-    });
+    setInput(input.value.slice(0, input.value.length - 1));
   }
 
   function clearInput() {
-    getInput().value = '';
-    calculationRepository.store('');
+    setInput('');
+  }
+
+  function setInput(value) {
+    getInput().value = value;
+    calculate();
+    calculationRepository.store(value);
   }
 
   function hasError() {

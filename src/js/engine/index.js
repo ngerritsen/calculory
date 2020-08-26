@@ -13,6 +13,8 @@ function evaluate(expression) {
       return constants[expression.value.toLowerCase()];
     case 'number':
       return parseFloat(expression.value);
+    case '^':
+      return Math.pow(evaluate(expression.left), evaluate(expression.right));
     case '*':
       return evaluate(expression.left) * evaluate(expression.right);
     case '/':

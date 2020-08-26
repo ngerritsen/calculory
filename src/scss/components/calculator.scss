@@ -23,7 +23,6 @@
   color: inherit;
   font-size: 1.8rem;
   text-align: left;
-  font-family: $font-code;
   border-radius: 4px;
 
   &:focus {
@@ -45,6 +44,7 @@
 
 .calculator__button {
   padding: $space-sm 0;
+  font-family: $font-code;
   width: 100%;
 }
 

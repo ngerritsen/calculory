@@ -35,14 +35,35 @@ export default function parse(code) {
     return expression;
   }
 
-  function parseMultiplicationExpression() {
+  function parseExponentialExpression() {
     let expression = parsePrimaryExpression();
+    let token = peek();
+
+    while (token === '^') {
+      consume();
+
+      const rightExpression = parsePrimaryExpression();
+
+      expression = {
+        type: token,
+        left: expression,
+        right: rightExpression,
+      };
+
+      token = peek();
+    }
+
+    return expression;
+  }
+
+  function parseMultiplicationExpression() {
+    let expression = parseExponentialExpression();
     let token = peek();
 
     while (token === '*' || token === '/') {
       consume();
 
-      const rightExpression = parsePrimaryExpression();
+      const rightExpression = parseExponentialExpression();
 
       expression = {
         type: token,
