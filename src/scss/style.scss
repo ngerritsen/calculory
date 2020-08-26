@@ -1,6 +1,9 @@
+@import './vendor/normalize.scss';
+
 @import './base.scss';
-@import './normalize.scss';
-@import './calculator.scss';
-@import './log.scss';
-@import './header.scss';
-@import './container.scss';
+
+@import './components/button.scss';
+@import './components/calculator.scss';
+@import './components/container.scss';
+@import './components/header.scss';
+@import './components/log.scss';

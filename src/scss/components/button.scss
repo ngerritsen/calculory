@@ -1,0 +1,43 @@
+@import '../variables/colors.scss';
+@import '../variables/space.scss';
+@import '../variables/fonts.scss';
+
+@mixin button-color($color) {
+  background: $color;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: darken($color, 5%);
+  }
+}
+
+.button {
+  @include button-color(lighten($color-text-secondary, 5%));
+
+  display: inline-block;
+  border-radius: 4px;
+  padding: $space-xs $space-sm;
+  border: 0;
+  color: $color-white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button--secondary {
+  @include button-color($color-falling-star);
+
+  color: $color-text-secondary;
+}
+
+.button--operator {
+  @include button-color($color-orchid-range);
+}
+
+.button--action {
+  @include button-color($color-keppel);
+}
+
+.button--action-danger {
+  @include button-color($color-georgia-peach);
+}

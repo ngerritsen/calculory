@@ -1,0 +1,53 @@
+@import '../variables/colors.scss';
+@import '../variables/fonts.scss';
+@import '../variables/space.scss';
+
+.calculator {
+  overflow: hidden;
+}
+
+.calculator__output {
+  font-weight: 1000;
+  font-size: 2.8rem;
+  text-align: right;
+  margin: 0 0 $space-sm;
+  padding: 0;
+}
+
+.calculator__input {
+  border: 0;
+  width: 100%;
+  padding: $space-sm;
+  margin-bottom: $space-xs;
+  background-color: transparentize($color-white, 0.7);
+  color: inherit;
+  font-size: 1.8rem;
+  text-align: left;
+  font-family: $font-code;
+  border-radius: 4px;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+}
+
+.calculator__input--error {
+  color: $color-georgia-peach;
+}
+
+.calculator__buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: $space-xs;
+}
+
+.calculator__button {
+  padding: $space-sm 0;
+  width: 100%;
+}
+
+.calculator__button--col-span-2 {
+  grid-column: span 2;
+}

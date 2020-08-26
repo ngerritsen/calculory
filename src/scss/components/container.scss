@@ -1,0 +1,37 @@
+@import '../mixins/responsive.scss';
+@import '../variables/breakpoint.scss';
+@import '../variables/colors.scss';
+@import '../variables/space.scss';
+
+.container {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.container__column {
+  padding: $space-md;
+}
+
+.container__column--highlighted {
+  background-color: $color-skin;
+  color: $color-text-secondary;
+}
+
+@include respond-from($breakpoint-tablet) {
+  .container {
+    height: 100vh;
+    grid-template-columns: 40rem auto;
+  }
+
+  .container__column {
+    padding: $space-lg;
+    overflow-y: auto;
+  }
+}
+
+@include respond-from($breakpoint-desktop) {
+  .container {
+    grid-template-columns: 50rem auto;
+  }
+}

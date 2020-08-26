@@ -1,0 +1,8 @@
+@import '../variables/space.scss';
+@import '../variables/colors.scss';
+
+.header__title {
+  margin: 0 0 $space-lg;
+  font-size: 3.4rem;
+  font-weight: 900;
+}

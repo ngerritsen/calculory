@@ -1,5 +1,5 @@
-@import './colors.scss';
-@import './fonts.scss';
+@import '../variables/colors.scss';
+@import '../variables/fonts.scss';
 
 .log__item {
   margin-bottom: $space-md;
@@ -19,4 +19,8 @@
   color: $color-text-subtle;
   font-family: $font-code;
   display: block;
+}
+
+.log_actions {
+  text-align: right;
 }

@@ -4,6 +4,7 @@
   <title>Calculory</title>
   <meta name="viewport" content="width=device-width" />
   <meta charset="utf-8" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Overpass+Mono:wght@600&display=swap" rel="stylesheet"> 
 </head>
 
 <body>
@@ -15,6 +16,35 @@
       <form class="calculator" data-calculator-form>
         <p class="calculator__output" data-calculator-ouput>0</p>
         <input class="calculator__input" type="text" data-calculator-input />
+        <div class="calculator__buttons">
+          <button class="button calculator__button button--secondary" type="button" data-calculator-button-symbol="(">(</button>
+          <button class="button calculator__button button--secondary" type="button" data-calculator-button-symbol=")">)</button>
+          <button class="button calculator__button button--secondary" type="button" data-calculator-button-symbol="π">π</button>
+          <button class="button calculator__button button--secondary" type="button" data-calculator-button-symbol="e">e</button>
+
+          <button class="button calculator__button" type="button" data-calculator-button-symbol="1">1</button>
+          <button class="button calculator__button" type="button" data-calculator-button-symbol="2">2</button>
+          <button class="button calculator__button" type="button" data-calculator-button-symbol="3">3</button>
+          <button class="button calculator__button button--operator" type="button" data-calculator-button-symbol="*">*</button>
+
+          <button class="button calculator__button" type="button" data-calculator-button-symbol="4">4</button>
+          <button class="button calculator__button" type="button" data-calculator-button-symbol="5">5</button>
+          <button class="button calculator__button" type="button" data-calculator-button-symbol="6">6</button>
+          <button class="button calculator__button button--operator" type="button" data-calculator-button-symbol="/">/</button>
+
+          <button class="button calculator__button" type="button" data-calculator-button-symbol="7">7</button>
+          <button class="button calculator__button" type="button" data-calculator-button-symbol="8">8</button>
+          <button class="button calculator__button" type="button" data-calculator-button-symbol="9">9</button>
+          <button class="button calculator__button button--operator" type="button" data-calculator-button-symbol="+">+</button>
+          
+          <button class="button calculator__button" type="button" data-calculator-button-symbol="0">0</button>
+          <button class="button calculator__button calculator__button--col-span-2" type="button" data-calculator-button-symbol=".">.</button>          
+          <button class="button calculator__button button--operator" type="button" data-calculator-button-symbol="-">-</button>
+
+          <button class="button calculator__button button--action calculator__button--col-span-2" type="submit">=</button>
+          <button class="button calculator__button button--action-danger button" type="button" data-calculator-button-delete>←</button>
+          <button class="button calculator__button button--action-danger button" type="button" data-calculator-button-clear>c</button>
+        </div> 
       </form>
     </div>
     <div class="container__column">

@@ -7,3 +7,7 @@ export function generateId() {
 export function query(queryString, context) {
   return (context || document).querySelector(queryString);
 }
+
+export function queryAll(queryString, context) {
+  return [...(context || document).querySelectorAll(queryString)];
+}
