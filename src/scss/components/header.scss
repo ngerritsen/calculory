@@ -2,7 +2,14 @@
 @import '../variables/colors.scss';
 
 .header__title {
-  margin: 0 0 $space-lg;
-  font-size: 3.4rem;
+  margin: 0 0 $space-sm;
+  font-size: 3rem;
   font-weight: 900;
+}
+
+@include respond-from($breakpoint-tablet) {
+  .header__title {
+    font-size: 3.6rem;
+    margin-bottom: $space-lg;
+  }
 }

@@ -10,12 +10,16 @@
 }
 
 .container__column {
-  padding: $space-md;
+  padding: $space-sm $space-md;
 }
 
 .container__column--highlighted {
   background-color: $color-skin;
   color: $color-text-secondary;
+}
+
+.container__column:not(:first-child) {
+  margin-top: $space-sm;
 }
 
 @include respond-from($breakpoint-tablet) {
@@ -27,6 +31,10 @@
   .container__column {
     padding: $space-lg;
     overflow-y: auto;
+  }
+
+  .container__column:not(:first-child) {
+    margin-top: 0;
   }
 }
 
