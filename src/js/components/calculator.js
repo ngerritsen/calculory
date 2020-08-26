@@ -12,6 +12,8 @@ export default function calculator(element) {
   getInput().addEventListener('input', onInput);
   element.addEventListener('submit', submit);
 
+  getInput().focus();
+
   query(['[data-calculator-delete]'], element).addEventListener(
     'click',
     deleteValue
