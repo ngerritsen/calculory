@@ -13,15 +13,25 @@ export default function calculator(element) {
   getInput().addEventListener('input', calculate);
   element.addEventListener('submit', submit);
 
-  query(['[data-calculator-button-delete]'], element).addEventListener('click', deleteValue);
-  query(['[data-calculator-button-clear]'], element).addEventListener('click', clearInput);
-  queryAll('[data-calculator-button-symbol]', element).forEach(handleSymbolButton);
+  query(['[data-calculator-button-delete]'], element).addEventListener(
+    'click',
+    deleteValue
+  );
+  query(['[data-calculator-button-clear]'], element).addEventListener(
+    'click',
+    clearInput
+  );
+  queryAll('[data-calculator-button-symbol]', element).forEach(
+    handleSymbolButton
+  );
 
   function calculate() {
     const input = getInput();
 
     try {
-      getOutput().textContent = input.value ? execute(input.value) : DEFAULT_RESULT;
+      getOutput().textContent = input.value
+        ? execute(input.value)
+        : DEFAULT_RESULT;
 
       if (hasError()) {
         input.classList.remove(ERROR_CLASSNAME);
@@ -58,7 +68,8 @@ export default function calculator(element) {
     button.addEventListener('click', () => {
       const input = getInput();
 
-      input.value = input.value + button.getAttribute('data-calculator-button-symbol');
+      input.value =
+        input.value + button.getAttribute('data-calculator-button-symbol');
     });
   }
 

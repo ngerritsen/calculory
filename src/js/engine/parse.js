@@ -72,7 +72,9 @@ export default function parse(code) {
       const nextToken = peek();
 
       if (!isNumber(nextToken)) {
-        throw new SyntaxError(`Unexpected token "${nextToken}", expected a number.`)
+        throw new SyntaxError(
+          `Unexpected token "${nextToken}", expected a number.`
+        );
       }
 
       consume();

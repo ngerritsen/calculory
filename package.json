@@ -1,7 +1,7 @@
 {
   "name": "calculory",
   "version": "1.0.0",
-  "description": "",
+  "description": "Zero dependency calculator with logs.",
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
@@ -18,10 +18,16 @@
     "babel-jest": "^26.3.0",
     "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
+    "husky": "^4.2.5",
     "jest": "^26.4.1",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.1.0",
     "sass": "^1.26.10",
     "typescript": "^3.9.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
   }
 }
