@@ -115,10 +115,6 @@ export default function calculator(element) {
   function setInputPosition(position) {
     const input = getInput();
 
-    input.readonly = true;
-    input.focus();
-    input.readonly = false;
-
     if (position !== undefined) {
       input.setSelectionRange(position, position);
     }

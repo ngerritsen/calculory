@@ -21,6 +21,7 @@
         <p class="calculator__output" data-calculator-ouput>0</p>
         <input class="calculator__input" type="text" data-calculator-input />
         <div class="calculator__buttons">
+          <!-- Row 1 -->
           <button
             class="button calculator__button button--secondary"
             type="button"
@@ -50,6 +51,7 @@
             ⭢
           </button>
 
+          <!-- Row 2 -->
           <button
             class="button calculator__button"
             type="button"
@@ -79,6 +81,7 @@
             *
           </button>
 
+          <!-- Row 3 -->
           <button
             class="button calculator__button"
             type="button"
@@ -108,6 +111,7 @@
             /
           </button>
 
+          <!-- Row 4 -->
           <button
             class="button calculator__button"
             type="button"
@@ -137,6 +141,7 @@
             +
           </button>
 
+          <!-- Row 5 -->
           <button
             class="button calculator__button"
             type="button"
@@ -152,11 +157,11 @@
             .
           </button>
           <button
-            class="button calculator__button button"
+            class="button calculator__button button--operator"
             type="button"
-            data-calculator-symbol="π"
+            data-calculator-symbol="^"
           >
-            π
+            ^
           </button>
           <button
             class="button calculator__button button--operator"
@@ -166,8 +171,38 @@
             -
           </button>
 
+          <!-- Row 6 -->
           <button
-            class="button calculator__button button"
+            class="button calculator__button button--action calculator__button--col-span-2"
+            type="submit"
+          >
+            =
+          </button>
+          <button
+            class="button calculator__button button--action-danger button"
+            type="button"
+            data-calculator-delete
+          >
+            DEL
+          </button>
+          <button
+            class="button calculator__button button--action-danger button"
+            type="button"
+            data-calculator-clear
+          >
+            AC
+          </button>
+
+          <!-- Row 6 -->
+          <button
+            class="button calculator__button"
+            type="button"
+            data-calculator-symbol="π"
+          >
+            π
+          </button>
+          <button
+            class="button calculator__button"
             type="button"
             data-calculator-symbol="e"
           >
@@ -188,14 +223,8 @@
           >
             log
           </button>
-          <button
-            class="button calculator__button button--operator"
-            type="button"
-            data-calculator-symbol="^"
-          >
-            ^
-          </button>
 
+          <!-- Row 7 -->
           <button
             class="button calculator__button"
             type="button"
@@ -223,27 +252,6 @@
             data-calculator-symbol="tan()"
           >
             tan
-          </button>
-
-          <button
-            class="button calculator__button button--action calculator__button--col-span-2"
-            type="submit"
-          >
-            =
-          </button>
-          <button
-            class="button calculator__button button--action-danger button"
-            type="button"
-            data-calculator-delete
-          >
-            DEL
-          </button>
-          <button
-            class="button calculator__button button--action-danger button"
-            type="button"
-            data-calculator-clear
-          >
-            AC
           </button>
         </div>
       </form>
