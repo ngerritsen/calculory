@@ -1,0 +1,41 @@
+{
+  "name": "Calculory",
+  "short_name": "Calculory",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#f4cdad",
+  "theme_color": "#2c3a47",
+  "description": "Powerful & beautiful calculator.",
+  "icons": [
+    {
+      "src": "/img/android-icon-48.png",
+      "sizes": "48x48",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/android-icon-72.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/android-icon-96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/android-icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/android-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/img/android-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

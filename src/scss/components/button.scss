@@ -4,11 +4,13 @@
 
 @mixin button-color($color) {
   background: $color;
+  box-sizing: border-box;
 
   &:hover,
   &:focus,
   &:active {
-    background: darken($color, 5%);
+    background: darken($color, 7.5%);
+    outline: none;
   }
 }
 
