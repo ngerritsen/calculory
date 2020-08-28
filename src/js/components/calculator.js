@@ -117,6 +117,7 @@ export default function calculator(element) {
 
     if (position !== undefined) {
       input.setSelectionRange(position, position);
+      input.blur();
     }
   }
 
