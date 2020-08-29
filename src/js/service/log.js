@@ -1,8 +1,8 @@
 import { generateId } from '../utils';
-import * as logRepository from './logRepository';
+import * as logRepository from '../repository/log';
 import * as pubSub from '../pubSub';
 
-let logs = [];
+let logs = logRepository.getAll();
 
 export function add(code) {
   updateLogs([{ id: generateId(), code }, ...logs]);
@@ -14,10 +14,6 @@ export function clear() {
 
 export function getAll() {
   return logs;
-}
-
-export function init() {
-  updateLogs(logRepository.getAll());
 }
 
 function updateLogs(newLogs) {

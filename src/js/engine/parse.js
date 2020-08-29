@@ -1,10 +1,7 @@
-import tokenize from './tokenize';
 import constants from './constants';
 import functions from './functions';
 
-export default function parse(code) {
-  const tokens = tokenize(code);
-
+export default function parse(tokens) {
   let position = 0;
 
   const result = parseExpression();

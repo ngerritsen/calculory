@@ -1,9 +1,6 @@
-import execute from '../engine';
-import * as logService from '../service/logService';
-import { queryAll, query, formatOutput } from '../utils';
+import * as logService from '../service/log';
+import { queryAll, query } from '../utils';
 import createInput from './input';
-
-const DEFAULT_RESULT = '0';
 
 export default function calculator(element) {
   const input = createInput(getInput());
@@ -18,9 +15,6 @@ export default function calculator(element) {
 
   function init() {
     element.addEventListener('submit', submit);
-
-    calculate();
-
     getActions().forEach((action) =>
       action.addEventListener('click', handleCalculatorAction)
     );
@@ -28,9 +22,7 @@ export default function calculator(element) {
 
   function handleCalculatorAction(event) {
     event.preventDefault();
-
     calculatorActions[getAction(event.currentTarget)](event);
-    calculate();
   }
 
   function addSymbol(event) {
@@ -49,22 +41,6 @@ export default function calculator(element) {
     logService.add(input.value);
 
     input.clear();
-    calculate();
-    getOutput().textContent = DEFAULT_RESULT;
-  }
-
-  function calculate() {
-    const code = input.get();
-
-    try {
-      getOutput().textContent = code
-        ? formatOutput(execute(code))
-        : DEFAULT_RESULT;
-
-      input.unsetError();
-    } catch (e) {
-      input.setError();
-    }
   }
 
   function getAction(element) {
@@ -73,10 +49,6 @@ export default function calculator(element) {
 
   function getSymbol(element) {
     return element.getAttribute('data-calculator-symbol');
-  }
-
-  function getOutput() {
-    return query('[data-calculator-ouput]', element);
   }
 
   function getInput() {

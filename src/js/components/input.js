@@ -1,10 +1,11 @@
-import * as calculationRepository from '../service/calculationRepository';
+import * as calculationService from '../service/calculation';
 import { queryAll } from '../utils';
+import execute from '../engine';
 
 const ERROR_CLASSNAME = 'calculator__input--error';
 
 export default function input(element) {
-  apply(get());
+  render(get());
 
   function add(symbol) {
     const code = get();
@@ -34,12 +35,12 @@ export default function input(element) {
   }
 
   function apply(code, positionModifier = 0) {
-    calculationRepository.store(code);
+    calculationService.set(code);
     render(code, positionModifier);
   }
 
   function get() {
-    return calculationRepository.get();
+    return calculationService.get();
   }
 
   function next() {
@@ -79,6 +80,19 @@ export default function input(element) {
     }
 
     element.innerHTML = html;
+
+    updateError(code);
+  }
+
+  function updateError(code) {
+    const { error } = execute(code);
+
+    if (error) {
+      setError();
+      return;
+    }
+
+    unsetError();
   }
 
   function renderChar(char, isActive) {

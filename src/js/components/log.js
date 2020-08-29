@@ -1,11 +1,10 @@
 import * as pubSub from '../pubSub';
-import * as logService from '../service/logService';
+import * as logService from '../service/log';
 import execute from '../engine';
 import { query } from '../utils';
 
 export default function log(element) {
   function init() {
-    updateLogs();
     pubSub.subscribe('logsUpdated', updateLogs);
   }
 

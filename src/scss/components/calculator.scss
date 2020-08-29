@@ -23,13 +23,21 @@
 
   &::after {
     right: 0;
-    background: linear-gradient(to right, transparent, $background-color 75%);
+    background: linear-gradient(
+      to right,
+      transparentize($background-color, 1),
+      $background-color 75%
+    );
     border-radius: 0 $border-radius $border-radius 0;
   }
 
   &::before {
     left: 0;
-    background: linear-gradient(to left, transparent, $background-color 75%);
+    background: linear-gradient(
+      to left,
+      transparentize($background-color, 1),
+      $background-color 75%
+    );
     border-radius: $border-radius 0 0 $border-radius;
   }
 }
@@ -65,7 +73,7 @@
 }
 
 .calculator__output-container {
-  @include field-container(darken($color-skin, 12%));
+  @include field-container(darken($color-skin, 10%));
 
   border-radius: $border-radius $border-radius 0 0;
 }
@@ -79,7 +87,7 @@
 }
 
 .calculator__input-container {
-  @include field-container(darken($color-skin, 6%));
+  @include field-container(darken($color-skin, 5%));
 
   border-radius: 0 0 $border-radius $border-radius;
   margin-bottom: $space-xs;
@@ -94,6 +102,7 @@
   font-family: $font-code;
 }
 
+.calculator__output--error,
 .calculator__input--error {
   color: $color-georgia-peach;
 }
