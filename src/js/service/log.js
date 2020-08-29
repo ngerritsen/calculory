@@ -1,6 +1,6 @@
-import { generateId } from '../utils';
+import { generateId } from '../utils/id';
 import * as logRepository from '../repository/log';
-import * as pubSub from '../pubSub';
+import * as pubSub from '../core/pubSub';
 
 let logs = logRepository.getAll();
 
@@ -18,6 +18,6 @@ export function getAll() {
 
 function updateLogs(newLogs) {
   logs = newLogs;
-  pubSub.publish('logsUpdated');
+  pubSub.publish('logs.updated');
   logRepository.store(logs);
 }

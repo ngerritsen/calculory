@@ -1,16 +1,15 @@
 import * as logService from '../service/log';
-import { queryAll, query } from '../utils';
-import createInput from './input';
+import * as calculationService from '../service/calculation';
+import { queryAll } from '../utils/dom';
+import execute from '../engine';
 
 export default function calculator(element) {
-  const input = createInput(getInput());
-
   const calculatorActions = {
     addSymbol,
-    remove: input.remove,
-    clear: input.clear,
-    previous: input.previous,
-    next: input.next,
+    remove: calculationService.remove,
+    clear: calculationService.clear,
+    previous: calculationService.previous,
+    next: calculationService.next,
   };
 
   function init() {
@@ -26,21 +25,21 @@ export default function calculator(element) {
   }
 
   function addSymbol(event) {
-    input.add(getSymbol(event.currentTarget));
+    calculationService.add(getSymbol(event.currentTarget));
   }
 
   function submit(event) {
     event.preventDefault();
 
-    if (input.hasError()) {
+    const { code } = calculationService.get();
+    const { error } = execute(code);
+
+    if (error) {
       return;
     }
 
-    const input = getInput();
-
-    logService.add(input.value);
-
-    input.clear();
+    logService.add(code);
+    calculationService.clear();
   }
 
   function getAction(element) {
@@ -49,10 +48,6 @@ export default function calculator(element) {
 
   function getSymbol(element) {
     return element.getAttribute('data-calculator-symbol');
-  }
-
-  function getInput() {
-    return query('[data-calculator-input]', element);
   }
 
   function getActions() {

@@ -2,25 +2,19 @@
 @import '../variables/fonts.scss';
 
 .log__item {
-  margin-bottom: $space-md;
+  margin-bottom: $space-sm;
 }
 
 .log__result {
   font-size: 2rem;
   font-weight: bold;
-  text-align: right;
   padding: 0;
   margin: 0 0 $space-xs;
 }
 
 .log__code {
   font-weight: bold;
-  text-align: right;
   color: $color-text-subtle;
   font-family: $font-code;
   display: block;
-}
-
-.log_actions {
-  text-align: right;
 }
