@@ -1,129 +1,78 @@
 import execute from '../engine';
 import * as logService from '../service/logService';
-import * as calculationRepository from '../service/calculationRepository';
-import { queryAll, query } from '../utils';
+import { queryAll, query, formatOutput } from '../utils';
+import createInput from './input';
 
 const DEFAULT_RESULT = '0';
-const ERROR_CLASSNAME = 'calculator__input--error';
 
 export default function calculator(element) {
-  setInput(calculationRepository.get());
-  setInputPosition();
+  const input = createInput(getInput());
 
-  getInput().addEventListener('input', onInput);
-  element.addEventListener('submit', submit);
+  const calculatorActions = {
+    addSymbol,
+    remove: input.remove,
+    clear: input.clear,
+    previous: input.previous,
+    next: input.next,
+  };
 
-  query(['[data-calculator-delete]'], element).addEventListener(
-    'click',
-    deleteValue
-  );
+  function init() {
+    element.addEventListener('submit', submit);
 
-  query(['[data-calculator-clear]'], element).addEventListener('click', clear);
+    calculate();
 
-  queryAll('[data-calculator-symbol]', element).forEach((button) => {
-    button.addEventListener('click', () => {
-      event.preventDefault();
-      addSymbol(button.getAttribute('data-calculator-symbol'));
-    });
-  });
-
-  query(['[data-calculator-next]'], element).addEventListener('click', next);
-
-  query(['[data-calculator-previous]'], element).addEventListener(
-    'click',
-    previous
-  );
-
-  function onInput(event) {
-    event.preventDefault();
-    setInput(event.target.value);
+    getActions().forEach((action) =>
+      action.addEventListener('click', handleCalculatorAction)
+    );
   }
 
-  function addSymbol(symbol) {
-    const input = getInput();
-    const { value, selectionStart, selectionEnd } = input;
-    const newValue =
-      value.slice(0, selectionStart) + symbol + value.slice(selectionEnd);
-    const isFunction = symbol.includes('()');
-    const newPosition = selectionStart + symbol.length - (isFunction ? 1 : 0);
+  function handleCalculatorAction(event) {
+    event.preventDefault();
 
-    setInput(newValue, newPosition);
-    setInputPosition(newPosition);
+    calculatorActions[getAction(event.currentTarget)](event);
+    calculate();
+  }
+
+  function addSymbol(event) {
+    input.add(getSymbol(event.currentTarget));
   }
 
   function submit(event) {
-    if (hasError()) {
+    event.preventDefault();
+
+    if (input.hasError()) {
       return;
     }
-
-    event.preventDefault();
 
     const input = getInput();
 
     logService.add(input.value);
 
-    clear();
+    input.clear();
+    calculate();
     getOutput().textContent = DEFAULT_RESULT;
   }
 
-  function deleteValue() {
-    const input = getInput();
-    const { value, selectionStart, selectionEnd } = input;
-
-    const start =
-      selectionEnd === selectionStart ? selectionStart - 1 : selectionStart;
-
-    setInput(value.slice(0, start) + value.slice(selectionEnd));
-    setInputPosition(start);
-  }
-
-  function next() {
-    setInputPosition(getInput().selectionStart + 1);
-  }
-
-  function previous() {
-    setInputPosition(getInput().selectionStart - 1);
-  }
-
   function calculate() {
-    const input = getInput();
+    const code = input.get();
 
     try {
-      getOutput().textContent = input.value
-        ? execute(input.value)
+      getOutput().textContent = code
+        ? formatOutput(execute(code))
         : DEFAULT_RESULT;
 
-      if (hasError()) {
-        input.classList.remove(ERROR_CLASSNAME);
-      }
+      input.unsetError();
     } catch (e) {
-      input.classList.add(ERROR_CLASSNAME);
-    }
-
-    calculationRepository.store(input.value);
-  }
-
-  function clear() {
-    setInput('');
-  }
-
-  function setInput(value) {
-    getInput().value = value;
-    calculate();
-    calculationRepository.store(value);
-  }
-
-  function setInputPosition(position) {
-    const input = getInput();
-
-    if (position !== undefined) {
-      input.setSelectionRange(position, position);
-      input.blur();
+      input.setError();
     }
   }
 
-  function hasError() {
-    return getInput().classList.contains(ERROR_CLASSNAME);
+  function getAction(element) {
+    return element.getAttribute('data-calculator-action');
+  }
+
+  function getSymbol(element) {
+    return element.getAttribute('data-calculator-symbol');
   }
 
   function getOutput() {
@@ -133,4 +82,10 @@ export default function calculator(element) {
   function getInput() {
     return query('[data-calculator-input]', element);
   }
+
+  function getActions() {
+    return queryAll('[data-calculator-action]', element);
+  }
+
+  init();
 }

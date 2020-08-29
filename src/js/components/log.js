@@ -4,20 +4,22 @@ import execute from '../engine';
 import { query } from '../utils';
 
 export default function log(element) {
-  pubSub.subscribe('logAdded', renderLog);
-  pubSub.subscribe('logsCleared', clearLogs);
-  pubSub.subscribe('logsUpdated', updateLogs);
-
-  function updateLogs(logs) {
-    logs.forEach(renderLog);
+  function init() {
+    updateLogs();
+    pubSub.subscribe('logsUpdated', updateLogs);
   }
 
-  function renderLog(log) {
-    if (element.innerHTML.trim() === '') {
-      element.innerHTML = getLogButtonHtml();
+  function updateLogs() {
+    renderLogs(logService.getAll());
+  }
+
+  function renderLogs(logs) {
+    if (logs.length === 0) {
+      element.innerHTML = '';
+      return;
     }
 
-    element.innerHTML = getLogHtml(log) + element.innerHTML;
+    element.innerHTML = logs.map(getLogHtml).join('') + getLogButtonHtml();
 
     query('[data-log-button-clear]', element).addEventListener(
       'click',
@@ -45,7 +47,5 @@ export default function log(element) {
     `;
   }
 
-  function clearLogs() {
-    element.innerHTML = '';
-  }
+  init();
 }

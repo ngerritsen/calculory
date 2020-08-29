@@ -5,23 +5,23 @@ import * as pubSub from '../pubSub';
 let logs = [];
 
 export function add(code) {
-  const log = { id: generateId(), code };
-
-  logs = [{ id: generateId(), code }, ...logs];
-  logRepository.store(logs);
-
-  pubSub.publish('logAdded', log);
+  updateLogs([{ id: generateId(), code }, ...logs]);
 }
 
 export function clear() {
-  logs = [];
-  logRepository.store(logs);
+  updateLogs([]);
+}
 
-  pubSub.publish('logsCleared');
+export function getAll() {
+  return logs;
 }
 
 export function init() {
-  logs = logRepository.getAll();
+  updateLogs(logRepository.getAll());
+}
 
-  pubSub.publish('logsUpdated', logs);
+function updateLogs(newLogs) {
+  logs = newLogs;
+  pubSub.publish('logsUpdated');
+  logRepository.store(logs);
 }

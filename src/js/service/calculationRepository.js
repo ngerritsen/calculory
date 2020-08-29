@@ -3,5 +3,5 @@ export function store(calculation) {
 }
 
 export function get() {
-  return localStorage.getItem('calculation');
+  return localStorage.getItem('calculation') || '';
 }

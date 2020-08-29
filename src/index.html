@@ -39,13 +39,18 @@
     <div class="container__column container__column--calculator">
       <h1>Calculory</h1>
       <form class="calculator" data-calculator-form>
-        <p class="calculator__output" data-calculator-ouput>0</p>
-        <input class="calculator__input" type="text" data-calculator-input />
+        <div class="calculator__output-container">
+          <div class="calculator__output" data-calculator-ouput>0</div>
+        </div>
+        <div class="calculator__input-container">
+          <div class="calculator__input" data-calculator-input></div>
+        </div>
         <div class="calculator__buttons">
           <!-- Row 1 -->
           <button
             class="button calculator__button button--secondary"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="("
           >
             (
@@ -53,6 +58,7 @@
           <button
             class="button calculator__button button--secondary"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol=")"
           >
             )
@@ -60,14 +66,14 @@
           <button
             class="button calculator__button button--secondary button"
             type="button"
-            data-calculator-previous
+            data-calculator-action="previous"
           >
             ⭠
           </button>
           <button
             class="button calculator__button button--secondary button"
             type="button"
-            data-calculator-next
+            data-calculator-action="next"
           >
             ⭢
           </button>
@@ -76,6 +82,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="1"
           >
             1
@@ -83,6 +90,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="2"
           >
             2
@@ -90,6 +98,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="3"
           >
             3
@@ -97,6 +106,7 @@
           <button
             class="button calculator__button button--operator"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="*"
           >
             *
@@ -106,6 +116,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="4"
           >
             4
@@ -113,6 +124,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="5"
           >
             5
@@ -120,6 +132,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="6"
           >
             6
@@ -127,6 +140,7 @@
           <button
             class="button calculator__button button--operator"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="/"
           >
             /
@@ -136,6 +150,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="7"
           >
             7
@@ -143,6 +158,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="8"
           >
             8
@@ -150,6 +166,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="9"
           >
             9
@@ -157,6 +174,7 @@
           <button
             class="button calculator__button button--operator"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="+"
           >
             +
@@ -166,6 +184,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="0"
           >
             0
@@ -173,6 +192,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="."
           >
             .
@@ -180,6 +200,7 @@
           <button
             class="button calculator__button button--operator"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="^"
           >
             ^
@@ -187,6 +208,7 @@
           <button
             class="button calculator__button button--operator"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="-"
           >
             -
@@ -202,14 +224,14 @@
           <button
             class="button calculator__button button--action-danger button"
             type="button"
-            data-calculator-delete
+            data-calculator-action="remove"
           >
             DEL
           </button>
           <button
             class="button calculator__button button--action-danger button"
             type="button"
-            data-calculator-clear
+            data-calculator-action="clear"
           >
             AC
           </button>
@@ -218,6 +240,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="π"
           >
             π
@@ -225,6 +248,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="e"
           >
             e
@@ -232,6 +256,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="sqrt()"
           >
             sqrt
@@ -240,6 +265,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="log()"
           >
             log
@@ -249,6 +275,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="ln()"
           >
             ln
@@ -256,6 +283,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="sin()"
           >
             sin
@@ -263,6 +291,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="cos()"
           >
             cos
@@ -270,6 +299,7 @@
           <button
             class="button calculator__button"
             type="button"
+            data-calculator-action="addSymbol"
             data-calculator-symbol="tan()"
           >
             tan

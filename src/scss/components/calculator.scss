@@ -1,39 +1,118 @@
 @import '../variables/colors.scss';
 @import '../variables/fonts.scss';
+@import '../variables/borders.scss';
 @import '../variables/space.scss';
+
+@mixin scroll-horizontal() {
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+@mixin field-container($background-color) {
+  background-color: $background-color;
+  position: relative;
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    width: $space-sm;
+    top: 0;
+    bottom: 0;
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to right, transparent, $background-color 75%);
+    border-radius: 0 $border-radius $border-radius 0;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to left, transparent, $background-color 75%);
+    border-radius: $border-radius 0 0 $border-radius;
+  }
+}
+
+@keyframes cursor-blink {
+  from,
+  to {
+    background-color: $color-text-secondary;
+    color: $color-white;
+  }
+
+  50% {
+    background-color: transparent;
+    color: inherit;
+  }
+}
+
+@keyframes cursor-blink-error {
+  from,
+  to {
+    background-color: $color-georgia-peach;
+    color: $color-white;
+  }
+
+  50% {
+    background-color: transparent;
+    color: inherit;
+  }
+}
 
 .calculator {
   overflow: hidden;
 }
 
+.calculator__output-container {
+  @include field-container(darken($color-skin, 12%));
+
+  border-radius: $border-radius $border-radius 0 0;
+}
+
 .calculator__output {
+  @include scroll-horizontal();
+
   font-weight: 1000;
-  font-size: 3.4rem;
-  text-align: right;
-  margin: 0 0 $space-sm;
-  padding: 0;
+  font-size: 3rem;
+  padding: $space-sm;
+}
+
+.calculator__input-container {
+  @include field-container(darken($color-skin, 6%));
+
+  border-radius: 0 0 $border-radius $border-radius;
+  margin-bottom: $space-xs;
 }
 
 .calculator__input {
-  border: 0;
-  width: 100%;
-  padding: $space-sm;
-  margin-bottom: $space-xs;
-  background-color: transparentize($color-white, 0.7);
+  @include scroll-horizontal();
+
   color: inherit;
   font-size: 1.8rem;
+  padding: $space-sm;
   font-family: $font-code;
-  text-align: left;
-  border-radius: 4px;
-
-  &:focus {
-    outline: none;
-    border: none;
-  }
 }
 
 .calculator__input--error {
   color: $color-georgia-peach;
+}
+
+.calculator__char {
+  display: inline-block;
+  text-align: center;
+  padding: 1px;
+}
+
+.calculator__char--active {
+  background-color: $color-text-secondary;
+  color: $color-white;
+  animation: 1s cursor-blink step-end infinite;
+
+  .calculator__input--error & {
+    background-color: $color-georgia-peach;
+    animation: 1s cursor-blink-error step-end infinite;
+  }
 }
 
 .calculator__buttons {
