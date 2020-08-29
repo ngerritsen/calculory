@@ -16,5 +16,10 @@ body {
   padding: 0;
   margin: 0;
   font-family: $font-default;
-  color: $color-text;
+  background-color: $color-skin;
+  color: $color-text-secondary;
+}
+
+h1 {
+  display: none;
 }

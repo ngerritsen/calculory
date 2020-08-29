@@ -22,6 +22,7 @@ export default function calculator(element) {
 
   queryAll('[data-calculator-symbol]', element).forEach((button) => {
     button.addEventListener('click', () => {
+      event.preventDefault();
       addSymbol(button.getAttribute('data-calculator-symbol'));
     });
   });
