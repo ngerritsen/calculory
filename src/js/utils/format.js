@@ -17,7 +17,5 @@ export function formatNumber(number) {
     right = right.slice(0, 8);
   }
 
-  console.log(number);
-
   return left + (right ? '.' + right : '');
 }

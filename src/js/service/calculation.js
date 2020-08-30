@@ -1,5 +1,7 @@
 import * as calculationRepository from '../repository/calculation';
+import * as historyService from './history';
 import * as pubSub from '../core/pubSub';
+import execute from '../engine';
 
 let code = calculationRepository.get();
 let position = code.length;
@@ -25,6 +27,17 @@ export function remove() {
   const newCode = code.slice(0, position - 1) + code.slice(position);
 
   set(newCode, position - 1);
+}
+
+export function submit() {
+  const { error } = execute(code);
+
+  if (error) {
+    return;
+  }
+
+  historyService.add(code);
+  clear();
 }
 
 export function clear() {

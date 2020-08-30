@@ -38,7 +38,7 @@
   <div class="container">
     <div class="container__column container__column--calculator">
       <h1>Calculory</h1>
-      <form class="calculator" data-component="calculator">
+      <div class="calculator">
         <div class="calculator__output-container">
           <div class="calculator__output" data-component="output">0</div>
         </div>
@@ -50,30 +50,34 @@
           <button
             class="button calculator__button button--secondary"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="("
+            data-component="action"
+            data-action="add"
+            data-symbol="("
           >
             (
           </button>
           <button
             class="button calculator__button button--secondary"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol=")"
+            data-component="action"
+            data-action="add"
+            data-symbol=")"
           >
             )
           </button>
           <button
             class="button calculator__button button--secondary button"
             type="button"
-            data-calculator-action="previous"
+            data-component="action"
+            data-action="previous"
           >
             ⭠
           </button>
           <button
             class="button calculator__button button--secondary button"
             type="button"
-            data-calculator-action="next"
+            data-component="action"
+            data-action="next"
           >
             ⭢
           </button>
@@ -82,32 +86,36 @@
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="1"
+            data-component="action"
+            data-action="add"
+            data-symbol="1"
           >
             1
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="2"
+            data-component="action"
+            data-action="add"
+            data-symbol="2"
           >
             2
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="3"
+            data-component="action"
+            data-action="add"
+            data-symbol="3"
           >
             3
           </button>
           <button
             class="button calculator__button button--operator"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="*"
+            data-component="action"
+            data-action="add"
+            data-symbol="*"
           >
             *
           </button>
@@ -116,32 +124,36 @@
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="4"
+            data-component="action"
+            data-action="add"
+            data-symbol="4"
           >
             4
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="5"
+            data-component="action"
+            data-action="add"
+            data-symbol="5"
           >
             5
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="6"
+            data-component="action"
+            data-action="add"
+            data-symbol="6"
           >
             6
           </button>
           <button
             class="button calculator__button button--operator"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="/"
+            data-component="action"
+            data-action="add"
+            data-symbol="/"
           >
             /
           </button>
@@ -150,32 +162,36 @@
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="7"
+            data-component="action"
+            data-action="add"
+            data-symbol="7"
           >
             7
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="8"
+            data-component="action"
+            data-action="add"
+            data-symbol="8"
           >
             8
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="9"
+            data-component="action"
+            data-action="add"
+            data-symbol="9"
           >
             9
           </button>
           <button
             class="button calculator__button button--operator"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="+"
+            data-component="action"
+            data-action="add"
+            data-symbol="+"
           >
             +
           </button>
@@ -184,32 +200,36 @@
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="0"
+            data-component="action"
+            data-action="add"
+            data-symbol="0"
           >
             0
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="."
+            data-component="action"
+            data-action="add"
+            data-symbol="."
           >
             .
           </button>
           <button
             class="button calculator__button button--operator"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="^"
+            data-component="action"
+            data-action="add"
+            data-symbol="^"
           >
             ^
           </button>
           <button
             class="button calculator__button button--operator"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="-"
+            data-component="action"
+            data-action="add"
+            data-symbol="-"
           >
             -
           </button>
@@ -218,20 +238,24 @@
           <button
             class="button calculator__button button--action calculator__button--col-span-2"
             type="submit"
+            data-component="action"
+            data-action="submit"
           >
             =
           </button>
           <button
             class="button calculator__button button--action-danger button"
             type="button"
-            data-calculator-action="remove"
+            data-component="action"
+            data-action="remove"
           >
             DEL
           </button>
           <button
             class="button calculator__button button--action-danger button"
             type="button"
-            data-calculator-action="clear"
+            data-component="action"
+            data-action="clear"
           >
             AC
           </button>
@@ -240,24 +264,27 @@
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="π"
+            data-component="action"
+            data-action="add"
+            data-symbol="π"
           >
             π
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="e"
+            data-component="action"
+            data-action="add"
+            data-symbol="e"
           >
             e
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="sqrt()"
+            data-component="action"
+            data-action="add"
+            data-symbol="sqrt()"
           >
             sqrt
           </button>
@@ -265,8 +292,9 @@
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="log()"
+            data-component="action"
+            data-action="add"
+            data-symbol="log()"
           >
             log
           </button>
@@ -275,37 +303,41 @@
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="ln()"
+            data-component="action"
+            data-action="add"
+            data-symbol="ln()"
           >
             ln
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="sin()"
+            data-component="action"
+            data-action="add"
+            data-symbol="sin()"
           >
             sin
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="cos()"
+            data-component="action"
+            data-action="add"
+            data-symbol="cos()"
           >
             cos
           </button>
           <button
             class="button calculator__button"
             type="button"
-            data-calculator-action="addSymbol"
-            data-calculator-symbol="tan()"
+            data-component="action"
+            data-action="add"
+            data-symbol="tan()"
           >
             tan
           </button>
         </div>
-      </form>
+      </div>
     </div>
     <div
       class="panel container__column container__column--history"

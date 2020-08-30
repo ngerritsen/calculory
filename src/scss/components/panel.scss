@@ -7,12 +7,12 @@
 
 .panel {
   position: fixed;
-  height: 100vh;
-  width: 80vw;
-  left: 20vw;
+  height: 100%;
+  width: 80%;
+  right: 0;
   top: 0;
 
-  transform: translate(80vw, 0);
+  transform: translate(100%, 0);
   transition: transform 0.2s ease-out;
 
   overflow: visible;
@@ -29,7 +29,7 @@
     padding: $space-sm 0;
     text-align: center;
     width: 3rem;
-    transform: translate(-3rem, 0);
+    transform: translate(-2.9rem, 0);
     transition: opacity, transform 0.2s ease-out;
 
     font-family: $font-code;
@@ -56,6 +56,7 @@
     transform: none;
     transition: none;
     z-index: inherit;
+    width: auto;
 
     &::before {
       display: none;

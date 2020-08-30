@@ -1,14 +1,17 @@
 import initComponents from './core/initComponents';
+
+import action from './components/action';
 import calculator from './components/calculator';
 import history from './components/history';
-import panel from './components/panel';
-import output from './components/output';
 import input from './components/input';
+import output from './components/output';
+import panel from './components/panel';
 
 initComponents({
+  action,
   calculator,
   history,
-  output,
   input,
+  output,
   panel,
 });
