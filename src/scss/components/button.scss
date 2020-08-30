@@ -3,45 +3,52 @@
 @import '../variables/fonts.scss';
 @import '../variables/borders.scss';
 
-@mixin button-color($color) {
-  background: $color;
+@mixin button-color($bg-color, $fg-color) {
+  background: $bg-color;
   box-sizing: border-box;
+  color: $fg-color;
+
+  .icon {
+    fill: $fg-color;
+  }
 
   &:hover,
   &:focus,
   &:active {
-    background: darken($color, 10%);
+    background: darken($bg-color, 10%);
     outline: none;
+    color: $fg-color;
   }
 }
 
 .button {
-  @include button-color($color-fg);
+  @include button-color($color-fg, $color-fg-inverted);
 
-  display: inline-block;
+  display: inline-flex;
   border-radius: $border-radius;
   padding: $space-xs $space-sm;
   border: 0;
-  color: $color-white;
   font-weight: bold;
   font-size: 1.6rem;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
 }
 
 .button--secondary {
-  @include button-color($color-fg-subtle);
+  @include button-color($color-fg-subtle, $color-fg);
 
   color: $color-fg;
 }
 
 .button--operator {
-  @include button-color($color-operator);
+  @include button-color($color-operator, $color-fg-inverted);
 }
 
 .button--success {
-  @include button-color($color-success);
+  @include button-color($color-success, $color-fg-inverted);
 }
 
 .button--danger {
-  @include button-color($color-danger);
+  @include button-color($color-danger, $color-fg-inverted);
 }

@@ -32,7 +32,7 @@ export default function log(element) {
     return `
       <button
         data-log-button-clear
-        class="button button--action-danger"
+        class="button button--danger"
       >Clear</button>
     `;
   }
