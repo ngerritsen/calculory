@@ -10,13 +10,16 @@ const ACTIVE_CLASSNAME = 'panel--active';
 
 export default function panel(element) {
   function init() {
-    element.addEventListener('click', onClick);
+    getTrigger().addEventListener('click', onClick);
   }
 
   function onClick() {
     if (!isOpen()) {
       open();
+      return;
     }
+
+    close();
   }
 
   function open() {
@@ -46,6 +49,10 @@ export default function panel(element) {
 
   function getOverlay() {
     return query('[data-overlay]');
+  }
+
+  function getTrigger() {
+    return query('[data-trigger]', element);
   }
 
   init();

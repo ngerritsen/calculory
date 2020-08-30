@@ -27,28 +27,11 @@
 
 .panel__label {
   position: fixed;
-  display: flex;
   left: 0;
   top: $space-lg;
-  border-radius: $border-radius 0 0 $border-radius;
-  padding: $space-sm 0;
-  align-items: center;
-  justify-content: center;
-  width: 4.2rem;
-  transform: translate(-4rem, 0);
-
-  font-family: $font-code;
-  font-weight: bold;
-  background-color: $color-bg-dark;
-  color: $color-fg-inverted;
-
-  .icon {
-    fill: $color-fg-inverted;
-  }
-
-  .panel--active & {
-    pointer-events: none;
-  }
+  transform: translate(-99%, 0);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 @include respond-from($breakpoint-tablet) {

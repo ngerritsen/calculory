@@ -1,3 +1,5 @@
+@import '../mixins/responsive.scss';
+@import '../variables/breakpoint.scss';
 @import '../variables/colors.scss';
 @import '../variables/space.scss';
 @import '../variables/fonts.scss';
@@ -15,18 +17,26 @@
   &:hover,
   &:focus,
   &:active {
-    background: darken($bg-color, 10%);
+    background: $bg-color, 10%;
     outline: none;
     color: $fg-color;
   }
 }
 
+@mixin button-color--hover($bg-color, $fg-color) {
+  &:hover,
+  &:focus,
+  &:active {
+    background: darken($bg-color, 10%);
+  }
+}
+
 .button {
-  @include button-color(lighten($color-bg-dark, 5%), $color-fg-inverted);
+  @include button-color($color-bg-dark, $color-fg-inverted);
 
   display: inline-flex;
   border-radius: $border-radius;
-  padding: $space-xs $space-sm;
+  padding: $space-sm $space-sm;
   border: 0;
   font-weight: bold;
   font-size: 1.6rem;
@@ -37,8 +47,6 @@
 
 .button--secondary {
   @include button-color($color-fg-subtle, $color-fg);
-
-  color: $color-fg;
 }
 
 .button--operator {
@@ -51,4 +59,26 @@
 
 .button--danger {
   @include button-color($color-danger, $color-fg-inverted);
+}
+
+@include respond-from($breakpoint-tablet) {
+  .button {
+    @include button-color--hover($color-bg-dark, $color-fg-inverted);
+  }
+
+  .button--secondary {
+    @include button-color--hover($color-fg-subtle, $color-fg);
+  }
+  
+  .button--operator {
+    @include button-color--hover($color-operator, $color-fg-inverted);
+  }
+  
+  .button--success {
+    @include button-color--hover($color-success, $color-fg-inverted);
+  }
+  
+  .button--danger {
+    @include button-color--hover($color-danger, $color-fg-inverted);
+  }
 }
