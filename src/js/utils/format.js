@@ -1,6 +1,5 @@
 export function formatNumber(number) {
-  const str = String(number);
-  let [left, right] = str.split('.');
+  let [left, right] = number.toString().split('.');
 
   if (left && left.length > 3) {
     left = left
@@ -11,10 +10,6 @@ export function formatNumber(number) {
           : char
       )
       .join('');
-  }
-
-  if (right && right.length > 8) {
-    right = right.slice(0, 8);
   }
 
   return left + (right ? '.' + right : '');

@@ -1,7 +1,7 @@
 import * as historyService from '../service/history';
 import * as calculationService from '../service/calculation';
 import { queryAll } from '../utils/dom';
-import execute from '../engine';
+import { execute } from '../engine';
 
 export default function calculator(element) {
   const calculatorActions = {

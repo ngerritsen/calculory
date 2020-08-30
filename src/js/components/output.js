@@ -2,7 +2,7 @@ import * as calculationService from '../service/calculation';
 import * as pubSub from '../core/pubSub';
 import { formatNumber } from '../utils/format';
 import { addClass, removeClass } from '../utils/dom';
-import execute from '../engine';
+import { execute } from '../engine';
 
 const ERROR_CLASSNAME = 'calculator__output--error';
 const ERROR_TEXT = 'ERROR';

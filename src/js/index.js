@@ -4,6 +4,7 @@ import action from './components/action';
 import calculator from './components/calculator';
 import history from './components/history';
 import input from './components/input';
+import keyboard from './components/keyboard';
 import output from './components/output';
 import panel from './components/panel';
 
@@ -12,6 +13,7 @@ initComponents({
   calculator,
   history,
   input,
+  keyboard,
   output,
   panel,
 });

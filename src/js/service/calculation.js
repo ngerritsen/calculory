@@ -1,7 +1,7 @@
 import * as calculationRepository from '../repository/calculation';
 import * as historyService from './history';
 import * as pubSub from '../core/pubSub';
-import execute from '../engine';
+import { execute } from '../engine';
 
 let code = calculationRepository.get();
 let position = code.length;
@@ -38,6 +38,14 @@ export function submit() {
 
   historyService.add(code);
   clear();
+}
+
+export function end() {
+  set(code, code.length);
+}
+
+export function start() {
+  set(code, 0);
 }
 
 export function clear() {

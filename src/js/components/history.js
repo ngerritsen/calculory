@@ -1,6 +1,7 @@
 import * as pubSub from '../core/pubSub';
 import * as historyService from '../service/history';
-import execute from '../engine';
+import { formatNumber } from '../utils/format';
+import { execute } from '../engine';
 import { query } from '../utils/dom';
 
 export default function log(element) {
@@ -41,7 +42,7 @@ export default function log(element) {
 
     return `
       <div class="history__item" data-log-id=${log.id}>
-        <div class="history__result">${result}</div>
+        <div class="history__result">${formatNumber(result)}</div>
         <div class="history__code">${log.code}</div>
       </div>
     `;

@@ -2,7 +2,7 @@ import tokenize from './tokenize';
 import parse from './parse';
 import evaluate from './evaluate';
 
-export default function execute(code = '') {
+export function execute(code = '') {
   if (code.trim() === '') {
     return {
       result: 0,
@@ -18,4 +18,8 @@ export default function execute(code = '') {
       error,
     };
   }
+}
+
+export function isAllowed(char) {
+  return String(tokenize(char)[0]).length === 1;
 }

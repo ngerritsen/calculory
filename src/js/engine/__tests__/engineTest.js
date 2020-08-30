@@ -1,4 +1,4 @@
-import execute from '..';
+import { execute } from '..';
 
 test('Executes the calculation correctly', () => {
   expect(execute('').result).toBe(0);

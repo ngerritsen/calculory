@@ -1,7 +1,7 @@
 import * as calculationService from '../service/calculation';
 import * as pubSub from '../core/pubSub';
 import { toggleClass } from '../utils/dom';
-import execute from '../engine';
+import { execute } from '../engine';
 
 const ERROR_CLASSNAME = 'calculator__input--error';
 
