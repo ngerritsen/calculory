@@ -1,12 +1,14 @@
 @import '../variables/colors.scss';
 @import '../variables/fonts.scss';
+@import '../variables/space.scss';
 
 .history__item {
   margin-bottom: $space-md;
+  cursor: pointer;
 }
 
 .history__result {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
   padding: 0;
   margin: 0 0 $space-xs;
@@ -18,3 +20,13 @@
   font-family: $font-code;
   display: block;
 }
+
+.history__actions {
+  display: none;
+  margin-top: $space-xs;
+}
+
+.history__actions--active {
+  display: block;
+}
+

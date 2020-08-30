@@ -31,7 +31,7 @@ export function hasClass(element, className) {
 }
 
 export function toggleClass(element, className, state) {
-  if (state === false || (!hasClass(element, className) && state !== true)) {
+  if (state === false || (hasClass(element, className) && state !== true)) {
     removeClass(element, className);
     return;
   }

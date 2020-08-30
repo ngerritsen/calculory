@@ -36,13 +36,17 @@
 
   display: inline-flex;
   border-radius: $border-radius;
-  padding: $space-sm $space-sm;
+  padding: $space-sm;
   border: 0;
   font-weight: bold;
   font-size: 1.6rem;
   cursor: pointer;
   justify-content: center;
   align-items: center;
+}
+
+.button--small {
+  padding: $space-xs;
 }
 
 .button--secondary {
