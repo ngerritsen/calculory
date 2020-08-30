@@ -45,7 +45,7 @@
 @keyframes cursor-blink {
   from,
   to {
-    background-color: $color-text-secondary;
+    background-color: $color-ships-officer;
     color: $color-white;
   }
 
@@ -114,7 +114,7 @@
 }
 
 .calculator__char--active {
-  background-color: $color-text-secondary;
+  background-color: $color-ships-officer;
   color: $color-white;
   animation: 1s cursor-blink step-end infinite;
 

@@ -16,7 +16,7 @@
 }
 
 .button {
-  @include button-color(lighten($color-text-secondary, 5%));
+  @include button-color($color-ships-officer);
 
   display: inline-block;
   border-radius: $border-radius;
@@ -31,7 +31,7 @@
 .button--secondary {
   @include button-color($color-falling-star);
 
-  color: $color-text-secondary;
+  color: $color-ships-officer;
 }
 
 .button--operator {

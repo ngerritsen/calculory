@@ -1,20 +1,20 @@
 @import '../variables/colors.scss';
 @import '../variables/fonts.scss';
 
-.log__item {
-  margin-bottom: $space-sm;
+.history__item {
+  margin-bottom: $space-md;
 }
 
-.log__result {
+.history__result {
   font-size: 2rem;
   font-weight: bold;
   padding: 0;
   margin: 0 0 $space-xs;
 }
 
-.log__code {
+.history__code {
   font-weight: bold;
-  color: $color-text-subtle;
+  color: $color-falling-star;
   font-family: $font-code;
   display: block;
 }

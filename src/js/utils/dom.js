@@ -6,6 +6,14 @@ export function queryAll(queryString, context) {
   return [...(context || document).querySelectorAll(queryString)];
 }
 
+export function stringToDom(html) {
+  const container = document.createElement('div');
+
+  container.innerHTML = html;
+
+  return container.children[0];
+}
+
 export function addClass(element, className) {
   if (!hasClass(element, className)) {
     element.classList.add(className);

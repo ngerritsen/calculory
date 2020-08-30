@@ -1,5 +1,4 @@
-const { default: functions } = require('../engine/functions');
-const { queryAll } = require('../utils/dom');
+import { queryAll } from '../utils/dom';
 
 export default function initComponents(components) {
   queryAll('[data-component]').forEach((el) => {

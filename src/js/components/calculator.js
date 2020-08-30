@@ -1,4 +1,4 @@
-import * as logService from '../service/log';
+import * as historyService from '../service/history';
 import * as calculationService from '../service/calculation';
 import { queryAll } from '../utils/dom';
 import execute from '../engine';
@@ -38,7 +38,7 @@ export default function calculator(element) {
       return;
     }
 
-    logService.add(code);
+    historyService.add(code);
     calculationService.clear();
   }
 

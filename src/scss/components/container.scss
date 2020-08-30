@@ -3,27 +3,23 @@
 @import '../variables/colors.scss';
 @import '../variables/space.scss';
 
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+
 .container__column {
-  padding: $space-sm $space-xs;
+  padding: $space-sm;
+  overflow-y: auto;
 }
 
-.container__column--calculator {
-  min-height: 100%;
-}
-
-.container__column--log {
-  background-color: $color-white;
-  color: $color-text;
-}
-
-.container__column:not(:first-child) {
-  margin-top: $space-sm;
+.container__column--history {
+  background-color: $color-ships-officer;
+  color: $color-white;
 }
 
 @include respond-from($breakpoint-tablet) {
   .container {
-    height: 100vh;
-    width: 100vw;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-columns: 42rem auto;
@@ -31,11 +27,14 @@
 
   .container__column {
     padding: $space-lg;
-    overflow-y: auto;
   }
 
-  .container__column:not(:first-child) {
-    margin-top: 0;
+  .container__column--history {
+    display: block;
+    transform: translate(0);
+    width: auto;
+    height: auto;
+    position: static;
   }
 }
 

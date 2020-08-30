@@ -1,0 +1,68 @@
+@import '../mixins/responsive.scss';
+@import '../variables/breakpoint.scss';
+@import '../variables/space.scss';
+@import '../variables/z-index.scss';
+@import '../variables/borders.scss';
+@import '../variables/fonts.scss';
+
+.panel {
+  position: fixed;
+  height: 100vh;
+  width: 80vw;
+  left: 20vw;
+  top: 0;
+
+  transform: translate(80vw, 0);
+  transition: transform 0.2s ease-out;
+
+  overflow: visible;
+
+  z-index: $z-index-panel + 1;
+
+  &::before {
+    content: 'H';
+
+    position: fixed;
+    left: 0;
+    top: $space-lg;
+    border-radius: $border-radius 0 0 $border-radius;
+    padding: $space-sm 0;
+    text-align: center;
+    width: 3rem;
+    transform: translate(-3rem, 0);
+    transition: opacity, transform 0.2s ease-out;
+
+    font-family: $font-code;
+    font-weight: bold;
+    background-color: $color-ships-officer;
+    color: $color-white;
+  }
+}
+
+.panel--active {
+  transform: translate(0);
+  box-shadow: -5px 0 10px transparentize(black, 0.5);
+
+  &::before {
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(0);
+  }
+}
+
+@include respond-from($breakpoint-tablet) {
+  .panel {
+    position: static;
+    transform: none;
+    transition: none;
+    z-index: inherit;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .panel--active {
+    box-shadow: none;
+  }
+}

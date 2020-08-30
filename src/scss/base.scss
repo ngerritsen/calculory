@@ -1,5 +1,6 @@
 @import './variables/colors.scss';
 @import './variables/fonts.scss';
+@import './variables/space.scss';
 
 *,
 *:before,
@@ -18,10 +19,15 @@ body {
   margin: 0;
   font-family: $font-default;
   background-color: $color-skin;
-  color: $color-text-secondary;
+  color: $color-ships-officer;
   height: 100%;
 }
 
 h1 {
   display: none;
+}
+
+h2 {
+  margin: 0 0 $space-md;
+  font-size: 2.4rem;
 }
