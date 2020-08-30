@@ -8,7 +8,16 @@ const ERROR_CLASSNAME = 'calculator__input--error';
 export default function input(element) {
   function init() {
     pubSub.subscribe('calculation.updated', update);
+    element.addEventListener('click', onClick);
     update();
+  }
+
+  function onClick(event) {
+    if (event.target.hasAttribute('data-char')) {
+      event.preventDefault();
+      const position = Number(event.target.getAttribute('data-position'));
+      calculationService.setPosition(position);
+    }
   }
 
   function update() {
@@ -25,19 +34,20 @@ export default function input(element) {
   function render(code = '', position = 0) {
     let html = code
       .split('')
-      .map((char, i) => renderChar(char, i === position))
+      .map((char, i) => renderChar(char, i, i === position))
       .join('');
 
     if (position >= code.length) {
-      html += renderChar('&nbsp;', true);
+      html += renderChar('&nbsp;', code.length, true);
     }
 
     element.innerHTML = html;
   }
 
-  function renderChar(char, isActive) {
+  function renderChar(char, position, isActive) {
     return `<span
       data-char
+      data-position="${position}"
       ${isActive ? 'data-active' : ''}
       class="calculator__char ${isActive ? ' calculator__char--active' : ''}"
     >${char}</span>`;

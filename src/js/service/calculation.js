@@ -40,6 +40,10 @@ export function submit() {
   clear();
 }
 
+export function setPosition(postition) {
+  set(code, postition);
+}
+
 export function end() {
   set(code, code.length);
 }
