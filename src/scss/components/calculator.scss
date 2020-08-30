@@ -81,7 +81,7 @@
 .calculator__output {
   @include scroll-horizontal();
 
-  font-weight: 1000;
+  font-weight: bold;
   font-size: 3rem;
   padding: $space-sm;
 }
