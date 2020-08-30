@@ -45,26 +45,26 @@
 @keyframes cursor-blink {
   from,
   to {
-    background-color: $color-ships-officer;
+    background-color: $color-fg;
     color: $color-white;
   }
 
   50% {
     background-color: transparent;
-    color: $color-ships-officer;
+    color: $color-fg;
   }
 }
 
 @keyframes cursor-blink-error {
   from,
   to {
-    background-color: $color-georgia-peach;
+    background-color: $color-danger;
     color: $color-white;
   }
 
   50% {
     background-color: transparent;
-    color: $color-ships-officer;
+    color: $color-fg;
   }
 }
 
@@ -73,7 +73,7 @@
 }
 
 .calculator__output-container {
-  @include field-container(darken($color-skin, 10%));
+  @include field-container(darken($color-bg, 10%));
 
   border-radius: $border-radius $border-radius 0 0;
 }
@@ -87,7 +87,7 @@
 }
 
 .calculator__input-container {
-  @include field-container(darken($color-skin, 5%));
+  @include field-container(darken($color-bg, 5%));
 
   border-radius: 0 0 $border-radius $border-radius;
   margin-bottom: $space-xs;
@@ -104,7 +104,7 @@
 
 .calculator__output--error,
 .calculator__input--error {
-  color: $color-georgia-peach;
+  color: $color-danger;
 }
 
 .calculator__char {
@@ -114,12 +114,12 @@
 }
 
 .calculator__char--active {
-  background-color: $color-ships-officer;
+  background-color: $color-fg;
   color: $color-white;
   animation: 1s cursor-blink step-end infinite;
 
   .calculator__input--error & {
-    background-color: $color-georgia-peach;
+    background-color: $color-danger;
     animation: 1s cursor-blink-error step-end infinite;
   }
 }

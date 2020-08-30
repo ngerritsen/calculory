@@ -1,5 +1,6 @@
-/* Palette: https://flatuicolors.com/palette/in */
+$color-white: #fff;
 
+/* Indian Palette: https://flatuicolors.com/palette/in */
 $color-skin: #f4cdad;
 $color-orchid-range: #fea47f;
 $color-keppel: #58b19f;
@@ -7,4 +8,13 @@ $color-honey: #eab543;
 $color-georgia-peach: #fd7272;
 $color-falling-star: #cad3c8;
 $color-ships-officer: #2c3a47;
-$color-white: #fff;
+
+$color-fg: $color-ships-officer;
+$color-fg-inverted: $color-white;
+$color-fg-subtle: $color-falling-star;
+$color-bg: $color-skin;
+$color-bg-dark: $color-ships-officer;
+$color-operator: $color-orchid-range;
+$color-success: $color-keppel;
+$color-danger: $color-georgia-peach;
+

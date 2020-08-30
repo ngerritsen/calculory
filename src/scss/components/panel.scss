@@ -18,31 +18,35 @@
   overflow: visible;
 
   z-index: $z-index-panel + 1;
-
-  &::before {
-    content: 'H';
-
-    position: fixed;
-    left: 0;
-    top: $space-lg;
-    border-radius: $border-radius 0 0 $border-radius;
-    padding: $space-sm 0;
-    text-align: center;
-    width: 4rem;
-    transform: translate(-3.6rem, 0);
-
-    font-family: $font-code;
-    font-weight: bold;
-    background-color: $color-ships-officer;
-    color: $color-white;
-  }
 }
 
 .panel--active {
   transform: translate(0);
   box-shadow: -5px 0 10px transparentize(black, 0.5);
+}
 
-  &::before {
+.panel__label {
+  position: fixed;
+  display: flex;
+  left: 0;
+  top: $space-lg;
+  border-radius: $border-radius 0 0 $border-radius;
+  padding: $space-sm 0;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  transform: translate(-3.6rem, 0);
+
+  font-family: $font-code;
+  font-weight: bold;
+  background-color: $color-bg-dark;
+  color: $color-fg-inverted;
+
+  .icon {
+    fill: $color-fg-inverted;
+  }
+
+  .panel--active & {
     pointer-events: none;
   }
 }

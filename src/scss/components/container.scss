@@ -14,8 +14,8 @@
 }
 
 .container__column--history {
-  background-color: $color-ships-officer;
-  color: $color-white;
+  background-color: $color-bg-dark;
+  color: $color-fg-inverted;
 }
 
 @include respond-from($breakpoint-tablet) {

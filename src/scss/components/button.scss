@@ -16,7 +16,7 @@
 }
 
 .button {
-  @include button-color($color-ships-officer);
+  @include button-color($color-fg);
 
   display: inline-block;
   border-radius: $border-radius;
@@ -29,19 +29,19 @@
 }
 
 .button--secondary {
-  @include button-color($color-falling-star);
+  @include button-color($color-fg-subtle);
 
-  color: $color-ships-officer;
+  color: $color-fg;
 }
 
 .button--operator {
-  @include button-color($color-orchid-range);
+  @include button-color($color-operator);
 }
 
-.button--action {
-  @include button-color($color-keppel);
+.button--success {
+  @include button-color($color-success);
 }
 
-.button--action-danger {
-  @include button-color($color-georgia-peach);
+.button--danger {
+  @include button-color($color-danger);
 }
