@@ -131,11 +131,6 @@
   gap: $space-xs;
 }
 
-.calculator__button {
-  padding: $space-sm 0;
-  width: 100%;
-}
-
 .calculator__button--col-span-2 {
   grid-column: span 2;
 }

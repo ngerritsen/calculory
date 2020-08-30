@@ -32,7 +32,9 @@
     rel="stylesheet"
   />
   <link rel="stylesheet" href="./scss/style.scss" />
+</head>
 
+<body data-component="keyboard">
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
     <symbol id="icon-history" viewBox="0 0 512 512">
       <path
@@ -100,9 +102,7 @@
       />
     </symbol>
   </svg>
-</head>
 
-<body data-component="keyboard">
   <div class="container">
     <div class="container__column container__column--calculator">
       <h1>Calculory</h1>
@@ -139,12 +139,8 @@
             data-component="action"
             data-action="previous"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              class="icon"
-            >
-              <use xlink:href="#icon-arrow-left" />
+            <svg class="icon">
+              <use href="#icon-arrow-left" />
             </svg>
           </button>
           <button
@@ -153,12 +149,8 @@
             data-component="action"
             data-action="next"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              class="icon"
-            >
-              <use xlink:href="#icon-arrow-right" />
+            <svg class="icon">
+              <use href="#icon-arrow-right" />
             </svg>
           </button>
 
@@ -197,12 +189,8 @@
             data-action="add"
             data-symbol="*"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              class="icon"
-            >
-              <use xlink:href="#icon-times" />
+            <svg class="icon">
+              <use href="#icon-times" />
             </svg>
           </button>
 
@@ -241,12 +229,8 @@
             data-action="add"
             data-symbol="/"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              class="icon"
-            >
-              <use xlink:href="#icon-divide" />
+            <svg class="icon">
+              <use href="#icon-divide" />
             </svg>
           </button>
 
@@ -285,12 +269,8 @@
             data-action="add"
             data-symbol="+"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              class="icon"
-            >
-              <use xlink:href="#icon-plus" />
+            <svg class="icon">
+              <use href="#icon-plus" />
             </svg>
           </button>
 
@@ -320,12 +300,8 @@
             data-action="add"
             data-symbol="^"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              class="icon"
-            >
-              <use xlink:href="#icon-superscript" />
+            <svg class="icon">
+              <use href="#icon-superscript" />
             </svg>
           </button>
           <button
@@ -335,12 +311,8 @@
             data-action="add"
             data-symbol="-"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              class="icon"
-            >
-              <use xlink:href="#icon-minus" />
+            <svg class="icon">
+              <use href="#icon-minus" />
             </svg>
           </button>
 
@@ -351,12 +323,8 @@
             data-component="action"
             data-action="submit"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              class="icon"
-            >
-              <use xlink:href="#icon-equals" />
+            <svg class="icon">
+              <use href="#icon-equals" />
             </svg>
           </button>
           <button
@@ -365,12 +333,8 @@
             data-component="action"
             data-action="remove"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              class="icon"
-            >
-              <use xlink:href="#icon-backspace" />
+            <svg class="icon">
+              <use href="#icon-backspace" />
             </svg>
           </button>
           <button
@@ -390,12 +354,8 @@
             data-action="add"
             data-symbol="π"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              class="icon"
-            >
-              <use xlink:href="#icon-pi" />
+            <svg class="icon">
+              <use href="#icon-pi" />
             </svg>
           </button>
           <button
@@ -414,12 +374,8 @@
             data-action="add"
             data-symbol="sqrt()"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
-              class="icon"
-            >
-              <use xlink:href="#icon-square-root" />
+            <svg class="icon">
+              <use href="#icon-square-root" />
             </svg>
           </button>
 
@@ -478,12 +434,8 @@
       data-component="panel"
     >
       <button class="button panel__label" data-trigger>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          class="icon"
-        >
-          <use xlink:href="#icon-history" />
+        <svg class="icon">
+          <use href="#icon-history" />
         </svg>
       </button>
       <h2>History</h2>

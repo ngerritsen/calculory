@@ -69,15 +69,15 @@
   .button--secondary {
     @include button-color--hover($color-fg-subtle, $color-fg);
   }
-  
+
   .button--operator {
     @include button-color--hover($color-operator, $color-fg-inverted);
   }
-  
+
   .button--success {
     @include button-color--hover($color-success, $color-fg-inverted);
   }
-  
+
   .button--danger {
     @include button-color--hover($color-danger, $color-fg-inverted);
   }
