@@ -45,7 +45,7 @@ export default function log(element) {
   }
 
   function toggleActions(item) {
-    const actionEl = query('[data-actions]', item.parentNode);
+    const actionEl = query('[data-actions]', item);
 
     queryAll('[data-actions]').forEach((el) => {
       toggleClass(
