@@ -15,8 +15,7 @@ export default function input(element) {
   function onClick(event) {
     if (event.target.hasAttribute('data-char')) {
       event.preventDefault();
-      const position = Number(event.target.getAttribute('data-position'));
-      calculationService.setPosition(position);
+      setPosition(event);
     }
   }
 
@@ -29,6 +28,19 @@ export default function input(element) {
   function updateError(code) {
     const { error } = execute(code);
     toggleClass(element, ERROR_CLASSNAME, Boolean(error));
+  }
+
+  function setPosition(event) {
+    let position = Number(event.target.getAttribute('data-position'));
+
+    const { x, width } = event.target.getBoundingClientRect();
+    const { clientX } = event;
+
+    if (clientX - x > width / 2) {
+      position += 1;
+    }
+
+    calculationService.setPosition(position);
   }
 
   function render(code = '', position = 0) {
