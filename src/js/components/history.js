@@ -37,7 +37,7 @@ export default function log(element) {
   }
 
   function listenForItemClicks() {
-    queryAll('[data-item]').forEach(item => {
+    queryAll('[data-item]').forEach((item) => {
       item.addEventListener('click', () => {
         toggleActions(item);
       });
@@ -47,8 +47,12 @@ export default function log(element) {
   function toggleActions(item) {
     const actionEl = query('[data-actions]', item.parentNode);
 
-    queryAll('[data-actions]').forEach(el => {
-      toggleClass(el, 'history__actions--active', el !== actionEl ? false : undefined);
+    queryAll('[data-actions]').forEach((el) => {
+      toggleClass(
+        el,
+        'history__actions--active',
+        el !== actionEl ? false : undefined
+      );
     });
   }
 
