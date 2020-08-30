@@ -4,42 +4,11 @@
 @import '../variables/space.scss';
 
 .container {
-  height: 100%;
-  width: 100%;
-}
-
-.container__column {
   padding: $space-sm;
-  overflow-y: auto;
-}
-
-.container__column--history {
-  background-color: $color-bg-dark;
-  color: $color-fg-inverted;
 }
 
 @include respond-from($breakpoint-tablet) {
   .container {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-columns: 42rem auto;
-  }
-
-  .container__column {
     padding: $space-lg;
-  }
-
-  .container__column--history {
-    display: block;
-    transform: translate(0);
-    width: auto;
-    height: auto;
-    position: static;
-  }
-}
-
-@include respond-from($breakpoint-desktop) {
-  .container {
-    grid-template-columns: 56rem auto;
   }
 }

@@ -1,0 +1,27 @@
+@import '../mixins/responsive.scss';
+@import '../variables/breakpoint.scss';
+@import '../variables/colors.scss';
+@import '../variables/space.scss';
+
+.layout {
+  height: 100%;
+  width: 100%;
+}
+
+.layout__column {
+  overflow-y: auto;
+}
+
+@include respond-from($breakpoint-tablet) {
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-columns: 42rem auto;
+  }
+}
+
+@include respond-from($breakpoint-desktop) {
+  .layout {
+    grid-template-columns: 56rem auto;
+  }
+}

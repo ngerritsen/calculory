@@ -103,8 +103,8 @@
     </symbol>
   </svg>
 
-  <div class="container">
-    <div class="container__column container__column--calculator">
+  <div class="layout">
+    <div class="layout__column container">
       <h1>Calculory</h1>
       <div class="calculator">
         <div class="calculator__output-container">
@@ -429,17 +429,14 @@
         </div>
       </div>
     </div>
-    <div
-      class="panel container__column container__column--history"
-      data-component="panel"
-    >
+    <div class="panel layout__column history container" data-component="panel">
       <button class="button panel__label" data-trigger>
         <svg class="icon">
           <use href="#icon-history" />
         </svg>
       </button>
       <h2>History</h2>
-      <div class="history" data-component="history"></div>
+      <div data-component="history"></div>
     </div>
   </div>
   <script src="./js/index.js"></script>

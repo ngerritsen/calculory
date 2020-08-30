@@ -2,6 +2,11 @@
 @import '../variables/fonts.scss';
 @import '../variables/space.scss';
 
+.history {
+  background-color: $color-bg-dark;
+  color: $color-fg-inverted;
+}
+
 .history__item {
   margin-bottom: $space-md;
   cursor: pointer;
