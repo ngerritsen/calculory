@@ -49,16 +49,16 @@
   padding: $space-xs;
 }
 
+.button--primary {
+  @include button-color($color-action, $color-fg-inverted);
+}
+
 .button--secondary {
-  @include button-color($color-fg-subtle, $color-fg);
+  @include button-color($color-bg-subtle, $color-fg);
 }
 
 .button--operator {
   @include button-color($color-operator, $color-fg-inverted);
-}
-
-.button--success {
-  @include button-color($color-success, $color-fg-inverted);
 }
 
 .button--danger {
@@ -70,16 +70,16 @@
     @include button-color--hover($color-bg-dark, $color-fg-inverted);
   }
 
+  .button--primary {
+    @include button-color--hover($color-action, $color-fg-inverted);
+  }
+
   .button--secondary {
-    @include button-color--hover($color-fg-subtle, $color-fg);
+    @include button-color--hover($color-bg-subtle, $color-fg);
   }
 
   .button--operator {
     @include button-color--hover($color-operator, $color-fg-inverted);
-  }
-
-  .button--success {
-    @include button-color--hover($color-success, $color-fg-inverted);
   }
 
   .button--danger {
