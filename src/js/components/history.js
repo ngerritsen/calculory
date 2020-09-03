@@ -18,7 +18,7 @@ export default function log(element) {
 
   function render(items) {
     if (items.length === 0) {
-      element.innerHTML = '';
+      element.innerHTML = '<p>Nothing here yet.</p>';
       return;
     }
 
