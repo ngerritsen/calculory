@@ -23,6 +23,7 @@
 .tabs__link {
   display: inline-block;
   padding: $space-xs 0 $space-sm 0;
+  font-weight: 600;
 
   @include themify($themes) {
     color: transparentize(themed('color-fg-inverted'), 0.6);

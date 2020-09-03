@@ -1,6 +1,4 @@
-import tokenize from './tokenize';
-import parse from './parse';
-import evaluate from './evaluate';
+import { evaluate } from 'mathjs';
 
 export function execute(code = '') {
   if (code.trim() === '') {
@@ -10,10 +8,17 @@ export function execute(code = '') {
   }
 
   try {
+    let result = evaluate(code);
+
+    if (typeof result === 'function') {
+      result = 0;
+    }
+
     return {
-      result: evaluate(parse(tokenize(code))),
+      result: evaluate(code),
     };
   } catch (error) {
+    console.log(error);
     return {
       error,
     };
@@ -21,5 +26,5 @@ export function execute(code = '') {
 }
 
 export function isAllowed(char) {
-  return String(tokenize(char)[0]).length === 1;
+  return String(char).length === 1;
 }
