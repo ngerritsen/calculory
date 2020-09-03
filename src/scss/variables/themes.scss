@@ -2,7 +2,7 @@
 
 $themes: (
   classic: (
-    color-bg: lighten($color-orchid-orange, 15%),
+    color-bg: $color-skin,
     color-bg-dark: lighten($color-ships-officer, 5%),
     color-bg-subtle: $color-falling-star,
     color-fg: $color-ships-officer,

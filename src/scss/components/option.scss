@@ -9,6 +9,14 @@
   cursor: pointer;
   align-items: center;
   margin-bottom: $space-xs;
+
+  &:hover {
+    .option__radio {
+      @include themify($themes) {
+        background-color: transparentize(themed('color-fg-inverted'), 0.8);
+      }
+    }
+  }
 }
 
 .option__radio {
@@ -19,15 +27,19 @@
   border-radius: 0.5em;
 
   @include themify($themes) {
-    border: 2px solid themed('color-fg-inverted');
+    border: 1px solid themed('color-fg-inverted');
   }
 }
 
 .option__input:checked + .option__radio {
   @include themify($themes) {
     background-color: themed('color-action');
-    border: 2px solid themed('color-action');
+    border: 1px solid themed('color-action');
   }
+}
+
+.option__input:checked + .option__radio + .option__label {
+  font-weight: bold;
 }
 
 .option__input {
