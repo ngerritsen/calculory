@@ -1,0 +1,46 @@
+@import '../mixins/theme.scss';
+@import '../variables/themes.scss';
+@import '../variables/space.scss';
+
+.tabs__triggers {
+  display: flex;
+  padding: 0;
+  margin: 0 0 $space-md;
+
+  @include themify($themes) {
+    border-bottom: 3px solid transparentize(themed('color-fg-inverted'), 0.6);
+  }
+}
+
+.tabs__trigger {
+  position: relative;
+  list-style: none;
+  padding: 0 $space-sm 0 0;
+  margin: 0;
+  bottom: -3px;
+}
+
+.tabs__link {
+  display: inline-block;
+  padding: $space-xs 0 $space-sm 0;
+
+  @include themify($themes) {
+    color: transparentize(themed('color-fg-inverted'), 0.6);
+    text-decoration: none;
+  }
+
+  .tabs__trigger--active & {
+    @include themify($themes) {
+      color: themed('color-fg-inverted');
+      border-bottom: 3px solid themed('color-fg-inverted');
+    }
+  }
+}
+
+.tabs__tab {
+  display: none;
+}
+
+.tabs__tab--active {
+  display: block;
+}
