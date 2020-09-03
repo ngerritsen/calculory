@@ -1,12 +1,25 @@
 import { queryAll } from '../utils/dom';
 
 export default function initComponents(components, context) {
-  queryAll('[data-component]', context).forEach((el) => {
-    const name = el.getAttribute('data-component');
-    const component = components[name];
-
-    if (typeof component === 'function') {
-      component(el);
-    }
+  queryAll('[data-component]', context).forEach((element) => {
+    parseComponentAttribute(
+      element.getAttribute('data-component')
+    ).forEach((name) => initComponent(components, element, name));
   });
+}
+
+function initComponent(components, element, name) {
+  const component = components[name];
+
+  if (typeof component === 'function') {
+    component(element);
+  }
+}
+
+function parseComponentAttribute(attribute) {
+  if (!attribute.trim()) {
+    return [];
+  }
+
+  return attribute.split(',').map((name) => name.trim());
 }

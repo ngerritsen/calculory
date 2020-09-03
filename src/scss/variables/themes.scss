@@ -1,0 +1,37 @@
+@import './colors.scss';
+
+$themes: (
+  classic: (
+    color-bg: lighten($color-orchid-orange, 15%),
+    color-bg-dark: lighten($color-ships-officer, 5%),
+    color-bg-subtle: $color-falling-star,
+    color-fg: $color-ships-officer,
+    color-fg-inverted: $color-white,
+    color-fg-subtle: $color-falling-star,
+    color-operator: $color-orchid-orange,
+    color-action: $color-keppel,
+    color-danger: $color-georgia-peach,
+  ),
+  pro: (
+    color-bg: $color-white,
+    color-bg-dark: darken($color-blue-horizon, 5%),
+    color-bg-subtle: $color-twinkle-blue,
+    color-fg: lighten($color-black, 20%),
+    color-fg-inverted: $color-white,
+    color-fg-subtle: $color-twinkle-blue,
+    color-operator: $color-c64-ntsc,
+    color-action: $color-orange-hibiscus,
+    color-danger: $color-fusion-red,
+  ),
+  hacker: (
+    color-bg: $color-biscay,
+    color-bg-dark: darken($color-biscay, 7%),
+    color-bg-subtle: $color-pencil-lead,
+    color-fg: lighten($color-rosy-highlight, 10%),
+    color-fg-inverted: $color-white,
+    color-fg-subtle: $color-pencil-lead,
+    color-operator: $color-soft-blue,
+    color-action: $color-blue-curacao,
+    color-danger: $color-flamingo-pink,
+  ),
+);

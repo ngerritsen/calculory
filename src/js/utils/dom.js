@@ -30,6 +30,10 @@ export function hasClass(element, className) {
   return element.classList.contains(className);
 }
 
+export function getClasses(element) {
+  return [...element.classList.entries()].map(([, value]) => value);
+}
+
 export function toggleClass(element, className, state) {
   if (state === false || (hasClass(element, className) && state !== true)) {
     removeClass(element, className);

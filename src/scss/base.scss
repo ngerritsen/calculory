@@ -1,4 +1,5 @@
-@import './variables/colors.scss';
+@import './mixins/theme.scss';
+@import './variables/themes.scss';
 @import './variables/fonts.scss';
 @import './variables/space.scss';
 
@@ -18,9 +19,12 @@ body {
   padding: 0;
   margin: 0;
   font-family: $font-default;
-  background-color: $color-bg;
-  color: $color-fg;
   height: 100%;
+
+  @include themify($themes) {
+    color: themed('color-fg');
+    background-color: themed('color-bg');
+  }
 }
 
 h1 {

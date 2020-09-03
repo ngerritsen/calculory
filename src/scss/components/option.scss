@@ -1,0 +1,35 @@
+@import '../mixins/theme.scss';
+@import '../variables/themes.scss';
+@import '../variables/space.scss';
+
+.option {
+  display: flex;
+  widows: 100%;
+  padding: $space-xs 0;
+  cursor: pointer;
+  align-items: center;
+  margin-bottom: $space-xs;
+}
+
+.option__radio {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: $space-xs;
+  border-radius: 0.5em;
+
+  @include themify($themes) {
+    border: 2px solid themed('color-fg-inverted');
+  }
+}
+
+.option__input:checked + .option__radio {
+  @include themify($themes) {
+    background-color: themed('color-action');
+    border: 2px solid themed('color-action');
+  }
+}
+
+.option__input {
+  display: none;
+}

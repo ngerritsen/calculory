@@ -1,10 +1,13 @@
-@import '../variables/colors.scss';
+@import '../mixins/theme.scss';
+@import '../variables/themes.scss';
 @import '../variables/fonts.scss';
 @import '../variables/space.scss';
 
 .history {
-  background-color: $color-bg-dark;
-  color: $color-fg-inverted;
+  @include themify($themes) {
+    background-color: themed('color-bg-dark');
+    color: themed('color-fg-inverted');
+  }
 }
 
 .history__item {
@@ -21,9 +24,12 @@
 
 .history__code {
   font-weight: bold;
-  color: $color-fg-subtle;
   font-family: $font-code;
   display: block;
+
+  @include themify($themes) {
+    color: themed('color-fg-subtle');
+  }
 }
 
 .history__actions {

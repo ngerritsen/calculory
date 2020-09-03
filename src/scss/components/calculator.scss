@@ -1,4 +1,5 @@
-@import '../variables/colors.scss';
+@import '../mixins/theme.scss';
+@import '../variables/themes.scss';
 @import '../variables/fonts.scss';
 @import '../variables/borders.scss';
 @import '../variables/space.scss';
@@ -42,29 +43,29 @@
   }
 }
 
-@keyframes cursor-blink {
+@include themify-keyframes($themes, 'cursor-blink') {
   from,
   to {
-    background-color: $color-fg;
-    color: $color-white;
+    background-color: themed('color-fg');
+    color: themed('color-bg');
   }
 
   50% {
     background-color: transparent;
-    color: $color-fg;
+    color: themed('color-fg');
   }
 }
 
-@keyframes cursor-blink-error {
+@include themify-keyframes($themes, 'cursor-blink-error') {
   from,
   to {
-    background-color: $color-danger;
-    color: $color-white;
+    background-color: themed('color-danger');
+    color: themed('color-bg');
   }
 
   50% {
     background-color: transparent;
-    color: $color-fg;
+    color: themed('color-danger');
   }
 }
 
@@ -73,7 +74,9 @@
 }
 
 .calculator__output-container {
-  @include field-container(darken($color-bg, 10%));
+  @include themify($themes) {
+    @include field-container(darken(themed('color-bg'), 10%));
+  }
 
   border-radius: $border-radius $border-radius 0 0;
 }
@@ -87,7 +90,9 @@
 }
 
 .calculator__input-container {
-  @include field-container(darken($color-bg, 5%));
+  @include themify($themes) {
+    @include field-container(darken(themed('color-bg'), 5%));
+  }
 
   border-radius: 0 0 $border-radius $border-radius;
   margin-bottom: $space-xs;
@@ -104,7 +109,9 @@
 
 .calculator__output--error,
 .calculator__input--error {
-  color: $color-danger;
+  @include themify($themes) {
+    color: themed('color-danger');
+  }
 }
 
 .calculator__char {
@@ -114,13 +121,17 @@
 }
 
 .calculator__char--active {
-  background-color: $color-fg;
-  color: $color-white;
-  animation: 1s cursor-blink step-end infinite;
+  @include themify($themes) {
+    color: themed('color-bg');
+    background-color: themed('color-fg');
+    animation: 1s themed-keyframes('cursor-blink') step-end infinite;
+  }
 
   .calculator__input--error & {
-    background-color: $color-danger;
-    animation: 1s cursor-blink-error step-end infinite;
+    @include themify($themes) {
+      animation: 1s themed-keyframes('cursor-blink-error') step-end infinite;
+      background-color: themed('color-danger');
+    }
   }
 }
 

@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="./scss/style.scss" />
 </head>
 
-<body data-component="keyboard">
+<body data-component="keyboard, theme" class="theme-pro">
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
     <symbol id="icon-history" viewBox="0 0 512 512">
       <path
@@ -437,6 +437,46 @@
       </button>
       <h2>History</h2>
       <div data-component="history"></div>
+
+      <br />
+      <br />
+
+      <h2>Theme</h2>
+      <div data-component="themeSelector">
+        <label class="option">
+          <input
+            class="option__input"
+            type="radio"
+            name="theme"
+            value="classic"
+            data-theme-option
+          />
+          <span class="option__radio"></span>
+          Classic
+        </label>
+        <label class="option">
+          <input
+            class="option__input"
+            type="radio"
+            name="theme"
+            value="pro"
+            data-theme-option
+          />
+          <span class="option__radio"></span>
+          Pro
+        </label>
+        <label class="option">
+          <input
+            class="option__input"
+            type="radio"
+            name="theme"
+            value="hacker"
+            data-theme-option
+          />
+          <span class="option__radio"></span>
+          Hacker
+        </label>
+      </div>
     </div>
   </div>
   <script src="./js/index.js"></script>
