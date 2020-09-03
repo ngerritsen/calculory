@@ -23,6 +23,17 @@ $themes: (
     color-action: $color-orange-hibiscus,
     color-danger: $color-fusion-red,
   ),
+  pro-dark: (
+    color-bg: darken($color-blue-horizon, 18%),
+    color-bg-dark: darken($color-blue-horizon, 24%),
+    color-bg-subtle: $color-blue-grey,
+    color-fg: $color-white,
+    color-fg-inverted: $color-white,
+    color-fg-subtle: $color-blue-grey,
+    color-operator: $color-c64-ntsc,
+    color-action: $color-orange-hibiscus,
+    color-danger: $color-fusion-red,
+  ),
   hacker: (
     color-bg: $color-biscay,
     color-bg-dark: darken($color-biscay, 7%),
