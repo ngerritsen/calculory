@@ -8,17 +8,18 @@ export function execute(code = '') {
   }
 
   try {
-    let result = evaluate(code);
+    const result = evaluate(code);
 
     if (typeof result === 'function') {
-      result = 0;
+      return {
+        error: new Error('Uncalled function.'),
+      };
     }
 
     return {
-      result: evaluate(code),
+      result,
     };
   } catch (error) {
-    console.log(error);
     return {
       error,
     };
