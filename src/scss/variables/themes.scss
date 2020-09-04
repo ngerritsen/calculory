@@ -12,7 +12,7 @@ $themes: (
     color-action: $color-keppel,
     color-danger: $color-georgia-peach,
   ),
-  pro: (
+  office: (
     color-bg: $color-white,
     color-bg-dark: darken($color-blue-horizon, 5%),
     color-bg-subtle: $color-twinkle-blue,
@@ -23,7 +23,7 @@ $themes: (
     color-action: $color-orange-hibiscus,
     color-danger: $color-fusion-red,
   ),
-  pro-dark: (
+  pro: (
     color-bg: darken($color-blue-horizon, 18%),
     color-bg-dark: darken($color-blue-horizon, 24%),
     color-bg-subtle: $color-blue-grey,
@@ -44,5 +44,27 @@ $themes: (
     color-operator: $color-soft-blue,
     color-action: $color-blue-curacao,
     color-danger: $color-flamingo-pink,
+  ),
+  nautic: (
+    color-bg: $color-mazarine-blue,
+    color-bg-dark: $color-pico-void,
+    color-bg-subtle: $color-chain-gang-grey,
+    color-fg: $color-lynx-white,
+    color-fg-inverted: $color-lynx-white,
+    color-fg-subtle: $color-hint-of-pensive,
+    color-operator: $color-rise-n-shine,
+    color-action: $color-skirret-green,
+    color-danger: $color-nasturcian-flower,
+  ),
+  cuboy: (
+    color-bg: $color-exodus-fruit,
+    color-bg-dark: $color-deep-koamaru,
+    color-bg-subtle: $color-blurple,
+    color-fg: $color-coastal-breeze,
+    color-fg-inverted: $color-white,
+    color-fg-subtle: $color-coastal-breeze,
+    color-operator: $color-quince-jelly,
+    color-action: $color-turbo,
+    color-danger: $color-carmine-pink,
   ),
 );
