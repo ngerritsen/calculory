@@ -1,12 +1,10 @@
 import * as themeService from '../service/theme';
-import { queryAll } from '../utils/dom';
+import { queryAll, on } from '../utils/dom';
 
 export default function themeSelector(element) {
   function init() {
     setCurrent();
-    getOptions().forEach((option) =>
-      option.addEventListener('change', onChange)
-    );
+    getOptions().forEach((option) => on('change', onChange, option));
   }
 
   function setCurrent() {

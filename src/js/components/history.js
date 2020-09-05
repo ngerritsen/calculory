@@ -4,7 +4,7 @@ import action from './action';
 import * as historyService from '../service/history';
 import { formatNumber } from '../utils/format';
 import { execute } from '../engine';
-import { query, queryAll, toggleClass } from '../utils/dom';
+import { query, queryAll, toggleClass, on } from '../utils/dom';
 
 export default function log(element) {
   function init() {
@@ -30,17 +30,18 @@ export default function log(element) {
   }
 
   function listenForClearButton() {
-    query('[data-clear]', element).addEventListener(
-      'click',
-      historyService.clear
-    );
+    on('click', historyService.clear, query('[data-clear]', element));
   }
 
   function listenForItemClicks() {
     queryAll('[data-item]').forEach((item) => {
-      item.addEventListener('click', () => {
-        toggleActions(item);
-      });
+      on(
+        'click',
+        () => {
+          toggleActions(item);
+        },
+        item
+      );
     });
   }
 

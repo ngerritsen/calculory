@@ -14,6 +14,14 @@ export function stringToDom(html) {
   return container.children[0];
 }
 
+export function on(event, handler, context) {
+  (context || window).addEventListener(event, handler);
+}
+
+export function getAttr(element, attributeName) {
+  return element.getAttribute(attributeName);
+}
+
 export function addClass(element, className) {
   if (!hasClass(element, className)) {
     element.classList.add(className);

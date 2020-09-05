@@ -1,5 +1,6 @@
 import * as calculationService from '../service/calculation';
 import { isAllowed } from '../engine';
+import { on } from '../utils/dom';
 
 export default function keyboard(element) {
   const actionMap = {
@@ -16,7 +17,7 @@ export default function keyboard(element) {
   };
 
   function init() {
-    element.addEventListener('keydown', onKeyDown);
+    on('keydown', onKeyDown, element);
   }
 
   function onKeyDown(event) {

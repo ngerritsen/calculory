@@ -1,6 +1,6 @@
 import * as calculationService from '../service/calculation';
 import * as pubSub from '../core/pubSub';
-import { toggleClass } from '../utils/dom';
+import { toggleClass, getAttr, on } from '../utils/dom';
 import { execute } from '../engine';
 
 const ERROR_CLASSNAME = 'calculator__input--error';
@@ -8,7 +8,7 @@ const ERROR_CLASSNAME = 'calculator__input--error';
 export default function input(element) {
   function init() {
     pubSub.subscribe('calculation.updated', update);
-    element.addEventListener('click', onClick);
+    on('click', onClick, element);
     update();
   }
 
@@ -31,7 +31,7 @@ export default function input(element) {
   }
 
   function setPosition(event) {
-    let position = Number(event.target.getAttribute('data-position'));
+    let position = Number(getAttr(event.target, 'data-position'));
 
     const { x, width } = event.target.getBoundingClientRect();
     const { clientX } = event;

@@ -1,9 +1,9 @@
-import { queryAll } from '../utils/dom';
+import { queryAll, getAttr } from '../utils/dom';
 
 export default function initComponents(components, context) {
   queryAll('[data-component]', context).forEach((element) => {
     parseComponentAttribute(
-      element.getAttribute('data-component')
+      getAttr(element, 'data-component')
     ).forEach((name) => initComponent(components, element, name));
   });
 }

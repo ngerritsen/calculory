@@ -1,4 +1,5 @@
 import * as calculationService from '../service/calculation';
+import { getAttr, on } from '../utils/dom';
 
 export default function action(element) {
   const actionMap = {
@@ -11,7 +12,7 @@ export default function action(element) {
   };
 
   function init() {
-    element.addEventListener('click', onClick);
+    on('click', onClick, element);
   }
 
   function onClick(event) {
@@ -24,11 +25,11 @@ export default function action(element) {
   }
 
   function getSymbol() {
-    return element.getAttribute('data-symbol');
+    return getAttr(element, 'data-symbol');
   }
 
   function getAction() {
-    return element.getAttribute('data-action');
+    return getAttr(element, 'data-action');
   }
 
   init();

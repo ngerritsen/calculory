@@ -4,13 +4,14 @@ import {
   stringToDom,
   query,
   hasClass,
+  on,
 } from '../utils/dom';
 
 const ACTIVE_CLASSNAME = 'panel--active';
 
 export default function panel(element) {
   function init() {
-    getTrigger().addEventListener('click', onClick);
+    on('click', onClick, getTrigger());
   }
 
   function onClick() {
@@ -40,7 +41,7 @@ export default function panel(element) {
     document.body.appendChild(
       stringToDom('<div data-overlay class="overlay"></div>')
     );
-    getOverlay().addEventListener('click', close);
+    on('click', close, getOverlay());
   }
 
   function removeOverlay() {

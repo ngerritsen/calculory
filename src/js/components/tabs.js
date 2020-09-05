@@ -1,4 +1,11 @@
-import { queryAll, addClass, query, removeClass } from '../utils/dom';
+import {
+  queryAll,
+  addClass,
+  query,
+  removeClass,
+  getAttr,
+  on,
+} from '../utils/dom';
 
 const ACTIVE_TRIGGER_CLASSNAME = 'tabs__trigger--active';
 const ACTIVE_TAB_CLASSNAME = 'tabs__tab--active';
@@ -6,7 +13,7 @@ const ACTIVE_TAB_CLASSNAME = 'tabs__tab--active';
 export default function tabs(element) {
   function init() {
     queryAll('[data-tab-trigger]').forEach((trigger) => {
-      trigger.addEventListener('click', activate);
+      on('click', activate, trigger);
     });
   }
 
@@ -14,7 +21,7 @@ export default function tabs(element) {
     event.preventDefault();
 
     const trigger = event.currentTarget;
-    const name = trigger.getAttribute('data-tab-trigger');
+    const name = getAttr(trigger, 'data-tab-trigger');
     const tab = query(`[data-tab="${name}"]`, element);
 
     deactivateTriggers();

@@ -1,6 +1,6 @@
 import * as historyService from '../service/history';
 import * as calculationService from '../service/calculation';
-import { queryAll } from '../utils/dom';
+import { queryAll, getAttr, on } from '../utils/dom';
 import { execute } from '../engine';
 
 export default function calculator(element) {
@@ -13,9 +13,10 @@ export default function calculator(element) {
   };
 
   function init() {
-    element.addEventListener('submit', submit);
+    on('submit', submit, element);
+
     getActions().forEach((action) =>
-      action.addEventListener('click', handleCalculatorAction)
+      on('click', handleCalculatorAction, action)
     );
   }
 
@@ -43,11 +44,11 @@ export default function calculator(element) {
   }
 
   function getAction(element) {
-    return element.getAttribute('data-calculator-action');
+    return getAttr(element, 'data-calculator-action');
   }
 
   function getSymbol(element) {
-    return element.getAttribute('data-calculator-symbol');
+    return getAttr(element, 'data-calculator-symbol');
   }
 
   function getActions() {
