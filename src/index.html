@@ -81,6 +81,11 @@
         d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"
       />
     </symbol>
+    <symbol id="icon-palette" viewBox="0 0 512 512">
+      <path
+        d="M204.3 5C104.9 24.4 24.8 104.3 5.2 203.4c-37 187 131.7 326.4 258.8 306.7 41.2-6.4 61.4-54.6 42.5-91.7-23.1-45.4 9.9-98.4 60.9-98.4h79.7c35.8 0 64.8-29.6 64.9-65.3C511.5 97.1 368.1-26.9 204.3 5zM96 320c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm32-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128-64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"
+      />
+    </symbol>
     <symbol id="icon-pi" viewBox="0 0 512 512">
       <path
         d="M488 160c13.25 0 24-10.75 24-24V88c0-13.26-10.75-24-24-24H99.91c-16.97 0-33.25 6.74-45.25 18.74L4.72 132.69C-5.36 142.77 1.78 160 16.03 160H128v142.46c0 38.8-12.89 75.63-36.62 105.62-7.27 9.18-5.71 22.57 2.56 30.85l34.11 34.11c10.25 10.25 26.95 8.94 36.12-2.28C202.93 423.33 224 364.51 224 302.46V160h64v202.58c0 54.98 37.28 105.36 91.32 115.42 42.26 7.87 83.64-7.87 109.62-40.34l17.8-21.66c8.28-10.35 6.6-25.45-3.75-33.73l-37.46-29.98c-10.35-8.28-25.45-6.61-33.73 3.75L414 377.67a16.806 16.806 0 0 1-13.16 6.33c-9.28 0-16.84-7.56-16.84-16.84V160h104z"
@@ -427,7 +432,7 @@
     <div class="panel layout__column history container" data-component="panel">
       <button class="button panel__label" data-trigger>
         <svg class="icon">
-          <use href="#icon-history" />
+          <use href="#icon-angle-up" />
         </svg>
       </button>
 
@@ -437,10 +442,20 @@
             class="tabs__trigger tabs__trigger--active"
             data-tab-trigger="history"
           >
-            <a href="#" class="tabs__link">History</a>
+            <a href="#" class="tabs__link">
+              <svg class="icon">
+                <use href="#icon-history" />
+              </svg>
+              History
+            </a>
           </li>
-          <li class="tabs__trigger" data-tab-trigger="settings">
-            <a href="#" class="tabs__link">Settings</a>
+          <li class="tabs__trigger" data-tab-trigger="theme">
+            <a href="#" class="tabs__link">
+              <svg class="icon">
+                <use href="#icon-palette" />
+              </svg>
+              Theme
+            </a>
           </li>
         </ul>
 
@@ -450,8 +465,7 @@
           </div>
         </div>
 
-        <div class="tabs__tab" data-tab="settings">
-          <h3>Theme</h3>
+        <div class="tabs__tab" data-tab="theme">
           <div data-component="themeSelector">
             <label class="option">
               <input
@@ -507,17 +521,6 @@
               />
               <span class="option__radio"></span>
               <span class="option__label">Nautic</span>
-            </label>
-            <label class="option">
-              <input
-                class="option__input"
-                type="radio"
-                name="theme"
-                value="cuboy"
-                data-theme-option
-              />
-              <span class="option__radio"></span>
-              <span class="option__label">Cuboy</span>
             </label>
           </div>
         </div>

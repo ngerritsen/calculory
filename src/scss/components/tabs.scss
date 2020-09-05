@@ -2,13 +2,16 @@
 @import '../variables/themes.scss';
 @import '../variables/space.scss';
 
+$tabs-border-width: 3px;
+
 .tabs__triggers {
   display: flex;
   padding: 0;
   margin: 0 0 $space-md;
 
   @include themify($themes) {
-    border-bottom: 3px solid transparentize(themed('color-fg-inverted'), 0.6);
+    border-bottom: $tabs-border-width solid
+      transparentize(themed('color-fg-inverted'), 0.6);
   }
 }
 
@@ -17,7 +20,7 @@
   list-style: none;
   padding: 0 $space-sm 0 0;
   margin: 0;
-  bottom: -3px;
+  bottom: -#{$tabs-border-width};
 }
 
 .tabs__link {
@@ -32,7 +35,19 @@
   .tabs__trigger--active & {
     @include themify($themes) {
       color: themed('color-fg-inverted');
-      border-bottom: 3px solid themed('color-fg-inverted');
+      border-bottom: $tabs-border-width solid themed('color-fg-inverted');
+    }
+  }
+
+  .icon {
+    @include themify($themes) {
+      fill: transparentize(themed('color-fg-inverted'), 0.6);
+    }
+
+    .tabs__trigger--active & {
+      @include themify($themes) {
+        fill: themed('color-fg-inverted');
+      }
     }
   }
 }

@@ -52,6 +52,17 @@ $panel-shadow-size: 10px;
       background-color: themed('color-bg-dark');
     }
   }
+
+  .icon {
+    transform: rotate(-90deg);
+    transition: transform 0.2s ease;
+  }
+
+  .panel--active & {
+    .icon {
+      transform: rotate(90deg);
+    }
+  }
 }
 
 @include respond-from($breakpoint-tablet) {
