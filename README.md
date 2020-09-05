@@ -1,3 +1,3 @@
 # Calculory
 
-Sleek, simple to use & powerful calculator.
+Zero dependency calculator with logs.

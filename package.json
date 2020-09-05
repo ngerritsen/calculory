@@ -1,26 +1,26 @@
 {
   "name": "calculory",
   "version": "1.0.0",
-  "description": "Sleek, simple to use & powerful calculator.",
+  "description": "Zero dependency calculator with logs.",
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
-    "test": "concurrently 'eslint' 'prettier --check .'",
+    "test": "concurrently 'jest' 'eslint' 'prettier --check .'",
     "fix": "concurrently 'eslint --fix' 'prettier --write .'"
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "mathjs": "^7.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
+    "babel-jest": "^26.3.0",
     "concurrently": "^5.3.0",
     "eslint": "^7.7.0",
     "eslint-config-prettier": "^6.11.0",
     "husky": "^4.2.5",
+    "jest": "^26.4.1",
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-bundle-visualiser": "^1.2.0",
     "prettier": "^2.1.0",
