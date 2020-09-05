@@ -56,4 +56,15 @@ $themes: (
     color-action: $color-skirret-green,
     color-danger: $color-nasturcian-flower,
   ),
+  retro: (
+    color-bg: $color-swan-white,
+    color-bg-dark: darken($color-grey-porcelain, 15%),
+    color-bg-subtle: $color-crocodile-tooth,
+    color-fg: darken($color-grey-porcelain, 20%),
+    color-fg-inverted: $color-lynx-white,
+    color-fg-subtle: $color-hint-of-pensive,
+    color-operator: darken($color-grey-porcelain, 30%),
+    color-action: $color-alameda-ochre,
+    color-danger: $color-eye-of-newt,
+  ),
 );
