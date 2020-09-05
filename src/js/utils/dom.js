@@ -18,6 +18,19 @@ export function on(event, handler, context) {
   (context || window).addEventListener(event, handler);
 }
 
+export function off(event, handler, context) {
+  (context || window).removeEventListener(event, handler);
+}
+
+export function once(event, handler, context) {
+  const onceHandler = (...args) => {
+    handler(...args);
+    off(event, onceHandler, context);
+  };
+
+  (context || window).addEventListener(event, onceHandler);
+}
+
 export function getAttr(element, attributeName) {
   return element.getAttribute(attributeName);
 }

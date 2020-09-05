@@ -5,12 +5,16 @@ import {
   query,
   hasClass,
   on,
+  once,
 } from '../utils/dom';
+import * as pubSub from '../core/pubSub';
 
 const ACTIVE_CLASSNAME = 'panel--active';
+const NUDGE_CLASSNAME = 'panel__label--nudge';
 
 export default function panel(element) {
   function init() {
+    pubSub.subscribe('history.updated', nudge);
     on('click', onClick, getTrigger());
   }
 
@@ -21,6 +25,19 @@ export default function panel(element) {
     }
 
     close();
+  }
+
+  function nudge() {
+    if (hasClass(getTrigger(), NUDGE_CLASSNAME) || isOpen()) {
+      return;
+    }
+
+    addClass(getTrigger(), NUDGE_CLASSNAME);
+    once(
+      'animationend',
+      () => removeClass(getTrigger(), NUDGE_CLASSNAME),
+      getTrigger()
+    );
   }
 
   function open() {

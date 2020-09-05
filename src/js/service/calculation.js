@@ -30,6 +30,10 @@ export function remove() {
 }
 
 export function submit() {
+  if (!code.trim()) {
+    return;
+  }
+
   const { error } = execute(code);
 
   if (error) {
