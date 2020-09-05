@@ -28,25 +28,41 @@ $tabs-border-width: 3px;
   padding: $space-xs 0 $space-sm 0;
 
   @include themify($themes) {
-    color: transparentize(themed('color-fg-inverted'), 0.6);
+    $tabs-inactive-color: transparentize(themed('color-fg-inverted'), 0.6);
+
+    color: $tabs-inactive-color;
     text-decoration: none;
+
+    .icon {
+      fill: $tabs-inactive-color;
+    }
+  }
+
+  &:hover,
+  &:focus {
+    .tabs__trigger:not(.tabs__trigger--active) & {
+      @include themify($themes) {
+        $tabs-hover-color: transparentize(themed('color-fg-inverted'), 0.3);
+
+        color: $tabs-hover-color;
+        border-bottom: $tabs-border-width solid $tabs-hover-color;
+
+        .icon {
+          fill: $tabs-hover-color;
+        }
+      }
+    }
   }
 
   .tabs__trigger--active & {
     @include themify($themes) {
-      color: themed('color-fg-inverted');
-      border-bottom: $tabs-border-width solid themed('color-fg-inverted');
-    }
-  }
+      $tabs-active-color: themed('color-fg-inverted');
 
-  .icon {
-    @include themify($themes) {
-      fill: transparentize(themed('color-fg-inverted'), 0.6);
-    }
+      color: $tabs-active-color;
+      border-bottom: $tabs-border-width solid $tabs-active-color;
 
-    .tabs__trigger--active & {
-      @include themify($themes) {
-        fill: themed('color-fg-inverted');
+      .icon {
+        fill: $tabs-active-color;
       }
     }
   }
