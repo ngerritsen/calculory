@@ -3,13 +3,6 @@
 @import '../variables/fonts.scss';
 @import '../variables/space.scss';
 
-.history {
-  @include themify($themes) {
-    background-color: themed('color-bg-dark');
-    color: themed('color-fg-inverted');
-  }
-}
-
 .history__item {
   margin-bottom: $space-md;
   cursor: pointer;

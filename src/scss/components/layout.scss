@@ -9,6 +9,7 @@
 
 .layout__column {
   overflow-y: auto;
+  position: relative;
 }
 
 @include respond-from($breakpoint-tablet) {

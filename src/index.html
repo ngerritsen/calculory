@@ -429,99 +429,101 @@
         </div>
       </div>
     </div>
-    <div class="panel layout__column history container" data-component="panel">
+    <div class="panel layout__column" data-component="panel">
       <button class="button panel__label" data-trigger>
         <svg class="icon">
           <use href="#icon-angle-up" />
         </svg>
       </button>
 
-      <div class="tabs" data-component="tabs">
-        <ul class="tabs__triggers">
-          <li
-            class="tabs__trigger tabs__trigger--active"
-            data-tab-trigger="history"
-          >
-            <a href="#" class="tabs__link">
-              <svg class="icon">
-                <use href="#icon-history" />
-              </svg>
-              History
-            </a>
-          </li>
-          <li class="tabs__trigger" data-tab-trigger="theme">
-            <a href="#" class="tabs__link">
-              <svg class="icon">
-                <use href="#icon-palette" />
-              </svg>
-              Theme
-            </a>
-          </li>
-        </ul>
+      <div class="panel__content container">
+        <div class="tabs" data-component="tabs">
+          <ul class="tabs__triggers">
+            <li
+              class="tabs__trigger tabs__trigger--active"
+              data-tab-trigger="history"
+            >
+              <a href="#" class="tabs__link">
+                <svg class="icon">
+                  <use href="#icon-history" />
+                </svg>
+                History
+              </a>
+            </li>
+            <li class="tabs__trigger" data-tab-trigger="theme">
+              <a href="#" class="tabs__link">
+                <svg class="icon">
+                  <use href="#icon-palette" />
+                </svg>
+                Theme
+              </a>
+            </li>
+          </ul>
 
-        <div class="tabs__tab tabs__tab--active" data-tab="history">
-          <div data-component="history">
-            <p>Nothing here yet.</p>
+          <div class="tabs__tab tabs__tab--active" data-tab="history">
+            <div data-component="history">
+              <p>Nothing here yet.</p>
+            </div>
           </div>
-        </div>
 
-        <div class="tabs__tab" data-tab="theme">
-          <div data-component="themeSelector">
-            <label class="option">
-              <input
-                class="option__input"
-                type="radio"
-                name="theme"
-                value="classic"
-                data-theme-option
-              />
-              <span class="option__radio"></span>
-              <span class="option__label">Classic</span>
-            </label>
-            <label class="option">
-              <input
-                class="option__input"
-                type="radio"
-                name="theme"
-                value="office"
-                data-theme-option
-              />
-              <span class="option__radio"></span>
-              <span class="option__label">Office</span>
-            </label>
-            <label class="option">
-              <input
-                class="option__input"
-                type="radio"
-                name="theme"
-                value="pro"
-                data-theme-option
-              />
-              <span class="option__radio"></span>
-              <span class="option__label">Pro</span>
-            </label>
-            <label class="option">
-              <input
-                class="option__input"
-                type="radio"
-                name="theme"
-                value="hacker"
-                data-theme-option
-              />
-              <span class="option__radio"></span>
-              <span class="option__label">Hacker</span>
-            </label>
-            <label class="option">
-              <input
-                class="option__input"
-                type="radio"
-                name="theme"
-                value="nautic"
-                data-theme-option
-              />
-              <span class="option__radio"></span>
-              <span class="option__label">Nautic</span>
-            </label>
+          <div class="tabs__tab" data-tab="theme">
+            <div data-component="themeSelector">
+              <label class="option">
+                <input
+                  class="option__input"
+                  type="radio"
+                  name="theme"
+                  value="classic"
+                  data-theme-option
+                />
+                <span class="option__radio"></span>
+                <span class="option__label">Classic</span>
+              </label>
+              <label class="option">
+                <input
+                  class="option__input"
+                  type="radio"
+                  name="theme"
+                  value="office"
+                  data-theme-option
+                />
+                <span class="option__radio"></span>
+                <span class="option__label">Office</span>
+              </label>
+              <label class="option">
+                <input
+                  class="option__input"
+                  type="radio"
+                  name="theme"
+                  value="pro"
+                  data-theme-option
+                />
+                <span class="option__radio"></span>
+                <span class="option__label">Pro</span>
+              </label>
+              <label class="option">
+                <input
+                  class="option__input"
+                  type="radio"
+                  name="theme"
+                  value="hacker"
+                  data-theme-option
+                />
+                <span class="option__radio"></span>
+                <span class="option__label">Hacker</span>
+              </label>
+              <label class="option">
+                <input
+                  class="option__input"
+                  type="radio"
+                  name="theme"
+                  value="nautic"
+                  data-theme-option
+                />
+                <span class="option__radio"></span>
+                <span class="option__label">Nautic</span>
+              </label>
+            </div>
           </div>
         </div>
       </div>
