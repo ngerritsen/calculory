@@ -61,15 +61,17 @@ export default function input(element) {
   function scrollToActive() {
     const input = element.getBoundingClientRect();
     const cursor = query('[data-active]', element).getBoundingClientRect();
-    const padding  = parseFloat(getComputedStyle(element).paddingLeft);
+    const padding = parseFloat(getComputedStyle(element).paddingLeft);
 
     if (cursor.right > input.right - padding) {
-      element.scrollLeft = element.scrollLeft + cursor.right - input.right + padding;
+      element.scrollLeft =
+        element.scrollLeft + cursor.right - input.right + padding;
       return;
     }
 
     if (cursor.left < input.left + padding) {
-      element.scrollLeft = element.scrollLeft - (input.left - cursor.left) - padding;
+      element.scrollLeft =
+        element.scrollLeft - (input.left - cursor.left) - padding;
       return;
     }
   }
