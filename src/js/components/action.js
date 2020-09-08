@@ -32,8 +32,6 @@ export default function action(element) {
   function onStart(event) {
     event.preventDefault();
 
-    execute();
-
     if (REPEATABLE_ACTIONS.includes(getAction())) {
       repeatAction();
     }
@@ -48,6 +46,12 @@ export default function action(element) {
 
     clearInterval(interval);
     clearTimeout(timeout);
+
+    if (!interval) {
+      execute();
+    }
+
+    interval = null;
   }
 
   function holdAction() {
