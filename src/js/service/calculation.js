@@ -69,8 +69,19 @@ export function previous() {
 }
 
 export function set(newCode, newPosition) {
+  const limitedPosition = limitPosition(newPosition, code);
+
+  if (limitedPosition === position && newCode === code) {
+    return;
+  }
+
   code = newCode;
-  position = newPosition;
+  position = limitedPosition;
+
   calculationRepository.store(code);
   pubSub.publish('calculation.updated');
+}
+
+function limitPosition(position, code) {
+  return Math.min(Math.max(position, 0), code.length + 1);
 }

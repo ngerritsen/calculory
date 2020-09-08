@@ -1,7 +1,7 @@
 export function formatNumber(number) {
   let [left, right] = number.toString().split('.');
 
-  if (left && left.length > 3) {
+  if (left && left.length > 3 && !isNaN(parseInt(left))) {
     left = left
       .split('')
       .map((char, i) =>

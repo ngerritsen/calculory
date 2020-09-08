@@ -7,6 +7,13 @@
 @mixin scroll-horizontal() {
   white-space: nowrap;
   overflow-x: auto;
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @mixin field-container($background-color) {

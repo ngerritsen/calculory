@@ -1,6 +1,6 @@
 import * as calculationService from '../service/calculation';
 import * as pubSub from '../core/pubSub';
-import { toggleClass, getAttr, on } from '../utils/dom';
+import { toggleClass, getAttr, on, query } from '../utils/dom';
 import { execute } from '../engine';
 
 const ERROR_CLASSNAME = 'calculator__input--error';
@@ -54,6 +54,24 @@ export default function input(element) {
     }
 
     element.innerHTML = html;
+
+    scrollToActive();
+  }
+
+  function scrollToActive() {
+    const input = element.getBoundingClientRect();
+    const cursor = query('[data-active]', element).getBoundingClientRect();
+    const padding  = parseFloat(getComputedStyle(element).paddingLeft);
+
+    if (cursor.right > input.right - padding) {
+      element.scrollLeft = element.scrollLeft + cursor.right - input.right + padding;
+      return;
+    }
+
+    if (cursor.left < input.left + padding) {
+      element.scrollLeft = element.scrollLeft - (input.left - cursor.left) - padding;
+      return;
+    }
   }
 
   function renderChar(char, position, isActive) {
