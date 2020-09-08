@@ -69,7 +69,7 @@ export function previous() {
 }
 
 export function set(newCode, newPosition) {
-  const limitedPosition = limitPosition(newPosition, code);
+  const limitedPosition = limitPosition(newPosition, newCode);
 
   if (limitedPosition === position && newCode === code) {
     return;

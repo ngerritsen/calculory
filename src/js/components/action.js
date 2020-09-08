@@ -3,7 +3,8 @@ import { getAttr, on } from '../utils/dom';
 
 const REPEAT_INTERVAL = 60;
 const REPEAT_DELAY = 320;
-const REPEATABLE_ACTIONS = ['add', 'remove', 'next', 'previous'];
+const HOLD_DELAY = 460;
+const REPEATABLE_ACTIONS = ['add', 'next', 'previous'];
 
 export default function action(element) {
   let interval, timeout;
@@ -11,10 +12,14 @@ export default function action(element) {
   const actionMap = {
     add,
     remove: calculationService.remove,
-    clear: calculationService.clear,
     next: calculationService.next,
     previous: calculationService.previous,
     submit: calculationService.submit,
+    more: calculationService.toggleAdvancedMode,
+  };
+
+  const holdActionMap = {
+    remove: calculationService.clear,
   };
 
   function init() {
@@ -32,6 +37,10 @@ export default function action(element) {
     if (REPEATABLE_ACTIONS.includes(getAction())) {
       repeatAction();
     }
+
+    if (holdActionMap[getAction()]) {
+      holdAction();
+    }
   }
 
   function onEnd(event) {
@@ -41,11 +50,15 @@ export default function action(element) {
     clearTimeout(timeout);
   }
 
+  function holdAction() {
+    timeout = setTimeout(executeHold, HOLD_DELAY);
+  }
+
   function repeatAction() {
     clearTimeout(timeout);
     timeout = setTimeout(repeat, REPEAT_DELAY);
   }
-  
+
   function repeat() {
     clearInterval(interval);
 
@@ -62,6 +75,10 @@ export default function action(element) {
 
   function execute() {
     return actionMap[getAction()]();
+  }
+
+  function executeHold() {
+    return holdActionMap[getAction()]();
   }
 
   function getAction() {

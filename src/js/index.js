@@ -1,7 +1,6 @@
 import initComponents from './core/initComponents';
 
 import action from './components/action';
-import calculator from './components/calculator';
 import history from './components/history';
 import input from './components/input';
 import keyboard from './components/keyboard';
@@ -10,10 +9,10 @@ import panel from './components/panel';
 import tabs from './components/tabs';
 import theme from './components/theme';
 import themeSelector from './components/themeSelector';
+import toggle from './components/toggle';
 
 initComponents({
   action,
-  calculator,
   history,
   input,
   keyboard,
@@ -22,4 +21,5 @@ initComponents({
   tabs,
   theme,
   themeSelector,
+  toggle,
 });

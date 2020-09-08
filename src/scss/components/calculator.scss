@@ -102,7 +102,6 @@
   }
 
   border-radius: 0 0 $border-radius $border-radius;
-  margin-bottom: $space-xs;
 }
 
 .calculator__input {
@@ -145,8 +144,9 @@
 .calculator__buttons {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(auto-fill, 1fr);
   gap: $space-xs;
+  margin-top: $space-xs;
 }
 
 .calculator__button--col-span-2 {
