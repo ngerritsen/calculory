@@ -49,6 +49,15 @@ test('Factorial numbers.', () => {
   expect(execute('3!').result).toBe(6);
   expect(execute('102!').result).toBe(9.61446671503399e161);
   expect(execute('-2!').result).toBe(-2);
+  expect(execute('3!!').result).toBe(720);
+});
+
+test('Percentages.', () => {
+  expect(execute('0%').result).toBe(0);
+  expect(execute('5%').result).toBe(0.05);
+  expect(execute('105%').result).toBe(1.05);
+  expect(execute('200%!').result).toBe(2);
+  expect(execute('2!%').result).toBe(0.02);
 });
 
 test('Constants.', () => {

@@ -24,5 +24,7 @@ export default function evaluate(expression) {
       return evaluate(expression.left) - evaluate(expression.right);
     case '!':
       return factorial(evaluate(expression.of));
+    case '%':
+      return evaluate(expression.of) / 100;
   }
 }

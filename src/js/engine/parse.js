@@ -81,18 +81,18 @@ export default function parse(tokens) {
 
       return {
         type: 'negative',
-        of: parseFactorialExpression(),
+        of: parseModfierExpression(),
       };
     }
 
-    return parseFactorialExpression();
+    return parseModfierExpression();
   }
 
-  function parseFactorialExpression() {
+  function parseModfierExpression() {
     let expression = parsePrimaryExpression();
     let token = peek();
 
-    while (token === '!') {
+    while (token === '!' || token === '%') {
       consume();
 
       expression = {
