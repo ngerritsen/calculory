@@ -6,10 +6,10 @@ import input from './components/input';
 import keyboard from './components/keyboard';
 import output from './components/output';
 import panel from './components/panel';
+import showMore from './components/showMore';
 import tabs from './components/tabs';
 import theme from './components/theme';
 import themeSelector from './components/themeSelector';
-import toggle from './components/toggle';
 
 initComponents({
   action,
@@ -18,8 +18,8 @@ initComponents({
   keyboard,
   output,
   panel,
+  showMore,
   tabs,
   theme,
   themeSelector,
-  toggle,
 });

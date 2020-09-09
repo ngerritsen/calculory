@@ -114,7 +114,6 @@
           <div class="calculator__input" data-component="input"></div>
         </div>
         <div class="calculator__buttons">
-          <!-- Row 1 -->
           <button
             class="button button--secondary"
             type="button"
@@ -153,8 +152,6 @@
               <use href="#icon-arrow-right" />
             </svg>
           </button>
-
-          <!-- Row 2 -->
           <button
             class="button"
             type="button"
@@ -193,8 +190,6 @@
               <use href="#icon-times" />
             </svg>
           </button>
-
-          <!-- Row 3 -->
           <button
             class="button"
             type="button"
@@ -233,8 +228,6 @@
               <use href="#icon-divide" />
             </svg>
           </button>
-
-          <!-- Row 4 -->
           <button
             class="button"
             type="button"
@@ -273,8 +266,6 @@
               <use href="#icon-plus" />
             </svg>
           </button>
-
-          <!-- Row 5 -->
           <button
             class="button"
             type="button"
@@ -315,12 +306,11 @@
               <use href="#icon-minus" />
             </svg>
           </button>
-
-          <!-- Row 6 -->
           <button
             class="button button--primary calculator__button--col-span-2"
             type="submit"
             data-component="action"
+            data-span="2"
             data-action="submit"
           >
             <svg class="icon">
@@ -331,20 +321,22 @@
             class="button button--danger button calculator__button--col-span-2"
             type="button"
             data-component="action"
+            data-span="2"
             data-action="remove"
           >
             <svg class="icon">
               <use href="#icon-backspace" />
             </svg>
           </button>
-
-          <!-- Row 6 -->
+        </div>
+        <div class="calculator__buttons" data-component="showMore">
           <button
             class="button"
             type="button"
             data-component="action"
             data-action="add"
             data-symbol="π"
+            data-button
           >
             <svg class="icon">
               <use href="#icon-pi" />
@@ -356,31 +348,19 @@
             data-component="action"
             data-action="add"
             data-symbol="sqrt()"
+            data-button
           >
             <svg class="icon">
               <use href="#icon-square-root" />
             </svg>
           </button>
           <button
-            class="button calculator__button--col-span-2"
-            type="button"
-            data-component="toggle"
-            data-toggle-name="advanced"
-          >
-            Advanced
-          </button>
-        </div>
-        <div
-          class="is-hidden calculator__buttons"
-          data-toggle-content="advanced"
-        >
-          <!-- Advanced Row 1 -->
-          <button
             class="button"
             type="button"
             data-component="action"
             data-action="add"
             data-symbol="e"
+            data-button
           >
             e
           </button>
@@ -390,6 +370,7 @@
             data-component="action"
             data-action="add"
             data-symbol="cbrt()"
+            data-button
           >
             <small class="superscript">3</small>
             <svg class="icon">
@@ -402,6 +383,7 @@
             data-component="action"
             data-action="add"
             data-symbol="log()"
+            data-button
           >
             log
           </button>
@@ -411,17 +393,17 @@
             data-component="action"
             data-action="add"
             data-symbol="ln()"
+            data-button
           >
             ln
           </button>
-
-          <!-- Advanced Row 2 -->
           <button
             class="button"
             type="button"
             data-component="action"
             data-action="add"
             data-symbol="sin()"
+            data-button
           >
             sin
           </button>
@@ -431,6 +413,7 @@
             data-component="action"
             data-action="add"
             data-symbol="cos()"
+            data-button
           >
             cos
           </button>
@@ -440,6 +423,7 @@
             data-component="action"
             data-action="add"
             data-symbol="tan()"
+            data-button
           >
             tan
           </button>
@@ -449,6 +433,7 @@
             data-component="action"
             data-action="add"
             data-symbol="rand(0)"
+            data-button
           >
             rand
           </button>

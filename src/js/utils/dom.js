@@ -31,8 +31,28 @@ export function once(event, handler, context) {
   (context || window).addEventListener(event, onceHandler);
 }
 
-export function getAttr(element, attributeName) {
-  return element.getAttribute(attributeName);
+export function getAttr(element, name) {
+  return element.getAttribute(name);
+}
+
+export function setAttr(element, name, value) {
+  return element.setAttribute(name, value);
+}
+
+export function removeAttr(element, name) {
+  element.removeAttribute(name);
+}
+
+export function getRect(element) {
+  return element.getBoundingClientRect();
+}
+
+export function insertBefore(element, otherElement) {
+  element.parentNode.insertBefore(otherElement, element);
+}
+
+export function remove(element) {
+  element.parentNode.removeChild(element);
 }
 
 export function addClass(element, className) {
