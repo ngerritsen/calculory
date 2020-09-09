@@ -79,16 +79,20 @@ $panel-shadow-size: 10px;
 @keyframes nudge {
   from,
   to {
-    transform: translate(-90%, 0);
+    transform: translate(-90%, 0) scaleX(1);
   }
 
-  50% {
-    transform: translate(-100%, 0);
+  20% {
+    transform: translate(-80%, 0) scaleX(0.8);
+  }
+
+  60% {
+    transform: translate(-110%, 0) scaleX(1.2);
   }
 }
 
 .panel__label--nudge {
-  animation: 0.3s nudge ease;
+  animation: 0.4s nudge ease;
 
   &::before {
     content: none;
