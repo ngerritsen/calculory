@@ -12,6 +12,8 @@ export default function evaluate(expression) {
       return functions[expression.value](evaluate(expression.arg));
     case 'negative':
       return evaluate(expression.of) * -1;
+    case 'group':
+      return evaluate(expression.expression);
     case '^':
       return Math.pow(evaluate(expression.left), evaluate(expression.right));
     case '*':

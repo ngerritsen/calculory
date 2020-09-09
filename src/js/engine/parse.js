@@ -92,13 +92,36 @@ export default function parse(tokens) {
     let expression = parsePrimaryExpression();
     let token = peek();
 
-    while (token === '!' || token === '%') {
-      consume();
+    while (
+      ['!', '%'].includes(token) ||
+      ((isConstant(token) || token === '(') &&
+        ['!', '%', 'number', 'group'].includes(expression.type))
+    ) {
+      if (isConstant(token)) {
+        consume();
 
-      expression = {
-        type: token,
-        of: expression,
-      };
+        expression = {
+          type: '*',
+          left: expression,
+          right: {
+            type: 'constant',
+            value: token,
+          },
+        };
+      } else if (token === '(') {
+        expression = {
+          type: '*',
+          left: expression,
+          right: parsePrimaryExpression(),
+        };
+      } else {
+        consume();
+
+        expression = {
+          type: token,
+          of: expression,
+        };
+      }
 
       token = peek();
     }
@@ -158,7 +181,10 @@ export default function parse(tokens) {
 
       consume();
 
-      return expression;
+      return {
+        type: 'group',
+        expression,
+      };
     }
 
     throw new SyntaxError(
@@ -176,13 +202,13 @@ export default function parse(tokens) {
 }
 
 function isNumber(token) {
-  return !isNaN(parseFloat(token));
+  return token && !isNaN(parseFloat(token));
 }
 
 function isConstant(token) {
-  return Boolean(constants[token.toLowerCase()]);
+  return token && Boolean(constants[token.toLowerCase()]);
 }
 
 function isFunction(token) {
-  return Boolean(functions[token.toLowerCase()]);
+  return token && Boolean(functions[token.toLowerCase()]);
 }

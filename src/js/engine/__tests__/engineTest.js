@@ -49,7 +49,6 @@ test('Factorial numbers.', () => {
   expect(execute('3!').result).toBe(6);
   expect(execute('102!').result).toBe(9.61446671503399e161);
   expect(execute('-2!').result).toBe(-2);
-  expect(execute('3!!').result).toBe(720);
 });
 
 test('Percentages.', () => {
@@ -57,12 +56,29 @@ test('Percentages.', () => {
   expect(execute('5%').result).toBe(0.05);
   expect(execute('105%').result).toBe(1.05);
   expect(execute('200%!').result).toBe(2);
+});
+
+test('Combining modifiers', () => {
   expect(execute('2!%').result).toBe(0.02);
+  expect(execute('2!!').result).toBe(2);
+  expect(execute('100%!!').result).toBe(1);
 });
 
 test('Constants.', () => {
   expect(execute('2 * pi').result).toBe(2 * Math.PI);
+  expect(execute('π').result).toBe(Math.PI);
   expect(execute('2 * E').result).toBe(2 * Math.E);
+});
+
+test('Shorthand multiplications', () => {
+  expect(execute('(3+1)π').result).toBe(4 * Math.PI);
+  expect(execute('2π').result).toBe(2 * Math.PI);
+  expect(execute('2%π').result).toBe(0.02 * Math.PI);
+  expect(execute('-2%π').result).toBe(-0.02 * Math.PI);
+  expect(execute('-2%π').result).toBe(-0.02 * Math.PI);
+  expect(execute('(2*2)π').result).toBe(4 * Math.PI);
+  expect(execute('(2*2)(2*2)').result).toBe(16);
+  expect(execute('-(2*2)(2*2)').result).toBe(-16);
 });
 
 test('Scientific big number notation.', () => {
