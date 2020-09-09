@@ -12,7 +12,7 @@ export function get() {
 
 export function add(symbol) {
   const newCode = code.slice(0, position) + symbol + code.slice(position);
-  const isFunction = symbol.match(/^\w+\(\)$/);
+  const isFunction = Boolean(symbol.match(/^.+\(\)$/));
   const newPosition =
     position + (isFunction ? symbol.length - 1 : symbol.length);
 

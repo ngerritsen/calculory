@@ -23,6 +23,7 @@ test('Functions.', () => {
   expect(execute('log(100)*2').result).toBe(4);
   expect(execute('ln(3)').result).toBe(Math.log(3, Math.E));
   expect(execute('sin(3)').result).toBe(Math.sin(3));
+  expect(execute('√(3)').result).toBe(Math.sqrt(3));
   expect(execute('tan(3)').result).toBe(Math.tan(3));
   expect(execute('cos(3)').result).toBe(Math.cos(3));
   expect(execute('cos(3)+3').result).toBe(Math.cos(3) + 3);
@@ -30,6 +31,24 @@ test('Functions.', () => {
 
 test('Negative numbers.', () => {
   expect(execute('-2-2').result).toBe(-4);
+  expect(execute('-2--2').result).toBe(0);
+  expect(execute('-2+-2').result).toBe(-4);
+  expect(execute('-e').result).toBe(Math.E * -1);
+  expect(execute('-(2+2)').result).toBe(-4);
+  expect(execute('-sin(3)').result).toBe(Math.sin(3) * -1);
+});
+
+test('Factorial numbers.', () => {
+  expect(execute('0!').result).toBe(1);
+  expect(execute('0.5!').result).toBe(0.8862269254527586);
+  expect(execute('1!').result).toBe(1);
+  expect(execute('2!').result).toBe(2);
+  expect(execute('2+2!^2').result).toBe(6);
+  expect(execute('2+(2+1)!^2').result).toBe(38);
+  expect(execute('2.5!').result).toBe(3.3233509704478426);
+  expect(execute('3!').result).toBe(6);
+  expect(execute('102!').result).toBe(9.61446671503399e161);
+  expect(execute('-2!').result).toBe(-2);
 });
 
 test('Constants.', () => {

@@ -4,7 +4,8 @@ export default {
   tan: Math.tan,
   cos: Math.cos,
   sqrt: Math.sqrt,
+  '√': Math.sqrt,
   cbrt: Math.cbrt,
   rand: Math.random,
-  ln: (x) => Math.log(x, Math.e),
+  ln: Math.log,
 };

@@ -33,27 +33,6 @@ export default function parse(tokens) {
     return expression;
   }
 
-  function parseExponentialExpression() {
-    let expression = parsePrimaryExpression();
-    let token = peek();
-
-    while (token === '^') {
-      consume();
-
-      const rightExpression = parsePrimaryExpression();
-
-      expression = {
-        type: token,
-        left: expression,
-        right: rightExpression,
-      };
-
-      token = peek();
-    }
-
-    return expression;
-  }
-
   function parseMultiplicationExpression() {
     let expression = parseExponentialExpression();
     let token = peek();
@@ -75,6 +54,58 @@ export default function parse(tokens) {
     return expression;
   }
 
+  function parseExponentialExpression() {
+    let expression = parseNegativeExpression();
+    let token = peek();
+
+    while (token === '^') {
+      consume();
+
+      const rightExpression = parseNegativeExpression();
+
+      expression = {
+        type: token,
+        left: expression,
+        right: rightExpression,
+      };
+
+      token = peek();
+    }
+
+    return expression;
+  }
+
+  function parseNegativeExpression() {
+    if (peek() === '-') {
+      consume();
+
+      return {
+        type: 'negative',
+        of: parseFactorialExpression(),
+      };
+    }
+
+    return parseFactorialExpression();
+  }
+
+  function parseFactorialExpression() {
+    let expression = parsePrimaryExpression();
+    let token = peek();
+
+    while (token === '!') {
+      consume();
+
+      expression = {
+        type: token,
+        of: expression,
+      };
+
+      token = peek();
+    }
+
+    return expression;
+  }
+
   function parsePrimaryExpression() {
     const token = peek();
 
@@ -84,23 +115,6 @@ export default function parse(tokens) {
       return {
         type: 'number',
         value: token,
-      };
-    } else if (token === '-') {
-      consume();
-
-      const nextToken = peek();
-
-      if (!isNumber(nextToken)) {
-        throw new SyntaxError(
-          `Unexpected token "${nextToken}", expected a number.`
-        );
-      }
-
-      consume();
-
-      return {
-        type: 'number',
-        value: token + nextToken,
       };
     } else if (isConstant(token)) {
       consume();
