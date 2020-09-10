@@ -37,7 +37,11 @@ export default function parse(tokens) {
     let expression = parseExponentialExpression();
     let token = peek();
 
-    while (['*', '/', '('].includes(token) || isConstant(token)) {
+    while (
+      ['*', '/', '('].includes(token) ||
+      isConstant(token) ||
+      isFunction(token)
+    ) {
       if (['*', '/'].includes(token)) {
         consume();
       }

@@ -78,6 +78,7 @@ test('Implicit multiplications', () => {
   expect(execute('-2%π').result).toBe(-0.02 * Math.PI);
   expect(execute('-2%π').result).toBe(-0.02 * Math.PI);
   expect(execute('(2*2)π').result).toBe(4 * Math.PI);
+  expect(execute('2cos(pi)').result).toBe(-2);
   expect(execute('(2*2)(2*2)').result).toBe(16);
   expect(execute('-(2*2)(2*2)').result).toBe(-16);
 });
