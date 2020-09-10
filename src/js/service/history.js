@@ -5,18 +5,22 @@ import * as pubSub from '../core/pubSub';
 let history = historyRepository.getAll();
 
 export function add(code) {
-  updateLogs([{ id: generateId(), code }, ...history]);
+  updateHistory([{ id: generateId(), code }, ...history]);
+}
+
+export function remove(id) {
+  updateHistory(history.filter((item) => item.id !== id));
 }
 
 export function clear() {
-  updateLogs([]);
+  updateHistory([]);
 }
 
 export function getAll() {
   return history;
 }
 
-function updateLogs(newHistory) {
+function updateHistory(newHistory) {
   history = newHistory;
   pubSub.publish('history.updated');
   historyRepository.store(history);

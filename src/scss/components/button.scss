@@ -49,6 +49,10 @@
   user-select: none;
 }
 
+.button--inline {
+  margin: 0 $space-xs $space-xs 0;
+}
+
 .button--small {
   padding: $space-xs;
 }

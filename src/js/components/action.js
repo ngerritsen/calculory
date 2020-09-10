@@ -5,6 +5,7 @@ const REPEAT_INTERVAL = 60;
 const REPEAT_DELAY = 320;
 const HOLD_DELAY = 460;
 const REPEATABLE_ACTIONS = ['add', 'next', 'previous'];
+const LEFT_MOUSE_BUTTON = 0;
 
 export default function action(element) {
   let interval, timeout;
@@ -25,8 +26,16 @@ export default function action(element) {
   function init() {
     on('touchstart', onStart, element);
     on('touchend', onEnd, element);
-    on('mousedown', onStart, element);
-    on('mouseup', onEnd, element);
+    on('mousedown', filterLeftClicks(onStart), element);
+    on('mouseup', filterLeftClicks(onEnd), element);
+  }
+
+  function filterLeftClicks(handler) {
+    return (event) => {
+      if (event.button === LEFT_MOUSE_BUTTON) {
+        handler(event);
+      }
+    };
   }
 
   function onStart(event) {

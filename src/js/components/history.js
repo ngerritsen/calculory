@@ -1,10 +1,11 @@
 import * as pubSub from '../core/pubSub';
 import initComponents from '../core/initComponents';
 import action from './action';
+import historyItem from './historyItem';
 import * as historyService from '../service/history';
 import { formatNumber } from '../utils/format';
 import { execute } from '../engine';
-import { query, queryAll, toggleClass, on } from '../utils/dom';
+import { query, on } from '../utils/dom';
 
 export default function log(element) {
   function init() {
@@ -25,36 +26,11 @@ export default function log(element) {
     element.innerHTML = items.map(getItemHtml).join('') + getClearButtonHtml();
 
     listenForClearButton();
-    listenForItemClicks();
-    initComponents({ action }, element);
+    initComponents({ action, historyItem }, element);
   }
 
   function listenForClearButton() {
     on('click', historyService.clear, query('[data-clear]', element));
-  }
-
-  function listenForItemClicks() {
-    queryAll('[data-item]').forEach((item) => {
-      on(
-        'click',
-        () => {
-          toggleActions(item);
-        },
-        item
-      );
-    });
-  }
-
-  function toggleActions(item) {
-    const actionEl = query('[data-actions]', item);
-
-    queryAll('[data-actions]').forEach((el) => {
-      toggleClass(
-        el,
-        'history__actions--active',
-        el !== actionEl ? false : undefined
-      );
-    });
   }
 
   function getClearButtonHtml() {
@@ -66,29 +42,34 @@ export default function log(element) {
     `;
   }
 
-  function getItemHtml(log) {
-    const { result } = execute(log.code);
+  function getItemHtml(item) {
+    const { result } = execute(item.code);
 
     return `
-      <div class="history__item" data-item>
-        <div>
+      <div class="history__item" data-component="historyItem" data-item-id=${
+        item.id
+      }>
+        <div data-content>
           <div class="history__result">${formatNumber(result)}</div>
-          <div class="history__code">${log.code}</div>
+          <div class="history__code">${item.code}</div>
         </div>
         <div class="history__actions" data-actions>
           <button
-            class="button button--small button--secondary"
+            class="button button--small button--secondary button--inline"
             data-component="action"
             data-action="add"
             data-symbol="${result}"
           >Use result</button>
-          &nbsp;
           <button
-            class="button button--small button--secondary"
+            class="button button--small button--secondary button--inline"
             data-component="action"
             data-action="add"
-            data-symbol="${log.code}"
+            data-symbol="${item.code}"
           >Use expression</button>
+          <button
+            class="button button--small button--danger button--inline"
+            data-remove
+          >Remove</button>
         </div>
       </div>
     `;
