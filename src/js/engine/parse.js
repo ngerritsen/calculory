@@ -16,7 +16,7 @@ export default function parse(tokens) {
     let expression = parseMultiplicationExpression();
     let token = peek();
 
-    while (token === '+' || token === '-') {
+    while (['+', '-'].includes(token)) {
       consume();
 
       const rightExpression = parseMultiplicationExpression();
@@ -37,13 +37,15 @@ export default function parse(tokens) {
     let expression = parseExponentialExpression();
     let token = peek();
 
-    while (token === '*' || token === '/') {
-      consume();
+    while (['*', '/', '('].includes(token) || isConstant(token)) {
+      if (['*', '/'].includes(token)) {
+        consume();
+      }
 
       const rightExpression = parseExponentialExpression();
 
       expression = {
-        type: token,
+        type: token === '/' ? '/' : '*',
         left: expression,
         right: rightExpression,
       };
@@ -81,47 +83,24 @@ export default function parse(tokens) {
 
       return {
         type: 'negative',
-        of: parseModfierExpression(),
+        of: parseModifierExpression(),
       };
     }
 
-    return parseModfierExpression();
+    return parseModifierExpression();
   }
 
-  function parseModfierExpression() {
+  function parseModifierExpression() {
     let expression = parsePrimaryExpression();
     let token = peek();
 
-    while (
-      ['!', '%'].includes(token) ||
-      ((isConstant(token) || token === '(') &&
-        ['!', '%', 'number', 'group'].includes(expression.type))
-    ) {
-      if (isConstant(token)) {
-        consume();
+    while (['!', '%'].includes(token)) {
+      consume();
 
-        expression = {
-          type: '*',
-          left: expression,
-          right: {
-            type: 'constant',
-            value: token,
-          },
-        };
-      } else if (token === '(') {
-        expression = {
-          type: '*',
-          left: expression,
-          right: parsePrimaryExpression(),
-        };
-      } else {
-        consume();
-
-        expression = {
-          type: token,
-          of: expression,
-        };
-      }
+      expression = {
+        type: token,
+        of: expression,
+      };
 
       token = peek();
     }

@@ -70,9 +70,10 @@ test('Constants.', () => {
   expect(execute('2 * E').result).toBe(2 * Math.E);
 });
 
-test('Shorthand multiplications', () => {
+test('Implicit multiplications', () => {
   expect(execute('(3+1)π').result).toBe(4 * Math.PI);
   expect(execute('2π').result).toBe(2 * Math.PI);
+  expect(execute('2π%^e').result).toBe(2 * Math.pow(Math.PI / 100, Math.E));
   expect(execute('2%π').result).toBe(0.02 * Math.PI);
   expect(execute('-2%π').result).toBe(-0.02 * Math.PI);
   expect(execute('-2%π').result).toBe(-0.02 * Math.PI);
