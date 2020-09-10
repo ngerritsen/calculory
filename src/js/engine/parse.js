@@ -168,11 +168,28 @@ export default function parse(tokens) {
         type: 'group',
         expression,
       };
-    }
+    } else if (token === '|') {
+      consume();
 
-    throw new SyntaxError(
-      `Unexpected token "${token}", expected a number, parenthesis, function or constant.`
-    );
+      const expression = parseExpression();
+
+      if (peek() !== '|') {
+        throw new SyntaxError(
+          `Unexpected token "${token}", expected a closing parenthesis.`
+        );
+      }
+
+      consume();
+
+      return {
+        type: 'absolute',
+        of: expression,
+      };
+    } else {
+      throw new SyntaxError(
+        `Unexpected token "${token}", expected a number, parenthesis, function or constant.`
+      );
+    }
   }
 
   function consume() {

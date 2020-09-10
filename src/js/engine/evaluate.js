@@ -12,6 +12,8 @@ export default function evaluate(expression) {
       return functions[expression.value](evaluate(expression.arg));
     case 'negative':
       return evaluate(expression.of) * -1;
+    case 'absolute':
+      return Math.abs(evaluate(expression.of));
     case 'group':
       return evaluate(expression.expression);
     case '^':
@@ -28,5 +30,7 @@ export default function evaluate(expression) {
       return factorial(evaluate(expression.of));
     case '%':
       return evaluate(expression.of) / 100;
+    default:
+      throw new Error(`Unknown expression ${expression.type}`);
   }
 }

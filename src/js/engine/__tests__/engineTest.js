@@ -83,6 +83,12 @@ test('Implicit multiplications', () => {
   expect(execute('-(2*2)(2*2)').result).toBe(-16);
 });
 
+test('Absolute', () => {
+  expect(execute('|-2|').result).toBe(2);
+  expect(execute('√(|-9|)').result).toBe(3);
+  expect(execute('|-2*8-3|').result).toBe(19);
+});
+
 test('Scientific big number notation.', () => {
   expect(execute('5.2e+5').result).toBe(520000);
   expect(execute('5.2e-3').result).toBe(0.0052);

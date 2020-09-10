@@ -13,8 +13,9 @@ export function get() {
 export function add(symbol) {
   const newCode = code.slice(0, position) + symbol + code.slice(position);
   const isFunction = Boolean(symbol.match(/^.+\(\)$/));
+  const isAbsolute = symbol === '||';
   const newPosition =
-    position + (isFunction ? symbol.length - 1 : symbol.length);
+    position + (isFunction || isAbsolute ? symbol.length - 1 : symbol.length);
 
   set(newCode, newPosition);
 }

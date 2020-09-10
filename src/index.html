@@ -86,9 +86,19 @@
         d="M109.25 173.25c24.99-24.99 24.99-65.52 0-90.51-24.99-24.99-65.52-24.99-90.51 0-24.99 24.99-24.99 65.52 0 90.51 25 25 65.52 25 90.51 0zm256 165.49c-24.99-24.99-65.52-24.99-90.51 0-24.99 24.99-24.99 65.52 0 90.51 24.99 24.99 65.52 24.99 90.51 0 25-24.99 25-65.51 0-90.51zm-1.94-231.43l-22.62-22.62c-12.5-12.5-32.76-12.5-45.25 0L20.69 359.44c-12.5 12.5-12.5 32.76 0 45.25l22.62 22.62c12.5 12.5 32.76 12.5 45.25 0l274.75-274.75c12.5-12.49 12.5-32.75 0-45.25z"
       />
     </symbol>
+    <symbol id="icon-superscript" viewBox="0 0 512 512">
+      <path
+        d="M496 160h-16V16a16 16 0 0 0-16-16h-48a16 16 0 0 0-14.29 8.83l-16 32A16 16 0 0 0 400 64h16v96h-16a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h96a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zM336 64h-67a16 16 0 0 0-13.14 6.87l-79.9 115-79.9-115A16 16 0 0 0 83 64H16A16 16 0 0 0 0 80v48a16 16 0 0 0 16 16h33.48l77.81 112-77.81 112H16a16 16 0 0 0-16 16v48a16 16 0 0 0 16 16h67a16 16 0 0 0 13.14-6.87l79.9-115 79.9 115A16 16 0 0 0 269 448h67a16 16 0 0 0 16-16v-48a16 16 0 0 0-16-16h-33.48l-77.81-112 77.81-112H336a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16z"
+      />
+    </symbol>
     <symbol id="icon-palette" viewBox="0 0 512 512">
       <path
         d="M204.3 5C104.9 24.4 24.8 104.3 5.2 203.4c-37 187 131.7 326.4 258.8 306.7 41.2-6.4 61.4-54.6 42.5-91.7-23.1-45.4 9.9-98.4 60.9-98.4h79.7c35.8 0 64.8-29.6 64.9-65.3C511.5 97.1 368.1-26.9 204.3 5zM96 320c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm32-128c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128-64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32zm128 64c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z"
+      />
+    </symbol>
+    <symbol id="icon-value-absolute" viewBox="0 0 512 512">
+      <path
+        d="M48 32H16C7.16 32 0 39.16 0 48v416c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16V48c0-8.84-7.16-16-16-16zm448 0h-32c-8.84 0-16 7.16-16 16v416c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16V48c0-8.84-7.16-16-16-16zM377.3 150.87l-16.17-16.17c-8.93-8.93-23.41-8.93-32.35 0L256 207.48l-72.78-72.78c-8.93-8.93-23.41-8.93-32.35 0l-16.17 16.17c-8.93 8.93-8.93 23.41 0 32.35L207.48 256l-72.78 72.78c-8.93 8.93-8.93 23.41 0 32.35l16.17 16.17c8.93 8.93 23.41 8.93 32.35 0L256 304.52l72.78 72.78c8.93 8.93 23.41 8.93 32.35 0l16.17-16.17c8.93-8.93 8.93-23.41 0-32.35L304.52 256l72.78-72.78c8.93-8.93 8.93-23.42 0-32.35z"
       />
     </symbol>
     <symbol id="icon-pi" viewBox="0 0 512 512">
@@ -290,15 +300,13 @@
             .
           </button>
           <button
-            class="button button--operator"
+            class="button"
             type="button"
             data-component="action"
             data-action="add"
-            data-symbol="^"
+            data-symbol=","
           >
-            <svg class="icon">
-              <use href="#icon-angle-up" />
-            </svg>
+            ,
           </button>
           <button
             class="button button--operator"
@@ -340,11 +348,10 @@
             type="button"
             data-component="action"
             data-action="add"
-            data-symbol="%"
-            data-button
+            data-symbol="^"
           >
             <svg class="icon">
-              <use href="#icon-percentage" />
+              <use href="#icon-superscript" />
             </svg>
           </button>
           <button
@@ -357,6 +364,18 @@
           >
             <svg class="icon">
               <use href="#icon-square-root" />
+            </svg>
+          </button>
+          <button
+            class="button"
+            type="button"
+            data-component="action"
+            data-action="add"
+            data-symbol="%"
+            data-button
+          >
+            <svg class="icon">
+              <use href="#icon-percentage" />
             </svg>
           </button>
           <button
@@ -390,6 +409,18 @@
             data-button
           >
             !
+          </button>
+          <button
+            class="button"
+            type="button"
+            data-component="action"
+            data-action="add"
+            data-symbol="||"
+            data-button
+          >
+            <svg class="icon">
+              <use href="#icon-value-absolute" />
+            </svg>
           </button>
           <button
             class="button"
@@ -463,6 +494,26 @@
             data-button
           >
             rand
+          </button>
+          <button
+            class="button"
+            type="button"
+            data-component="action"
+            data-action="add"
+            data-symbol="φ"
+            data-button
+          >
+            φ
+          </button>
+          <button
+            class="button"
+            type="button"
+            data-component="action"
+            data-action="add"
+            data-symbol="τ"
+            data-button
+          >
+            τ
           </button>
         </div>
       </div>
