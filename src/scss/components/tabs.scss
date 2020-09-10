@@ -35,6 +35,8 @@ $tabs-border-width: 3px;
 
     .icon {
       fill: $tabs-inactive-color;
+      max-height: 0.9em;
+      margin-right: $space-xs / 2;
     }
   }
 
