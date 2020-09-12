@@ -1,7 +1,7 @@
 import * as pubSub from '../core/pubSub';
 import initComponents from '../core/initComponents';
 import action from './action';
-import historyItem from './historyItem';
+import removeHistoryItem from './removeHistoryItem';
 import * as historyService from '../service/history';
 import { formatNumber } from '../utils/format';
 import { execute } from '../engine';
@@ -26,7 +26,7 @@ export default function log(element) {
     element.innerHTML = items.map(getItemHtml).join('') + getClearButtonHtml();
 
     listenForClearButton();
-    initComponents({ action, historyItem }, element);
+    initComponents({ action, removeHistoryItem }, element);
   }
 
   function listenForClearButton() {
@@ -46,30 +46,33 @@ export default function log(element) {
     const { result } = execute(item.code);
 
     return `
-      <div class="history__item" data-component="historyItem" data-item-id=${
-        item.id
-      }>
-        <div data-content>
-          <div class="history__result">${formatNumber(result)}</div>
-          <div class="history__code">${item.code}</div>
-        </div>
-        <div class="history__actions" data-actions>
-          <button
-            class="button button--small button--secondary button--inline"
+      <div class="history__item">
+        <div>
+          <div
+            class="history__result"
             data-component="action"
             data-action="add"
             data-symbol="${result}"
-          >Use result</button>
-          <button
-            class="button button--small button--secondary button--inline"
+          >
+            ${formatNumber(result)}
+          </div>
+          <div
+            class="history__code"
             data-component="action"
             data-action="add"
             data-symbol="${item.code}"
-          >Use expression</button>
+          >
+            ${item.code}
+          </div>
           <button
-            class="button button--small button--danger button--inline"
-            data-remove
-          >Remove</button>
+            class="history__remove"
+            data-component="removeHistoryItem"
+            data-id=${item.id}
+          >
+            <svg class="icon">
+              <use href="#icon-times" />
+            </svg>
+          </button>
         </div>
       </div>
     `;

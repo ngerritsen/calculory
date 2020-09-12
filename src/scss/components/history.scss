@@ -4,6 +4,7 @@
 @import '../variables/space.scss';
 
 .history__item {
+  position: relative;
   margin-bottom: $space-md;
   cursor: pointer;
 }
@@ -25,11 +26,30 @@
   }
 }
 
-.history__actions {
-  display: none;
-  margin-top: $space-xs;
-}
+.history__remove {
+  position: absolute;
+  padding: ($space-xs / 2);
+  top: 0;
+  right: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
 
-.history__actions--active {
-  display: block;
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+
+    .icon {
+      @include themify($themes) {
+        fill: darken(themed('color-danger'), 10%);
+      }
+    }
+  }
+
+  .icon {
+    @include themify($themes) {
+      fill: themed('color-danger');
+    }
+  }
 }
