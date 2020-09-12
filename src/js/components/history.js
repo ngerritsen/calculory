@@ -40,7 +40,7 @@ export default function log(element) {
       result,
       formattedResult: formatNumber(result),
       code: item.code,
-      id: item.id
+      id: item.id,
     });
   }
 

@@ -28,6 +28,7 @@ export default function action(element) {
     on('touchend', onEnd, element);
     on('mousedown', filterLeftClicks(onStart), element);
     on('mouseup', filterLeftClicks(onEnd), element);
+    on('mouseout', onCancel, element);
   }
 
   function filterLeftClicks(handler) {
@@ -51,16 +52,20 @@ export default function action(element) {
   }
 
   function onEnd(event) {
-    event.preventDefault();
-
-    clearInterval(interval);
-    clearTimeout(timeout);
+    onCancel(event);
 
     if (!interval) {
       execute();
     }
 
     interval = null;
+  }
+
+  function onCancel(event) {
+    event.preventDefault();
+
+    clearInterval(interval);
+    clearTimeout(timeout);
   }
 
   function holdAction() {

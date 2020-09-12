@@ -7,6 +7,18 @@
   position: relative;
   margin-bottom: $space-md;
   cursor: pointer;
+  display: flex;
+}
+
+.history__content {
+  flex-grow: 1;
+}
+
+.history__result,
+.history__code {
+  overflow: hidden;
+  max-width: 100%;
+  word-break: break-all;
 }
 
 .history__result {
@@ -27,10 +39,6 @@
 }
 
 .history__remove {
-  position: absolute;
-  padding: ($space-xs / 2);
-  top: 0;
-  right: 0;
   background: none;
   border: none;
   cursor: pointer;

@@ -18,6 +18,13 @@ export default function keyboard(element) {
 
   function init() {
     on('keydown', onKeyDown, element);
+    on('paste', onPaste, element);
+  }
+
+  function onPaste(event) {
+    event.preventDefault();
+    const code = (event.clipboardData || window.clipboardData).getData('text');
+    calculationService.add(code);
   }
 
   function onKeyDown(event) {

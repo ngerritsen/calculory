@@ -630,7 +630,7 @@
       </div>
     </div>
   </div>
-  <script data-template="show-more-button" type='text/template'>
+  <script data-template="show-more-button" type="text/template">
     <button
       class="button calculator__button--col-span-2"
       type="submit"
@@ -639,15 +639,15 @@
       More
     </button>
   </script>
-  <script data-template="history-clear-button" type='text/template'>
+  <script data-template="history-clear-button" type="text/template">
     <button
       data-component="clearHistory"
       class="button button--small button--danger"
     >Clear</button>
   </script>
-  <script data-template="history-item" type='text/template'>
+  <script data-template="history-item" type="text/template">
     <div class="history__item">
-      <div>
+      <div class="history__content">
         <div
           class="history__result"
           data-component="action"
@@ -664,6 +664,8 @@
         >
           {code}
         </div>
+      </div>
+      <div class="history__actions">
         <button
           class="history__remove"
           data-component="removeHistoryItem"
