@@ -12,6 +12,7 @@ import {
   remove,
   removeClass,
 } from '../utils/dom';
+import renderTemplate from '../core/renderTemplate';
 
 const MORE_TEXT = 'More';
 const LESS_TEXT = 'Less';
@@ -109,15 +110,7 @@ export default function showMore(element) {
   }
 
   function createShowMoreButton() {
-    return stringToDom(`
-      <button
-        class="button calculator__button--col-span-2"
-        type="submit"
-        data-show-more
-      >
-        ${MORE_TEXT}
-      </button>
-    `);
+    return stringToDom(renderTemplate('show-more-button'));
   }
 
   init();
