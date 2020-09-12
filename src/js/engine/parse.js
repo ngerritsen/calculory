@@ -138,10 +138,28 @@ export default function parse(tokens) {
 
       consume();
 
+      if (peek() === ')') {
+        consume();
+
+        return {
+          type: 'function',
+          value: token,
+          args: [],
+        };
+      }
+
+      const arg = parseExpression();
+      const args = [arg];
+
+      while (peek() === ',') {
+        consume();
+        args.push(parseExpression());
+      }
+
       const expression = {
         type: 'function',
         value: token,
-        arg: parseExpression(),
+        args,
       };
 
       if (peek() !== ')') {

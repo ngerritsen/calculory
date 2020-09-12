@@ -1,4 +1,11 @@
-import { query, toggleClass, on, getAttr, addClass, removeClass } from '../utils/dom';
+import {
+  query,
+  toggleClass,
+  on,
+  getAttr,
+  addClass,
+  removeClass,
+} from '../utils/dom';
 import * as historyService from '../service/history';
 
 export default function historyItem(element) {

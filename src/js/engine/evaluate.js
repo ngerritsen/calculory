@@ -9,7 +9,7 @@ export default function evaluate(expression) {
     case 'number':
       return parseFloat(expression.value);
     case 'function':
-      return functions[expression.value](evaluate(expression.arg));
+      return functions[expression.value](...expression.args.map(evaluate));
     case 'negative':
       return evaluate(expression.of) * -1;
     case 'absolute':

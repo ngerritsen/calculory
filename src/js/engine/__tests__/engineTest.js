@@ -29,6 +29,19 @@ test('Functions.', () => {
   expect(execute('cos(3)+3').result).toBe(Math.cos(3) + 3);
 });
 
+test('Logarithms.', () => {
+  expect(execute('log(1000)').result).toBe(3);
+  expect(execute('log(8, 2)').result).toBe(3);
+  expect(execute('log(64, 4)').result).toBe(3);
+});
+
+test('Nth root.', () => {
+  expect(execute('nthroot(9)').result).toBe(3);
+  expect(execute('nthroot(9, 2)').result).toBe(3);
+  expect(execute('nthroot(64, 3)').result).toBe(4);
+  expect(execute('nthroot(256, 4)').result).toBe(4);
+});
+
 test('Negative numbers.', () => {
   expect(execute('-2-2').result).toBe(-4);
   expect(execute('-2--2').result).toBe(0);
