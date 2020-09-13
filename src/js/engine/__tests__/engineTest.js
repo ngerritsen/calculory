@@ -1,3 +1,7 @@
+import * as historyService from '../../service/history';
+
+jest.mock('../../service/history');
+
 import { execute } from '..';
 
 test('Empty calculations', () => {
@@ -106,4 +110,19 @@ test('Scientific big number notation.', () => {
   expect(execute('5.2e+5').result).toBe(520000);
   expect(execute('5.2e-3').result).toBe(0.0052);
   expect(execute('5.2e-2-e').result).toBe(0.052 - Math.E);
+});
+
+test('Ans.', () => {
+  historyService.getLast.mockReturnValue({ code: '2' });
+
+  expect(execute('ans').result).toBe(2);
+  expect(execute('ans^2').result).toBe(4);
+
+  historyService.getLast.mockReturnValue(undefined);
+
+  expect(execute('ans').result).toBe(0);
+
+  historyService.getLast.mockReturnValue({ code: 'sdlkfhs23r' });
+
+  expect(execute('ans').result).toBe(0);
 });

@@ -1,35 +1,40 @@
+import { previous } from '../service/calculation';
 import constants from './constants';
 import functions from './functions';
 import factorial from './math/factorial';
 
-export default function evaluate(expression) {
+export default function evaluate(expression, getPreviousAnswer) {
+  const evalExpr = expression => evaluate(expression, getPreviousAnswer);
+
   switch (expression.type) {
     case 'constant':
       return constants[expression.value.toLowerCase()];
     case 'number':
       return parseFloat(expression.value);
     case 'function':
-      return functions[expression.value](...expression.args.map(evaluate));
+      return functions[expression.value](...expression.args.map(evalExpr));
     case 'negative':
-      return evaluate(expression.of) * -1;
+      return evalExpr(expression.of) * -1;
     case 'absolute':
-      return Math.abs(evaluate(expression.of));
+      return Math.abs(evalExpr(expression.of));
     case 'group':
-      return evaluate(expression.expression);
+      return evalExpr(expression.expression);
+    case 'ans':
+      return getPreviousAnswer();
     case '^':
-      return Math.pow(evaluate(expression.left), evaluate(expression.right));
+      return Math.pow(evalExpr(expression.left), evalExpr(expression.right));
     case '*':
-      return evaluate(expression.left) * evaluate(expression.right);
+      return evalExpr(expression.left) * evalExpr(expression.right);
     case '/':
-      return evaluate(expression.left) / evaluate(expression.right);
+      return evalExpr(expression.left) / evalExpr(expression.right);
     case '+':
-      return evaluate(expression.left) + evaluate(expression.right);
+      return evalExpr(expression.left) + evalExpr(expression.right);
     case '-':
-      return evaluate(expression.left) - evaluate(expression.right);
+      return evalExpr(expression.left) - evalExpr(expression.right);
     case '!':
-      return factorial(evaluate(expression.of));
+      return factorial(evalExpr(expression.of));
     case '%':
-      return evaluate(expression.of) / 100;
+      return evalExpr(expression.of) / 100;
     default:
       throw new Error(`Unknown expression ${expression.type}`);
   }

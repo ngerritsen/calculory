@@ -203,6 +203,12 @@ export default function parse(tokens) {
         type: 'absolute',
         of: expression,
       };
+    } else if (token === 'ans') {
+      consume();
+
+      return {
+        type: 'ans'
+      }
     } else {
       throw new SyntaxError(
         `Unexpected token "${token}", expected a number, parenthesis, function or constant.`

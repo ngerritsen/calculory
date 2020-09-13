@@ -23,6 +23,10 @@ export function getAll() {
   return history;
 }
 
+export function getLast() {
+  return history[0];
+}
+
 function updateHistory(newHistory) {
   history = newHistory;
   pubSub.publish('history.updated');
