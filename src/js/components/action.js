@@ -1,14 +1,14 @@
 import * as calculationService from '../service/calculation';
-import { getAttr, on } from '../utils/dom';
+import { getAttr, on, off, isTouchOnElement } from '../utils/dom';
 
 const REPEAT_INTERVAL = 60;
-const REPEAT_DELAY = 320;
-const HOLD_DELAY = 460;
-const REPEATABLE_ACTIONS = ['add', 'next', 'previous'];
+const REPEAT_DELAY = 300;
+const HOLD_DELAY = 500;
+const HOLD_WITH_REPEAT_DELAY = 1250;
 const LEFT_MOUSE_BUTTON = 0;
 
 export default function action(element) {
-  let interval, timeout;
+  let repeatInterval, repeatTimeout, holdTimeout;
 
   const actionMap = {
     add,
@@ -21,14 +21,15 @@ export default function action(element) {
 
   const holdActionMap = {
     remove: calculationService.clear,
+    next: calculationService.end,
+    previous: calculationService.start,
   };
+
+  const onMouseStart = filterLeftClicks(onStart);
 
   function init() {
     on('touchstart', onStart, element);
-    on('touchend', onEnd, element);
-    on('mousedown', filterLeftClicks(onStart), element);
-    on('mouseup', filterLeftClicks(onEnd), element);
-    on('mouseout', onCancel, element);
+    on('mousedown', onMouseStart, element);
   }
 
   function filterLeftClicks(handler) {
@@ -42,45 +43,66 @@ export default function action(element) {
   function onStart(event) {
     event.preventDefault();
 
-    if (REPEATABLE_ACTIONS.includes(getAction())) {
+    if (isRepeatable()) {
       repeatAction();
     }
 
     if (holdActionMap[getAction()]) {
       holdAction();
     }
+
+    on('touchcancel', onCancel, element);
+    on('touchend', onEnd, element);
+    on('touchmove', onTouchMove, element);
+    on('mouseup', onEnd, element);
+    on('mouseout', onCancel, element);
   }
 
   function onEnd(event) {
     onCancel(event);
 
-    if (!interval) {
+    if (!repeatInterval) {
       execute();
     }
 
-    interval = null;
+    repeatInterval = null;
   }
 
   function onCancel(event) {
     event.preventDefault();
 
-    clearInterval(interval);
-    clearTimeout(timeout);
+    off('touchcancel', onCancel, element);
+    off('touchend', onEnd, element);
+    off('touchmove', onTouchMove, element);
+    off('mouseup', onEnd, element);
+    off('mouseout', onCancel, element);
+
+    clearInterval(repeatInterval);
+    clearTimeout(repeatTimeout);
+    clearTimeout(holdTimeout);
+  }
+
+  function onTouchMove(event) {
+    event.preventDefault();
+
+    if (isTouchOnElement(event.currentTarget, event)) {
+      return;
+    }
+
+    onCancel(event);
   }
 
   function holdAction() {
-    timeout = setTimeout(executeHold, HOLD_DELAY);
+    const delay = isRepeatable() ? HOLD_WITH_REPEAT_DELAY : HOLD_DELAY;
+    holdTimeout = setTimeout(executeHold, delay);
   }
 
   function repeatAction() {
-    clearTimeout(timeout);
-    timeout = setTimeout(repeat, REPEAT_DELAY);
+    repeatTimeout = setTimeout(repeat, REPEAT_DELAY);
   }
 
   function repeat() {
-    clearInterval(interval);
-
-    interval = setInterval(execute, REPEAT_INTERVAL);
+    repeatInterval = setInterval(execute, REPEAT_INTERVAL);
   }
 
   function add() {
@@ -101,6 +123,10 @@ export default function action(element) {
 
   function getAction() {
     return getAttr(element, 'data-action');
+  }
+
+  function isRepeatable() {
+    return getAttr(element, 'data-repeatable') !== null;
   }
 
   init();

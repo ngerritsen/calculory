@@ -5,7 +5,10 @@ import * as pubSub from '../core/pubSub';
 let history = historyRepository.getAll();
 
 export function add(code) {
-  updateHistory([{ id: generateId(), code }, ...history]);
+  updateHistory([
+    { id: generateId(), code, timestamp: Date.now() },
+    ...history,
+  ]);
 }
 
 export function remove(id) {

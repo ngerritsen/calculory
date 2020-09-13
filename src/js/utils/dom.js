@@ -83,3 +83,14 @@ export function toggleClass(element, className, state) {
 
   addClass(element, className);
 }
+
+export function isTouchOnElement(element, event) {
+  const touch = event.changedTouches.item(0);
+
+  if (touch === null) return false;
+
+  const { right, left, top, bottom } = element.getBoundingClientRect();
+  const { clientX, clientY } = touch;
+
+  return right > clientX && left < clientX && top < clientY && bottom > clientY;
+}
