@@ -1,6 +1,4 @@
-import tokenize from './tokenize';
-import parse from './parse';
-import evaluate from './evaluate';
+import calculy from 'calculy';
 import * as historyService from '../service/history';
 
 let last = null;
@@ -15,7 +13,7 @@ export function execute(code = '') {
   }
 
   try {
-    const result = evaluate(parse(tokenize(code)), getPreviousAnswer);
+    const result = calculy.evaluate(code, getPreviousAnswer());
     last = createResult(code, null, result);
   } catch (error) {
     last = createResult(code, error);
@@ -39,5 +37,5 @@ function createResult(code, error = null, result = 0) {
 }
 
 export function isAllowed(char) {
-  return String(tokenize(char)[0]).length === 1;
+  return String(calculy.tokenize(char)[0]).length === 1;
 }

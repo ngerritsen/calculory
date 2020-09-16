@@ -1,7 +1,7 @@
 {
   "name": "calculory",
   "version": "1.0.0",
-  "description": "Zero dependency calculator with logs.",
+  "description": "Sleek, powerful calculator with history.",
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
@@ -11,7 +11,9 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "calculy": "^1.0.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
