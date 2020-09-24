@@ -1,10 +1,11 @@
 import calculy from 'calculy';
+import { DEG, RAD } from '../constants/mode';
 import * as historyService from '../service/history';
 
 let last = null;
 
-export function execute(code = '') {
-  if (last && code === last.code) {
+export function execute({ code = '', mode = RAD }) {
+  if (last && code === last.code && mode === last.mode) {
     return last;
   }
 
@@ -14,13 +15,14 @@ export function execute(code = '') {
 
   try {
     const result = calculy.evaluate(code, {
+      deg: mode === DEG,
       constants: {
         ans: getPreviousAnswer(),
       },
     });
-    last = createResult(code, null, result);
+    last = createResult(code, null, result, mode);
   } catch (error) {
-    last = createResult(code, error);
+    last = createResult(code, error, undefined, mode);
   }
 
   return last;
@@ -36,8 +38,8 @@ function getPreviousAnswer() {
   return execute(lastItem.code).result;
 }
 
-function createResult(code, error = null, result = 0) {
-  return { code, error, result };
+function createResult(code, error = null, result = 0, mode = RAD) {
+  return { code, error, result, mode };
 }
 
 export function isAllowed(char) {

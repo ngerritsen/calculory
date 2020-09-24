@@ -1,7 +1,13 @@
-export function store(code) {
-  localStorage.setItem('calculation', code);
+export function store(calculation) {
+  localStorage.setItem('calculation', JSON.stringify(calculation));
 }
 
 export function get() {
-  return localStorage.getItem('calculation') || '';
+  const raw = localStorage.getItem('calculation');
+
+  try {
+    return JSON.parse(raw);
+  } catch (e) {
+    return null;
+  }
 }

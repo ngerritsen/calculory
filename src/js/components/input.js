@@ -20,13 +20,13 @@ export default function input(element) {
   }
 
   function update() {
-    const { code, position } = calculationService.get();
-    updateError(code);
-    render(code, position);
+    const calculation = calculationService.get();
+    updateError(calculation);
+    render(calculation.code, calculation.position);
   }
 
-  function updateError(code) {
-    const { error } = execute(code);
+  function updateError(calculation) {
+    const { error } = execute(calculation);
     toggleClass(element, ERROR_CLASSNAME, Boolean(error));
   }
 

@@ -34,7 +34,7 @@ export default function log(element) {
   }
 
   function getItemHtml(item) {
-    const { result } = execute(item.code);
+    const { result } = execute(item);
 
     return renderTemplate('history-item', {
       result,

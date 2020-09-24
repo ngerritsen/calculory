@@ -13,8 +13,8 @@ export default function output(element) {
   }
 
   function calculate() {
-    const { code } = calculationService.get();
-    const { result, error } = execute(code);
+    const calculation = calculationService.get();
+    const { result, error } = execute(calculation);
 
     if (error) {
       setError(error);

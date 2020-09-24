@@ -2,15 +2,18 @@ import * as calculationRepository from '../repository/calculation';
 import * as historyService from './history';
 import * as pubSub from '../core/pubSub';
 import { execute } from '../engine';
+import { RAD, DEG } from '../constants/mode';
 
-let code = calculationRepository.get();
-let position = code.length;
+const defaultState = { code: '', position: 0, mode: RAD };
+
+let state = calculationRepository.get() || defaultState;
 
 export function get() {
-  return { code, position };
+  return state;
 }
 
 export function add(symbol) {
+  const { code, position } = state;
   const newCode = code.slice(0, position) + symbol + code.slice(position);
   const isFunction = Boolean(symbol.match(/^.+\(\)$/));
   const isAbsolute = symbol === '||';
@@ -21,6 +24,8 @@ export function add(symbol) {
 }
 
 export function remove() {
+  const { code, position } = state;
+
   if (position === 0) {
     return;
   }
@@ -31,30 +36,34 @@ export function remove() {
 }
 
 export function submit() {
-  if (!code.trim()) {
+  if (!state.code.trim()) {
     return;
   }
 
-  const { error } = execute(code);
+  const { error } = execute(state);
 
   if (error) {
     return;
   }
 
-  historyService.add(code);
+  historyService.add(state);
   clear();
 }
 
-export function setPosition(postition) {
-  set(code, postition);
+export function toggleMode() {
+  set(state.code, state.position, state.mode === RAD ? DEG : RAD);
+}
+
+export function setPosition(position) {
+  set(state.code, position);
 }
 
 export function end() {
-  set(code, code.length);
+  set(state.code, state.code.length);
 }
 
 export function start() {
-  set(code, 0);
+  set(state.code, 0);
 }
 
 export function clear() {
@@ -62,24 +71,32 @@ export function clear() {
 }
 
 export function next() {
-  set(code, position + 1);
+  set(state.code, state.position + 1);
 }
 
 export function previous() {
-  set(code, position - 1);
+  set(state.code, state.position - 1);
 }
 
-export function set(newCode, newPosition) {
-  const limitedPosition = limitPosition(newPosition, newCode);
+export function set(code, position, mode) {
+  const limitedPosition = limitPosition(position, code);
 
-  if (limitedPosition === position && newCode === code) {
+  if (
+    limitedPosition === state.position &&
+    code === state.code &&
+    mode === state.mode
+  ) {
     return;
   }
 
-  code = newCode;
-  position = limitedPosition;
+  state = {
+    mode: mode || state.mode,
+    code,
+    position: limitedPosition,
+  };
 
-  calculationRepository.store(code);
+  calculationRepository.store(state);
+
   pubSub.publish('calculation.updated');
 }
 

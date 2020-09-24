@@ -1,12 +1,13 @@
 import { generateId } from '../utils/id';
 import * as historyRepository from '../repository/history';
 import * as pubSub from '../core/pubSub';
+import { RAD } from '../constants/mode';
 
 let history = historyRepository.getAll();
 
-export function add(code) {
+export function add({ code, mode = RAD }) {
   updateHistory([
-    { id: generateId(), code, timestamp: Date.now() },
+    { id: generateId(), code, timestamp: Date.now(), mode },
     ...history,
   ]);
 }
