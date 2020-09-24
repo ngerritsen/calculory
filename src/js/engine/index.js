@@ -13,7 +13,11 @@ export function execute(code = '') {
   }
 
   try {
-    const result = calculy.evaluate(code, getPreviousAnswer());
+    const result = calculy.evaluate(code, {
+      constants: {
+        ans: getPreviousAnswer(),
+      },
+    });
     last = createResult(code, null, result);
   } catch (error) {
     last = createResult(code, error);

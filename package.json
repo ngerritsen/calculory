@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "calculy": "^1.0.2"
+    "calculy": "^3.1.1"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",
