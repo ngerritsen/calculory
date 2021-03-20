@@ -1,6 +1,6 @@
-@import '../mixins/theme.scss';
-@import '../variables/themes.scss';
-@import '../variables/space.scss';
+@import "../mixins/theme.scss";
+@import "../variables/themes.scss";
+@import "../variables/space.scss";
 
 .option {
   display: flex;
@@ -13,7 +13,7 @@
   &:hover {
     .option__radio {
       @include themify($themes) {
-        background-color: transparentize(themed('color-fg-inverted'), 0.8);
+        background-color: transparentize(themed("color-fg-inverted"), 0.8);
       }
     }
   }
@@ -27,14 +27,14 @@
   border-radius: 0.5em;
 
   @include themify($themes) {
-    border: 1px solid themed('color-fg-inverted');
+    border: 1px solid themed("color-fg-inverted");
   }
 }
 
 .option__input:checked + .option__radio {
   @include themify($themes) {
-    background-color: themed('color-action');
-    border: 1px solid themed('color-action');
+    background-color: themed("color-action");
+    border: 1px solid themed("color-action");
   }
 }
 

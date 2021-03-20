@@ -11,16 +11,16 @@ import {
   insertBefore,
   remove,
   removeClass,
-} from '../utils/dom';
-import renderTemplate from '../core/renderTemplate';
+} from "../utils/dom";
+import renderTemplate from "../core/renderTemplate";
 
-const MORE_TEXT = 'More';
-const LESS_TEXT = 'Less';
+const MORE_TEXT = "More";
+const LESS_TEXT = "Less";
 
-export default function showMore(element) {
+export default function showMore(element: Element): void {
   function init() {
     initShowMoreButton();
-    on('resize', reset, window);
+    on("resize", reset);
   }
 
   function reset() {
@@ -40,28 +40,32 @@ export default function showMore(element) {
     insertBefore(getButtons()[hideFromIndex], createShowMoreButton());
     setHideableButtons(hideFromIndex);
 
-    on('click', toggle, getShowMoreButton());
+    on("click", toggle, getShowMoreButton());
   }
 
   function setHideableButtons(hideFromIndex) {
     getButtons().forEach((button, index) => {
       if (index >= hideFromIndex) {
-        setAttr(button, 'data-hideable-button', true);
-        addClass(button, 'is-hidden');
+        setAttr(button, "data-hideable-button", true);
+        addClass(button, "is-hidden");
       }
     });
   }
 
   function unsetHideableButtons() {
     getButtons().forEach((button) => {
-      removeAttr(button, 'data-hideable-button');
-      removeClass(button, 'is-hidden');
+      removeAttr(button, "data-hideable-button");
+      removeClass(button, "is-hidden");
     });
   }
 
-  function getHideFromIndex() {
+  function getHideFromIndex(): number | false {
     const fromIndex = getButtons().reduce(
-      (fromIndex, button, index) =>
+      (
+        fromIndex: false | number,
+        button: Element,
+        index: number
+      ): false | number =>
         isOverflowing(button) && fromIndex === false ? index : fromIndex,
       false
     );
@@ -81,36 +85,36 @@ export default function showMore(element) {
 
   function toggleButtons() {
     getHideableButtons().forEach((button) => {
-      toggleClass(button, 'is-hidden');
+      toggleClass(button, "is-hidden");
     });
   }
 
-  function isTogglable() {
+  function isTogglable(): boolean {
     return Boolean(getShowMoreButton());
   }
 
-  function getShowMoreButtonText() {
+  function getShowMoreButtonText(): string {
     return getShowMoreButton().textContent.trim();
   }
 
-  function getButtons() {
-    return queryAll('[data-button]', element);
+  function getButtons(): Element[] {
+    return queryAll("[data-button]", element);
   }
 
-  function getHideableButtons() {
-    return queryAll('[data-hideable-button]', element);
+  function getHideableButtons(): Element[] {
+    return queryAll("[data-hideable-button]", element);
   }
 
-  function isOverflowing(button) {
+  function isOverflowing(button): boolean {
     return getRect(button).bottom + window.scrollY > window.innerHeight;
   }
 
-  function getShowMoreButton() {
-    return query('[data-show-more]', element);
+  function getShowMoreButton(): Element {
+    return query("[data-show-more]", element);
   }
 
-  function createShowMoreButton() {
-    return stringToDom(renderTemplate('show-more-button'));
+  function createShowMoreButton(): Element {
+    return stringToDom(renderTemplate("show-more-button"));
   }
 
   init();

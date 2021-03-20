@@ -1,10 +1,10 @@
-@import '../mixins/responsive.scss';
-@import '../mixins/theme.scss';
-@import '../variables/themes.scss';
-@import '../variables/breakpoint.scss';
-@import '../variables/space.scss';
-@import '../variables/fonts.scss';
-@import '../variables/borders.scss';
+@import "../mixins/responsive.scss";
+@import "../mixins/theme.scss";
+@import "../variables/themes.scss";
+@import "../variables/breakpoint.scss";
+@import "../variables/space.scss";
+@import "../variables/fonts.scss";
+@import "../variables/borders.scss";
 
 @mixin button-color($bg-color, $fg-color) {
   background: $bg-color;
@@ -34,7 +34,7 @@
 
 .button {
   @include themify($themes) {
-    @include button-color(themed('color-bg-dark'), themed('color-fg-inverted'));
+    @include button-color(themed("color-bg-dark"), themed("color-fg-inverted"));
   }
 
   display: inline-flex;
@@ -59,28 +59,28 @@
 
 .button--primary {
   @include themify($themes) {
-    @include button-color(themed('color-action'), themed('color-fg-inverted'));
+    @include button-color(themed("color-action"), themed("color-fg-inverted"));
   }
 }
 
 .button--secondary {
   @include themify($themes) {
-    @include button-color(themed('color-bg-subtle'), themed('color-fg'));
+    @include button-color(themed("color-bg-subtle"), themed("color-fg"));
   }
 }
 
 .button--operator {
   @include themify($themes) {
     @include button-color(
-      themed('color-operator'),
-      themed('color-fg-inverted')
+      themed("color-operator"),
+      themed("color-fg-inverted")
     );
   }
 }
 
 .button--danger {
   @include themify($themes) {
-    @include button-color(themed('color-danger'), themed('color-fg-inverted'));
+    @include button-color(themed("color-danger"), themed("color-fg-inverted"));
   }
 }
 
@@ -88,8 +88,8 @@
   .button {
     @include themify($themes) {
       @include button-color--hover(
-        themed('color-bg-dark'),
-        themed('color-fg-inverted')
+        themed("color-bg-dark"),
+        themed("color-fg-inverted")
       );
     }
   }
@@ -97,8 +97,8 @@
   .button--primary {
     @include themify($themes) {
       @include button-color--hover(
-        themed('color-action'),
-        themed('color-fg-inverted')
+        themed("color-action"),
+        themed("color-fg-inverted")
       );
     }
   }
@@ -106,8 +106,8 @@
   .button--secondary {
     @include themify($themes) {
       @include button-color--hover(
-        themed('color-bg-subtle'),
-        themed('color-fg')
+        themed("color-bg-subtle"),
+        themed("color-fg")
       );
     }
   }
@@ -115,8 +115,8 @@
   .button--operator {
     @include themify($themes) {
       @include button-color--hover(
-        themed('color-operator'),
-        themed('color-fg-inverted')
+        themed("color-operator"),
+        themed("color-fg-inverted")
       );
     }
   }
@@ -124,8 +124,8 @@
   .button--danger {
     @include themify($themes) {
       @include button-color--hover(
-        themed('color-danger'),
-        themed('color-fg-inverted')
+        themed("color-danger"),
+        themed("color-fg-inverted")
       );
     }
   }

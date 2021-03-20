@@ -1,7 +1,7 @@
-@import './mixins/theme.scss';
-@import './variables/themes.scss';
-@import './variables/fonts.scss';
-@import './variables/space.scss';
+@import "./mixins/theme.scss";
+@import "./variables/themes.scss";
+@import "./variables/fonts.scss";
+@import "./variables/space.scss";
 
 *,
 *:before,
@@ -22,8 +22,8 @@ body {
   height: 100%;
 
   @include themify($themes) {
-    color: themed('color-fg');
-    background-color: themed('color-bg');
+    color: themed("color-fg");
+    background-color: themed("color-bg");
   }
 }
 

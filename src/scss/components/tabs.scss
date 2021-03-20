@@ -1,6 +1,6 @@
-@import '../mixins/theme.scss';
-@import '../variables/themes.scss';
-@import '../variables/space.scss';
+@import "../mixins/theme.scss";
+@import "../variables/themes.scss";
+@import "../variables/space.scss";
 
 $tabs-border-width: 3px;
 
@@ -11,7 +11,7 @@ $tabs-border-width: 3px;
 
   @include themify($themes) {
     border-bottom: $tabs-border-width solid
-      transparentize(themed('color-fg-inverted'), 0.6);
+      transparentize(themed("color-fg-inverted"), 0.6);
   }
 }
 
@@ -28,7 +28,7 @@ $tabs-border-width: 3px;
   padding: $space-xs 0 $space-sm 0;
 
   @include themify($themes) {
-    $tabs-inactive-color: transparentize(themed('color-fg-inverted'), 0.6);
+    $tabs-inactive-color: transparentize(themed("color-fg-inverted"), 0.6);
 
     color: $tabs-inactive-color;
     text-decoration: none;
@@ -44,7 +44,7 @@ $tabs-border-width: 3px;
   &:focus {
     .tabs__trigger:not(.tabs__trigger--active) & {
       @include themify($themes) {
-        $tabs-hover-color: transparentize(themed('color-fg-inverted'), 0.3);
+        $tabs-hover-color: transparentize(themed("color-fg-inverted"), 0.3);
 
         color: $tabs-hover-color;
         border-bottom: $tabs-border-width solid $tabs-hover-color;
@@ -58,7 +58,7 @@ $tabs-border-width: 3px;
 
   .tabs__trigger--active & {
     @include themify($themes) {
-      $tabs-active-color: themed('color-fg-inverted');
+      $tabs-active-color: themed("color-fg-inverted");
 
       color: $tabs-active-color;
       border-bottom: $tabs-border-width solid $tabs-active-color;

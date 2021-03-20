@@ -1,8 +1,8 @@
-@import '../mixins/theme.scss';
-@import '../variables/themes.scss';
-@import '../variables/fonts.scss';
-@import '../variables/borders.scss';
-@import '../variables/space.scss';
+@import "../mixins/theme.scss";
+@import "../variables/themes.scss";
+@import "../variables/fonts.scss";
+@import "../variables/borders.scss";
+@import "../variables/space.scss";
 
 @mixin scroll-horizontal() {
   white-space: nowrap;
@@ -22,7 +22,7 @@
 
   &::after,
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     width: $space-sm;
     top: 0;
@@ -50,29 +50,29 @@
   }
 }
 
-@include themify-keyframes($themes, 'cursor-blink') {
+@include themify-keyframes($themes, "cursor-blink") {
   from,
   to {
-    background-color: themed('color-fg');
-    color: themed('color-bg');
+    background-color: themed("color-fg");
+    color: themed("color-bg");
   }
 
   50% {
     background-color: transparent;
-    color: themed('color-fg');
+    color: themed("color-fg");
   }
 }
 
-@include themify-keyframes($themes, 'cursor-blink-error') {
+@include themify-keyframes($themes, "cursor-blink-error") {
   from,
   to {
-    background-color: themed('color-danger');
-    color: themed('color-bg');
+    background-color: themed("color-danger");
+    color: themed("color-bg");
   }
 
   50% {
     background-color: transparent;
-    color: themed('color-danger');
+    color: themed("color-danger");
   }
 }
 
@@ -82,7 +82,7 @@
 
 .calculator__output-container {
   @include themify($themes) {
-    @include field-container(darken(themed('color-bg'), 10%));
+    @include field-container(darken(themed("color-bg"), 10%));
   }
 
   border-radius: $border-radius $border-radius 0 0;
@@ -98,7 +98,7 @@
 
 .calculator__input-container {
   @include themify($themes) {
-    @include field-container(darken(themed('color-bg'), 5%));
+    @include field-container(darken(themed("color-bg"), 5%));
   }
 
   border-radius: 0 0 $border-radius $border-radius;
@@ -116,7 +116,7 @@
 .calculator__output--error,
 .calculator__input--error {
   @include themify($themes) {
-    color: themed('color-danger');
+    color: themed("color-danger");
   }
 }
 
@@ -128,15 +128,15 @@
 
 .calculator__char--active {
   @include themify($themes) {
-    color: themed('color-bg');
-    background-color: themed('color-fg');
-    animation: 1s themed-keyframes('cursor-blink') step-end infinite;
+    color: themed("color-bg");
+    background-color: themed("color-fg");
+    animation: 1s themed-keyframes("cursor-blink") step-end infinite;
   }
 
   .calculator__input--error & {
     @include themify($themes) {
-      animation: 1s themed-keyframes('cursor-blink-error') step-end infinite;
-      background-color: themed('color-danger');
+      animation: 1s themed-keyframes("cursor-blink-error") step-end infinite;
+      background-color: themed("color-danger");
     }
   }
 }

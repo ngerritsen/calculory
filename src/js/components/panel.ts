@@ -6,16 +6,16 @@ import {
   hasClass,
   on,
   once,
-} from '../utils/dom';
-import * as pubSub from '../core/pubSub';
+} from "../utils/dom";
+import * as pubSub from "../core/pubSub";
 
-const ACTIVE_CLASSNAME = 'panel--active';
-const NUDGE_CLASSNAME = 'panel__label--nudge';
+const ACTIVE_CLASSNAME = "panel--active";
+const NUDGE_CLASSNAME = "panel__label--nudge";
 
-export default function panel(element) {
+export default function panel(element: Element): void {
   function init() {
-    pubSub.subscribe('history.updated', nudge);
-    on('click', onClick, getTrigger());
+    pubSub.subscribe("history.updated", nudge);
+    on("click", onClick, getTrigger());
   }
 
   function onClick() {
@@ -34,7 +34,7 @@ export default function panel(element) {
 
     addClass(getTrigger(), NUDGE_CLASSNAME);
     once(
-      'animationend',
+      "animationend",
       () => removeClass(getTrigger(), NUDGE_CLASSNAME),
       getTrigger()
     );
@@ -50,7 +50,7 @@ export default function panel(element) {
     removeClass(element, ACTIVE_CLASSNAME);
   }
 
-  function isOpen() {
+  function isOpen(): boolean {
     return hasClass(element, ACTIVE_CLASSNAME);
   }
 
@@ -58,19 +58,20 @@ export default function panel(element) {
     document.body.appendChild(
       stringToDom('<div data-overlay class="overlay"></div>')
     );
-    on('click', close, getOverlay());
+
+    on("click", close, getOverlay());
   }
 
   function removeOverlay() {
     document.body.removeChild(getOverlay());
   }
 
-  function getOverlay() {
-    return query('[data-overlay]');
+  function getOverlay(): Element {
+    return query("[data-overlay]");
   }
 
-  function getTrigger() {
-    return query('[data-trigger]', element);
+  function getTrigger(): Element {
+    return query("[data-trigger]", element);
   }
 
   init();

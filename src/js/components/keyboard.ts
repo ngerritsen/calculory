@@ -1,8 +1,9 @@
-import * as calculationService from '../service/calculation';
-import { isAllowed } from '../engine';
-import { on } from '../utils/dom';
+import * as calculationService from "../service/calculation";
+import { isAllowed } from "../engine";
+import { on } from "../utils/dom";
+import { EventHandler, ClipboardData } from "../types";
 
-export default function keyboard(element) {
+export default function keyboard(element: Element): void {
   const actionMap = {
     Backspace: calculationService.remove,
     ArrowRight: calculationService.next,
@@ -17,17 +18,17 @@ export default function keyboard(element) {
   };
 
   function init() {
-    on('keydown', onKeyDown, element);
-    on('paste', onPaste, element);
+    on("keydown", <EventHandler>onKeyDown, element);
+    on("paste", <EventHandler>onPaste, element);
   }
 
   function onPaste(event) {
     event.preventDefault();
-    const code = (event.clipboardData || window.clipboardData).getData('text');
+    const code = (event.clipboardData as ClipboardData).getData("text");
     calculationService.add(code);
   }
 
-  function onKeyDown(event) {
+  function onKeyDown(event: KeyboardEvent) {
     if (event.ctrlKey || event.metaKey) {
       const metaAction = metaActionMap[event.key];
 

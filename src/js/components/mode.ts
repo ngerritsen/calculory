@@ -1,9 +1,9 @@
-import * as calculationService from '../service/calculation';
-import { on } from '../utils/dom';
+import * as calculationService from "../service/calculation";
+import { on } from "../utils/dom";
 
-export default function mode(element) {
+export default function mode(element: Element): void {
   function init() {
-    on('click', toggle, element);
+    on("click", toggle, element);
     update();
   }
 

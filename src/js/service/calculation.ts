@@ -1,29 +1,32 @@
-import * as calculationRepository from '../repository/calculation';
-import * as historyService from './history';
-import * as pubSub from '../core/pubSub';
-import { execute } from '../engine';
-import { RAD, DEG } from '../constants/mode';
+import * as calculationRepository from "../repository/calculation";
+import * as historyService from "./history";
+import * as pubSub from "../core/pubSub";
+import { execute } from "../engine";
+import { AngularUnit, CalculationState } from "../types";
 
-const defaultState = { code: '', position: 0, mode: RAD };
+const defaultState: CalculationState = {
+  code: "",
+  position: 0,
+  mode: AngularUnit.Rad,
+};
+let state: CalculationState = calculationRepository.get() || defaultState;
 
-let state = calculationRepository.get() || defaultState;
-
-export function get() {
+export function get(): CalculationState {
   return state;
 }
 
-export function add(symbol) {
+export function add(symbol: string): void {
   const { code, position } = state;
   const newCode = code.slice(0, position) + symbol + code.slice(position);
   const isFunction = Boolean(symbol.match(/^.+\(\)$/));
-  const isAbsolute = symbol === '||';
+  const isAbsolute = symbol === "||";
   const newPosition =
     position + (isFunction || isAbsolute ? symbol.length - 1 : symbol.length);
 
   set(newCode, newPosition);
 }
 
-export function remove() {
+export function remove(): void {
   const { code, position } = state;
 
   if (position === 0) {
@@ -35,7 +38,7 @@ export function remove() {
   set(newCode, position - 1);
 }
 
-export function submit() {
+export function submit(): void {
   if (!state.code.trim()) {
     return;
   }
@@ -50,35 +53,43 @@ export function submit() {
   clear();
 }
 
-export function toggleMode() {
-  set(state.code, state.position, state.mode === RAD ? DEG : RAD);
+export function toggleMode(): void {
+  set(
+    state.code,
+    state.position,
+    state.mode === AngularUnit.Rad ? AngularUnit.Deg : AngularUnit.Rad
+  );
 }
 
-export function setPosition(position) {
+export function setPosition(position: number): void {
   set(state.code, position);
 }
 
-export function end() {
+export function end(): void {
   set(state.code, state.code.length);
 }
 
-export function start() {
+export function start(): void {
   set(state.code, 0);
 }
 
-export function clear() {
-  set('', 0);
+export function clear(): void {
+  set("", 0);
 }
 
-export function next() {
+export function next(): void {
   set(state.code, state.position + 1);
 }
 
-export function previous() {
+export function previous(): void {
   set(state.code, state.position - 1);
 }
 
-export function set(code, position, mode) {
+export function set(
+  code: string,
+  position: number,
+  mode = AngularUnit.Rad
+): void {
   const limitedPosition = limitPosition(position, code);
 
   if (
@@ -97,9 +108,9 @@ export function set(code, position, mode) {
 
   calculationRepository.store(state);
 
-  pubSub.publish('calculation.updated');
+  pubSub.publish("calculation.updated");
 }
 
-function limitPosition(position, code) {
+function limitPosition(position: number, code: string): number {
   return Math.min(Math.max(position, 0), code.length + 1);
 }
