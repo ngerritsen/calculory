@@ -43,14 +43,14 @@ export function submit(): void {
     return;
   }
 
-  const { error } = execute(state);
+  const { error, result } = execute(state);
 
   if (error) {
     return;
   }
 
   historyService.add(state);
-  clear();
+  set(String(result), String(result).length);
 }
 
 export function toggleMode(): void {
