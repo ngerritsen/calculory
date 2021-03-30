@@ -10,7 +10,7 @@ export default function theme(element: Element): void {
 
   function apply() {
     const theme = themeService.get();
-
+    console.log(theme);
     removeThemes();
 
     addClass(element, `theme-${theme}`);
@@ -19,7 +19,9 @@ export default function theme(element: Element): void {
   function removeThemes() {
     getClasses(element)
       .filter((className) => className.indexOf("theme-") === 0)
-      .forEach((className) => removeClass(element, className));
+      .forEach((className) =>
+        removeClass(element, className, console.log(element, className))
+      );
   }
 
   init();

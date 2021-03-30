@@ -87,7 +87,7 @@ export function hasClass(element: Element, className: string): boolean {
 }
 
 export function getClasses(element: Element): string[] {
-  return [...element.classList.entries()].map(([, value]) => value);
+  return [...element.classList];
 }
 
 export function toggleClass(
