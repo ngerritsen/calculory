@@ -1,4 +1,4 @@
-import calculy from "calculy";
+import { calculate, tokenize } from "calculy";
 import * as historyService from "../service/history";
 import { Calculation, AngularUnit, CalculationResult } from "../types";
 
@@ -17,7 +17,7 @@ export function execute({
   }
 
   try {
-    const result = calculy.evaluate(code, {
+    const result = calculate(code, {
       deg: mode === AngularUnit.Deg,
       constants: {
         ans: getPreviousAnswer(),
@@ -52,5 +52,5 @@ function createResult(
 }
 
 export function isAllowed(char: string): boolean {
-  return String(calculy.tokenize(char)[0]).length === 1;
+  return String(tokenize(char)[0]).length === 1;
 }
